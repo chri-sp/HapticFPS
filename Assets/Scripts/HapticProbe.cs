@@ -116,6 +116,7 @@ public class HapticProbe : MonoBehaviour {
 		}
 	}
 
+	//prende la posizione del controller e imposta la posizione dell'oggetto
 	void SetPosition() {
 		// Set position from Falcon
 		Vector3 p = falcon.position;
