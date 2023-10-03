@@ -43,6 +43,9 @@ public class HapticProbeFPS : MonoBehaviour
     private int randomForceIndex = -1;
     public bool useRandomForce = false;
 
+    // Variabile per spostamento visuale raggiunto un bordo
+    private float virtualPositionX;
+
 
     // Use this for initialization
     void Start()
@@ -58,6 +61,9 @@ public class HapticProbeFPS : MonoBehaviour
         //SetPosition();
 
         simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
+
+        //variabile usata per simulare lo spostamento virtuale del controller
+        virtualPositionX = falcon.position.x;
 
 
     }
@@ -147,8 +153,6 @@ public class HapticProbeFPS : MonoBehaviour
     {
         // Set position from Falcon
         Vector3 p = falcon.position;
-        //Blocco la coordinata della profondita per simulare il movimento della visuale, su-giu-destra-sinistra
-        //p.z = 100;
         transform.position = p;
     }
 
@@ -156,13 +160,21 @@ public class HapticProbeFPS : MonoBehaviour
     //Metodo usato per ottenere la posizione del falcon permettendo il movimento della camera
     public Vector2 getFalconPosition()
     {
-        return new Vector2(falcon.position.x, falcon.position.y);
+        Debug.Log("Posizione falcon: " + falcon.position);
 
-        /*  TODO se il falcon raggiunge il bordo aumento di 1 unita la 
-         * coordinata corrispondente, questo per permettere di girare 
-         * la visuale anche quando ho raggiunto un estremo del controller
-         * (quindi ho 4 if uno per ogni estremo)
-         */
+       
+        //Arrivo al bordo destro
+        if (falcon.position.x > 4)
+        {
+            virtualPositionX = virtualPositionX + 0.1f;
+        }
+        //Arrivo al bordo sinistro
+        else if (falcon.position.x < -4)
+        {
+            virtualPositionX = virtualPositionX - 0.1f;
+        }
+
+        return new Vector2(falcon.position.x+virtualPositionX, falcon.position.y);
     }
 
     //Metodo usato per verificare se il falcon è attivo

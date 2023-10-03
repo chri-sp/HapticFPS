@@ -52,10 +52,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
+                float XFalconSensitivity = 4f;
+                float YFalconSensitivity = 4f;
 
                 Vector2 axis = new Vector2(
-              -(lastAxis.x - controller.getFalconPosition().x) * 0.1f,
-              -(lastAxis.y - controller.getFalconPosition().y) * 0.1f
+              -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity,
+              -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity
               );
 
                 lastAxis = new Vector2(controller.getFalconPosition().x, controller.getFalconPosition().y);

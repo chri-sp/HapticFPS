@@ -156,7 +156,7 @@ public class HapticProbeTesting : MonoBehaviour
         * basso-destra-estesa, imprimendo una forza momentanea */
     IEnumerator InitiatePosition()
     {
-        simpleForceIndex = Falcon.AddSimpleForce(new Vector3(0, 4, 0));
+        simpleForceIndex = Falcon.AddSimpleForce(new Vector3(0, 3, 0));
         yield return new WaitForSeconds(1);
         Falcon.RemoveSimpleForce(0);
     }

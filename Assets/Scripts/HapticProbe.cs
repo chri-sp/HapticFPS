@@ -146,9 +146,11 @@ public class HapticProbe : MonoBehaviour
     {
         // Set position from Falcon
         Vector3 p = falcon.position;
+        Debug.Log("Posizione falcon"+ falcon.position);
         //Blocco la coordinata della profondita per simulare il movimento della visuale, su-giu-destra-sinistra
         //p.z = 100;
         transform.position = p;
+
     }
 
 
