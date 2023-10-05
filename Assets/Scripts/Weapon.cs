@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] HapticProbeFPS controller;
     [SerializeField] Camera FirstPersonCamera;
     [SerializeField] float range = 100f;
+    [SerializeField] float damage = 30f;
 
     void Update()
     {
@@ -25,7 +26,15 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit;
-        Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out hit, range);
-        Debug.Log("Colpito: " + hit.transform.name);
+        if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out hit, range))
+        {
+            Debug.Log("Colpito: " + hit.transform.name);
+
+            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+            //evito NullReference se colpisco un oggetto senza lo script EnemyHealth 
+            if (target == null) return;
+            target.TakeDamage(damage);
+        }
+
     }
 }
