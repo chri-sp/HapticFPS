@@ -43,9 +43,11 @@ public class HapticProbeFPS : MonoBehaviour
     private int randomForceIndex = -1;
     public bool useRandomForce = false;
 
-    // Variabile per spostamento visuale raggiunto un bordo
+    // Simula lo spostamento virtuale del controller
     private float virtualPositionX;
 
+    // Memorizza la posizione x iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
+    private float startPositionX;
 
     // Use this for initialization
     void Start()
@@ -60,12 +62,44 @@ public class HapticProbeFPS : MonoBehaviour
 
         //SetPosition();
 
+        startPositionX = falcon.position.x;
+
+        virtualPositionX = startPositionX;
+
+
+
         simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
 
-        //variabile usata per simulare lo spostamento virtuale del controller
-        virtualPositionX = falcon.position.x;
+    }
+
+    //mappa che associa ad uno oggetto, l'indice assegnato dal falcon e la forza applicata sul falcon
 
 
+    //aggiunge la forza alla mappa e al controller falcon
+    public void AddSimpleForce(/*oggetto da cui ricavare l'indice*/)
+    {
+        //se l'oggetto non è gia contenuto
+        //aggiungo alla mappa l'oggetto e la forza
+        simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
+    }
+
+    public void UpdateSimpleForce(/*oggetto da cui ricavare l'indice, nuova forza*/)
+    {
+        //se l'oggetto è presente nella mappa
+        FalconFPS.UpdateSimpleForce(simpleForceIndex, simpleForce);
+    }
+
+    public void RemoveSimpleForce(/*oggetto da cui ricavare l'indice*/)
+    {
+        //se l'oggetto è presente nella mappa
+        //rimouvere l'oggetto dalla mappa
+        FalconFPS.RemoveSimpleForce(simpleForceIndex);
+    }
+
+    public void RemoveAllSimpleForces()
+    {
+        //aggiornare la mappa
+        FalconFPS.RemoveSimpleForces();
     }
 
 
@@ -74,6 +108,16 @@ public class HapticProbeFPS : MonoBehaviour
         // Move probe		
         //SetPosition();
 
+
+        //ad ogni update aggiorno tutte le forze in gioco nella mappa
+        if (useSimpleForce)
+        {
+            //foreach oggetti in mappa
+            FalconFPS.UpdateSimpleForce(simpleForceIndex/*contenuto indice dell'oggetto nella mappa*/, simpleForce/*contenuto forza dell'oggetto nella mappa*/);
+        }
+
+
+        /*
         // Update simple force
         if (useSimpleForce)
         {
@@ -91,6 +135,7 @@ public class HapticProbeFPS : MonoBehaviour
             FalconFPS.RemoveSimpleForce(simpleForceIndex);
             simpleForceIndex = -1;
         }
+        */
 
         // Update viscosity
         if (useViscosity && viscosityIndex < 0)
@@ -157,30 +202,38 @@ public class HapticProbeFPS : MonoBehaviour
     }
 
 
-    //Metodo usato per ottenere la posizione del falcon permettendo il movimento della camera
+    //Ritorna il vettore di coordinate della posizione del controller, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
         Debug.Log("Posizione falcon: " + falcon.position);
 
-       
+
         //Arrivo al bordo destro
+        //falcon.position.x > startXPosition + 4
         if (falcon.position.x > 4)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
+        //falcon.position.x > startXPosition - 4
         else if (falcon.position.x < -4)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
 
-        return new Vector2(falcon.position.x+virtualPositionX, falcon.position.y);
+        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y);
     }
 
     //Metodo usato per verificare se il falcon è attivo
     public bool isActive()
     {
         return falcon.isActive;
+    }
+
+    //Ritorna se uno specifico bottone è premuto
+    public bool getButtonState(int button)
+    {
+        return falcon.buttons[button];
     }
 
 }
