@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] GameObject hitEffect;
 
     void Update()
     {
@@ -41,12 +42,19 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out hit, range))
         {
             Debug.Log("Colpito: " + hit.transform.name);
-
+            HitImpact(hit);
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             //evito NullReference se colpisco un oggetto senza lo script EnemyHealth 
             if (target == null) return;
             target.TakeDamage(damage);
         }
 
+    }
+
+    private void HitImpact(RaycastHit hit)
+    {
+        GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        impact.SetActive(true);
+        Destroy(impact, .1f);
     }
 }
