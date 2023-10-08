@@ -1102,6 +1102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36952fcf2ccbaac4681abfb365f17490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpHapticIntensity: 4
+  jumpLandingHapticIntensity: 4
   m_IsWalking: 0
   m_WalkSpeed: 5
   m_RunSpeed: 10
@@ -2564,7 +2566,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -114342240
+  randomSeed: -945688350
   InitialModule:
     serializedVersion: 3
     enabled: 1

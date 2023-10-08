@@ -60,12 +60,6 @@ public class HapticProbeTesting : MonoBehaviour
         // Move probe		
         SetPosition();
 
-        // Update simple force
-        /* PROBLEMA: durante l'attesa della coroutine, 
-         * ho variabile simpleForceIndex in stato sbagliato.
-         * (forse no perchè dovrei avere simpleForceIndex=1 e quindi
-         * faccio update sulla seconda forza)
-         */
         if (useSimpleForce)
         {
             if (simpleForceIndex < 0)
@@ -156,8 +150,8 @@ public class HapticProbeTesting : MonoBehaviour
         * basso-destra-estesa, imprimendo una forza momentanea */
     IEnumerator InitiatePosition()
     {
-        simpleForceIndex = Falcon.AddSimpleForce(new Vector3(0, 3, 0));
+        int InitialForcePositionIndex = Falcon.AddSimpleForce(new Vector3(0, 3, 0));
         yield return new WaitForSeconds(1);
-        Falcon.RemoveSimpleForce(0);
+        Falcon.RemoveSimpleForce(InitialForcePositionIndex);
     }
 }

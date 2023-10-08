@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    private float recoilHapticIntensity = 4f;
 
     void Update()
     {
@@ -28,6 +29,8 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         PlayMuzzleFlash();
+        if (controller.isActive()) 
+            StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));       
         ProcessRaycast();
     }
     private void PlayMuzzleFlash()

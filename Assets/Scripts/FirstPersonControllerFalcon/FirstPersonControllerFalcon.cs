@@ -10,6 +10,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonControllerFalcon : MonoBehaviour
     {
+        private HapticProbeFPS controller;
+        [SerializeField] private float jumpHapticIntensity = 4f;
+        [SerializeField] private float jumpLandingHapticIntensity = 4f;
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -28,7 +32,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private HapticProbeFPS controller;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -68,12 +71,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+
+                //controller falcon salto
+                StartCoroutine(controller.jumpHapticFeedback(jumpHapticIntensity));
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
                 PlayLandingSound();
+
+                //controller falcon atterraggio
+                StartCoroutine(controller.jumpHapticFeedback(-jumpLandingHapticIntensity));
+
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
             }

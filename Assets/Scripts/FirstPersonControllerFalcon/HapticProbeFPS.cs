@@ -9,6 +9,7 @@
 =========================================================================*/
 
 using UnityEngine;
+using System.Collections;
 
 public class HapticProbeFPS : MonoBehaviour
 {
@@ -67,39 +68,8 @@ public class HapticProbeFPS : MonoBehaviour
         virtualPositionX = startPositionX;
 
 
-
         simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
 
-    }
-
-    //mappa che associa ad uno oggetto, l'indice assegnato dal falcon e la forza applicata sul falcon
-
-
-    //aggiunge la forza alla mappa e al controller falcon
-    public void AddSimpleForce(/*oggetto da cui ricavare l'indice*/)
-    {
-        //se l'oggetto non è gia contenuto
-        //aggiungo alla mappa l'oggetto e la forza
-        simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
-    }
-
-    public void UpdateSimpleForce(/*oggetto da cui ricavare l'indice, nuova forza*/)
-    {
-        //se l'oggetto è presente nella mappa
-        FalconFPS.UpdateSimpleForce(simpleForceIndex, simpleForce);
-    }
-
-    public void RemoveSimpleForce(/*oggetto da cui ricavare l'indice*/)
-    {
-        //se l'oggetto è presente nella mappa
-        //rimouvere l'oggetto dalla mappa
-        FalconFPS.RemoveSimpleForce(simpleForceIndex);
-    }
-
-    public void RemoveAllSimpleForces()
-    {
-        //aggiornare la mappa
-        FalconFPS.RemoveSimpleForces();
     }
 
 
@@ -107,15 +77,6 @@ public class HapticProbeFPS : MonoBehaviour
     {
         // Move probe		
         //SetPosition();
-
-
-        //ad ogni update aggiorno tutte le forze in gioco nella mappa
-        if (useSimpleForce)
-        {
-            //foreach oggetti in mappa
-            FalconFPS.UpdateSimpleForce(simpleForceIndex/*contenuto indice dell'oggetto nella mappa*/, simpleForce/*contenuto forza dell'oggetto nella mappa*/);
-        }
-
 
         /*
         // Update simple force
@@ -135,8 +96,7 @@ public class HapticProbeFPS : MonoBehaviour
             FalconFPS.RemoveSimpleForce(simpleForceIndex);
             simpleForceIndex = -1;
         }
-        */
-
+         
         // Update viscosity
         if (useViscosity && viscosityIndex < 0)
         {
@@ -191,8 +151,10 @@ public class HapticProbeFPS : MonoBehaviour
             FalconFPS.RemoveRandomForce(randomForceIndex);
             randomForceIndex = -1;
         }
+        */
     }
 
+    /*
     //prende la posizione del controller e imposta la posizione dell'oggetto
     void SetPosition()
     {
@@ -200,6 +162,7 @@ public class HapticProbeFPS : MonoBehaviour
         Vector3 p = falcon.position;
         transform.position = p;
     }
+    */
 
 
     //Ritorna il vettore di coordinate della posizione del controller, usato per permettere il movimento della camera
@@ -234,6 +197,20 @@ public class HapticProbeFPS : MonoBehaviour
     public bool getButtonState(int button)
     {
         return falcon.buttons[button];
+    }
+
+    public IEnumerator recoilHapticFeedback(float recoilIntensity)
+    {
+        int recoilIndex = Falcon.AddSimpleForce(new Vector3(0, 0, recoilIntensity));
+        yield return new WaitForSeconds(0.5f);
+        Falcon.RemoveSimpleForce(recoilIndex);
+    }
+
+    public IEnumerator jumpHapticFeedback(float jumpIntensity)
+    {
+        int jumpIndex = Falcon.AddSimpleForce(new Vector3(0, jumpIntensity, 0));
+        yield return new WaitForSeconds(0.5f);
+        Falcon.RemoveSimpleForce(jumpIndex);
     }
 
 }
