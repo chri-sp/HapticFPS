@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    private float recoilHapticIntensity = 4f;
+    [SerializeField] private float recoilHapticIntensity = 4f;
 
     void Update()
     {

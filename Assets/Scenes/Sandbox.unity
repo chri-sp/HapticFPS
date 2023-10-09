@@ -535,6 +535,26 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 645413a00f7bd0242bbd6d0e5eb6f439, type: 2}
@@ -674,6 +694,10 @@ Prefab:
     - target: {fileID: 400000, guid: cd62ea9f7f12ae845a764735a9c297c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 86.199005
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cd62ea9f7f12ae845a764735a9c297c0, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd62ea9f7f12ae845a764735a9c297c0, type: 3}
@@ -907,7 +931,7 @@ GameObject:
   - component: {fileID: 508188647}
   - component: {fileID: 508188646}
   - component: {fileID: 508188645}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Haptic Workspace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1031,7 @@ GameObject:
   - component: {fileID: 707407820}
   - component: {fileID: 707407819}
   - component: {fileID: 707407824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FPSController Haptic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1575,7 @@ GameObject:
   - component: {fileID: 1356661257}
   - component: {fileID: 1356661256}
   - component: {fileID: 1356661255}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1892,7 +1916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522514675}
   - component: {fileID: 1522514676}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570244757}
   - component: {fileID: 1570244758}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2095,6 +2119,7 @@ MonoBehaviour:
   damage: 30
   muzzleFlash: {fileID: 1981003730}
   hitEffect: {fileID: 1733502653}
+  recoilHapticIntensity: 4
 --- !u!1 &1620314706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2435,10 @@ Prefab:
       propertyPath: lengthInSec
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1137215462292586, guid: c679480c14f2d7948bbb48234e63c9b8, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c679480c14f2d7948bbb48234e63c9b8, type: 2}
   m_IsPrefabParent: 0
@@ -2454,7 +2483,7 @@ GameObject:
   - component: {fileID: 1981003728}
   - component: {fileID: 1981003730}
   - component: {fileID: 1981003729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Muzzle Flash VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2586,7 +2615,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -945688350
+  randomSeed: 880379130
   InitialModule:
     serializedVersion: 3
     enabled: 1
