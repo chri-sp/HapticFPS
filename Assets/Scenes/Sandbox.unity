@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4468631, g: 0.4967412, b: 0.57498664, a: 1}
+  m_IndirectSpecularColor: {r: 0.4468625, g: 0.49674007, b: 0.5749856, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2120,6 +2120,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1981003730}
   hitEffect: {fileID: 1733502653}
   recoilHapticIntensity: 4
+  waitingTimeBetweenShoot: 1
 --- !u!1 &1620314706
 GameObject:
   m_ObjectHideFlags: 0

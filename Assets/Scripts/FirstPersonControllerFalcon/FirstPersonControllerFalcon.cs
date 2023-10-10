@@ -71,9 +71,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-
-                //controller falcon salto
-                //StartCoroutine(controller.jumpHapticFeedback(jumpHapticIntensity));
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -82,7 +79,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
 
                 //controller falcon atterraggio
-                //StartCoroutine(controller.jumpHapticFeedback(-jumpLandingHapticIntensity));
+                StartCoroutine(controller.jumpHapticFeedback(-jumpLandingHapticIntensity));
 
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
@@ -129,6 +126,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
+                    //controller falcon salto
+                    StartCoroutine(controller.jumpHapticFeedback(jumpHapticIntensity));
                     m_Jump = false;
                     m_Jumping = true;
                 }

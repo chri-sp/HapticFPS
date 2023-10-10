@@ -200,14 +200,14 @@ public class HapticProbeFPS : MonoBehaviour
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
         int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, recoilIntensity));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.05f);
         FalconFPS.RemoveSimpleForce(recoilIndex);
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
         int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity, 0));
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(jumpIndex);
     }
 

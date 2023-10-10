@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
     [SerializeField] private float recoilHapticIntensity = 4f;
+    [SerializeField] private float waitingTimeBetweenShoot = 1f;
+
 
     void Update()
     {
@@ -30,7 +32,7 @@ public class Weapon : MonoBehaviour
     {
         PlayMuzzleFlash();
         if (controller.isActive()) 
-            //StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));       
+            StartCoroutine(controller.recoilHapticFeedback(-recoilHapticIntensity));       
         ProcessRaycast();
     }
     private void PlayMuzzleFlash()
