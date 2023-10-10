@@ -50,6 +50,7 @@ public class HapticProbeFPS : MonoBehaviour
     // Memorizza la posizione x iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
     private float startPositionX;
 
+
     // Use this for initialization
     void Start()
     {
@@ -63,7 +64,7 @@ public class HapticProbeFPS : MonoBehaviour
 
         //SetPosition();
 
-        startPositionX = falcon.position.x;
+        startPositionX = transform.position.x;
 
         virtualPositionX = startPositionX;
 
@@ -168,18 +169,15 @@ public class HapticProbeFPS : MonoBehaviour
     //Ritorna il vettore di coordinate della posizione del controller, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        Debug.Log("Posizione falcon: " + falcon.position);
-
+        //Debug.Log("Posizione falcon: " + falcon.position);
 
         //Arrivo al bordo destro
-        //falcon.position.x > startXPosition + 4
-        if (falcon.position.x > 4)
+        if (falcon.position.x  > startPositionX + 4)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
-        //falcon.position.x > startXPosition - 4
-        else if (falcon.position.x < -4)
+        else if (falcon.position.x < startPositionX - 4)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
