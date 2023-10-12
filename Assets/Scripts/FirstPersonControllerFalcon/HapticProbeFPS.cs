@@ -46,9 +46,11 @@ public class HapticProbeFPS : MonoBehaviour
 
     // Simula lo spostamento virtuale del controller
     private float virtualPositionX;
+    private float virtualPositionY;
 
-    // Memorizza la posizione x iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
+    // Memorizza la posizione x e y iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
     private float startPositionX;
+    private float startPositionY;
 
     //Variabile usata per rilevare quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
@@ -71,8 +73,10 @@ public class HapticProbeFPS : MonoBehaviour
         //SetPosition();
 
         startPositionX = transform.position.x;
-
         virtualPositionX = startPositionX;
+
+        startPositionY = transform.position.y;
+        virtualPositionY = startPositionY;
 
 
         simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
@@ -172,23 +176,36 @@ public class HapticProbeFPS : MonoBehaviour
     */
 
 
-    //Ritorna il vettore di coordinate della posizione del controller, usato per permettere il movimento della camera
+    //Ritorna il vettore di coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        //Debug.Log("Posizione falcon: " + falcon.position);
+        Debug.Log("Posizione falcon: " + falcon.position);
 
         //Arrivo al bordo destro
-        if (falcon.position.x  > startPositionX + 4)
+        if (falcon.position.x  > startPositionX + 3)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
-        else if (falcon.position.x < startPositionX - 4)
+        else if (falcon.position.x < startPositionX - 3)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
 
-        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y);
+        //Arrivo al bordo superiore
+        if (falcon.position.y > startPositionY + 3)
+        {
+            virtualPositionY = virtualPositionY + 0.1f;
+        }
+        //Arrivo al bordo inferiore
+        else if (falcon.position.y < startPositionY - 3)
+        {
+            virtualPositionY = virtualPositionY - 0.1f;
+        }
+
+
+
+        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
     }
 
     //Metodo usato per verificare se il falcon è attivo
