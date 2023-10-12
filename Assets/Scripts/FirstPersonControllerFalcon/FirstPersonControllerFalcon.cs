@@ -13,6 +13,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private HapticProbeFPS controller;
         [SerializeField] private float jumpHapticIntensity = 4f;
         [SerializeField] private float jumpLandingHapticIntensity = 4f;
+        [SerializeField] private float runHapticIntensity = 4f;
+        private bool m_isStopped = true;
+
 
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
@@ -116,6 +119,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x * speed;
             m_MoveDir.z = desiredMove.z * speed;
+
+            if (desiredMove.x == 0 && desiredMove.z == 0) {
+                m_isStopped = true;
+            }
+
+
+            if ((desiredMove.x != 0 || desiredMove.z != 0) && !m_IsWalking && m_isStopped )
+            {
+                m_isStopped = false;
+                Debug.Log("lato: " + desiredMove.x + "\n avanti: " + desiredMove.z);
+
+                //bisogna richiamare una volta la coroutine
+                //StartCoroutine(controller.startRunHapticFeedback(desiredMove.x, desiredMove.z, runHapticIntensity));
+            }
 
 
             if (m_CharacterController.isGrounded)
@@ -228,6 +245,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
+
 
             // normalize input if it exceeds 1 in combined length:
             if (m_Input.sqrMagnitude > 1)

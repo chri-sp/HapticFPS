@@ -55,10 +55,6 @@ public class HapticProbeFPS : MonoBehaviour
     //Variabile usata per rilevare quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
 
-    //Incrementa la forza delle sensazioni aptiche
-    [SerializeField] private float intensityRecoilMultiplier = 2f;
-    [SerializeField] private float intensityJumpMultiplier = 1.5f;
-
     // Use this for initialization
     void Start()
     {
@@ -179,7 +175,7 @@ public class HapticProbeFPS : MonoBehaviour
     //Ritorna il vettore di coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        Debug.Log("Posizione falcon: " + falcon.position);
+        //Debug.Log("Posizione falcon: " + falcon.position);
 
         //Arrivo al bordo destro
         if (falcon.position.x  > startPositionX + 3)
@@ -251,6 +247,7 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
+        float intensityRecoilMultiplier = 2f;
         int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
         yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(recoilIndex);
@@ -258,9 +255,19 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
+        float intensityJumpMultiplier = 1.5f;
         int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
         yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(jumpIndex);
+    }
+
+    public IEnumerator startRunHapticFeedback(float corsaLaterale, float corsaInAvanti, float runIntensity)
+    {
+        Debug.Log("lato: " + corsaLaterale + "\n avanti: " + corsaInAvanti);
+        //int runIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, 10));
+        int runIndex = FalconFPS.AddSimpleForce(new Vector3(corsaLaterale * runIntensity, 0, corsaInAvanti * runIntensity));
+        yield return new WaitForSeconds(0.1f);
+        FalconFPS.RemoveSimpleForce(runIndex);
     }
 
 }
