@@ -50,6 +50,12 @@ public class HapticProbeFPS : MonoBehaviour
     // Memorizza la posizione x iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
     private float startPositionX;
 
+    //Variabile usata per rilevare quando un bottone del falcon è stato premuto
+    private bool[] buttonPressed = new bool[] { false, false, false, false };
+
+    //Incrementa la forza delle sensazioni aptiche
+    [SerializeField] private float intensityRecoilMultiplier = 2f;
+    [SerializeField] private float intensityJumpMultiplier = 1.5f;
 
     // Use this for initialization
     void Start()
@@ -197,16 +203,45 @@ public class HapticProbeFPS : MonoBehaviour
         return falcon.buttons[button];
     }
 
+    public bool buttonWasPressed(int button)
+    {
+        // tasto premuto
+        if (!buttonPressed[button] && getButtonState(button))
+        {
+            buttonPressed[button] = true;
+        }
+
+        //tasto mantenuto premuto
+        else if (buttonPressed[button] && getButtonState(button))
+        {
+            return false;
+        }
+
+        //tasto rilasciato
+        else if (buttonPressed[button] && !getButtonState(button))
+        {
+            buttonPressed[button] = false;
+        }
+
+        //tasto non premuto
+        else if (!buttonPressed[button] && !getButtonState(button))
+        {
+            buttonPressed[button] = false;
+        }
+
+        return buttonPressed[button];
+    }
+
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
-        int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, recoilIntensity));
-        yield return new WaitForSeconds(0.05f);
+        int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
+        yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(recoilIndex);
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
-        int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity, 0));
+        int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
         yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(jumpIndex);
     }

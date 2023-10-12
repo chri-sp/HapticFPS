@@ -10,14 +10,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    [SerializeField] private float recoilHapticIntensity = 4f;
-    [SerializeField] private float waitingTimeBetweenShoot = 1f;
-
+    [SerializeField] private float recoilHapticIntensity = 5f;
 
     void Update()
     {
+        //Debug.Log(controller.buttonWasPressed(0));
         //Uso come input il falcon
-        if (controller.isActive() && controller.getButtonState(0))
+        if (controller.isActive() && controller.buttonWasPressed(0))
         {
             Shoot();
         }
@@ -32,7 +31,7 @@ public class Weapon : MonoBehaviour
     {
         PlayMuzzleFlash();
         if (controller.isActive()) 
-            StartCoroutine(controller.recoilHapticFeedback(-recoilHapticIntensity));       
+            StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));       
         ProcessRaycast();
     }
     private void PlayMuzzleFlash()
