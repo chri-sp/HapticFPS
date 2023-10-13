@@ -128,7 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if ((desiredMove.x != 0 || desiredMove.z != 0) && !m_IsWalking && m_isStopped )
             {
                 m_isStopped = false;
-                Debug.Log("lato: " + desiredMove.x + "\n avanti: " + desiredMove.z);
+                //Debug.Log("lato: " + desiredMove.x + "\n avanti: " + desiredMove.z);
 
                 //bisogna richiamare una volta la coroutine
                 //StartCoroutine(controller.startRunHapticFeedback(desiredMove.x, desiredMove.z, runHapticIntensity));

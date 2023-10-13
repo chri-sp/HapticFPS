@@ -12,6 +12,22 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject hitEffect;
     [SerializeField] private float recoilHapticIntensity = 5f;
 
+    //Recoil
+    [SerializeField] public float recoilX = -5;
+    [SerializeField] public float recoilY = 2;
+    [SerializeField] public float recoilZ = 0.35f;
+
+        // Settings
+        [SerializeField] public float snappiness = 20;
+        [SerializeField] public float returnSpeed = 6;
+
+    private Recoil recoil;
+
+    void Start() {
+
+        recoil = GameObject.Find("CameraRotation").GetComponent<Recoil>();
+    }
+
     void Update()
     {
         //Debug.Log(controller.buttonWasPressed(0));
@@ -31,7 +47,8 @@ public class Weapon : MonoBehaviour
     {
         PlayMuzzleFlash();
         if (controller.isActive()) 
-            StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));       
+            StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));
+        recoil.RecoilFire();
         ProcessRaycast();
     }
     private void PlayMuzzleFlash()
