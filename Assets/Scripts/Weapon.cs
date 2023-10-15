@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
 
     void Start() {
 
-        recoil = GameObject.Find("CameraRotation").GetComponent<Recoil>();
+        recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
     }
 
     void Update()
