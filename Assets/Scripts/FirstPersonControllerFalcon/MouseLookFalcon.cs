@@ -8,6 +8,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class MouseLookFalcon
     {
         private HapticProbeFPS controller;
+        private float XFalconSensitivity = 4f;
+        private float YFalconSensitivity = 4f;
+        private float lastAxisXFalcon;
+        private float lastAxisYFalcon;
+
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
         public bool clampVerticalRotation = true;
@@ -31,6 +36,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             this.controller = controller;
         }
 
+        public float getAxisXFalcon() {
+            float axisX = 0;
+            if (controller.isActive()) {
+                axisX = -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity;
+                lastAxisXFalcon = controller.getFalconPosition().x;
+            }
+            return axisX;
+        }
+
+        public float getAxisYFalcon()
+        {
+            float axisY = 0;
+            if (controller.isActive())
+            {
+                axisY = -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity;
+                lastAxisYFalcon = controller.getFalconPosition().y;
+            }
+            return axisY;
+        }
 
         public void LookRotation(Transform character, Transform camera)
         {
@@ -52,20 +76,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
-                float XFalconSensitivity = 4f;
-                float YFalconSensitivity = 4f;
-
-                Vector2 axis = new Vector2(
-              -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity,
-              -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity
-              );
-
-                lastAxis = new Vector2(controller.getFalconPosition().x, controller.getFalconPosition().y);
-
-
-                yRot = axis.x * XSensitivity;
-                xRot = axis.y * YSensitivity;
-
+                yRot =  getAxisXFalcon() * XSensitivity;
+                xRot = getAxisYFalcon() * YSensitivity;
             }
             //prendo input movimento visuale dal mouse
             else

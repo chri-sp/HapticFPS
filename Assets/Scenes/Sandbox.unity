@@ -870,8 +870,8 @@ MonoBehaviour:
   recoilX: -5
   recoilY: 2
   recoilZ: 0.35
-  snappiness: 20
-  returnSpeed: 6
+  snappiness: 3
+  returnSpeed: 10
 --- !u!1 &139764208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,8 +1851,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400086, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588485910}
-  m_LocalRotation: {x: 0.19363898, y: -0.0018415008, z: 0.2158702, w: 0.957027}
-  m_LocalPosition: {x: -0.000006580086, y: 0.11575183, z: -0.0000028796499}
+  m_LocalRotation: {x: 0.19364779, y: -0.0018411276, z: 0.21587706, w: 0.9570236}
+  m_LocalPosition: {x: -0.000008222764, y: 0.11575888, z: -0.0000033415859}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_Children:
   - {fileID: 1440497237}
@@ -2061,10 +2061,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-  m_UseHeadBob: 0
+  m_UseHeadBob: 1
   m_HeadBob:
-    HorizontalBobRange: 0.1
-    VerticalBobRange: 0.1
+    HorizontalBobRange: 0
+    VerticalBobRange: 0
     Bobcurve:
       serializedVersion: 2
       m_Curve:
@@ -2449,7 +2449,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46411967, y: -0.15782744, z: -0.32540435, w: -0.8085762}
+  m_LocalRotation: {x: 0.46412185, y: -0.15781999, z: -0.32541165, w: -0.8085735}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -3635,8 +3635,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365254579}
-  m_LocalRotation: {x: 0.3730375, y: -0.15005527, z: -0.63701695, w: 0.6576746}
-  m_LocalPosition: {x: 0.000009177136, y: 0.1157562, z: 0.000008355827}
+  m_LocalRotation: {x: 0.37304214, y: -0.15005095, z: -0.637025, w: 0.65766525}
+  m_LocalPosition: {x: 0.00001194689, y: 0.11576398, z: 0.000013023617}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2069403573}
@@ -3664,7 +3664,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400092, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425649987}
-  m_LocalRotation: {x: -0.17458811, y: -0.372145, z: -0.3307423, w: 0.849492}
+  m_LocalRotation: {x: -0.17459397, y: -0.37213403, z: -0.33075446, w: 0.8494909}
   m_LocalPosition: {x: 0.000000004614658, y: 0.22722015, z: -0.00000015592319}
   m_LocalScale: {x: 1, y: 0.99999976, z: 1}
   m_Children:
@@ -3888,7 +3888,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440497236}
-  m_LocalRotation: {x: -0.00000016858739, y: -0.00000029502795, z: 0.81142896, w: 0.5844511}
+  m_LocalRotation: {x: -0.00000006322028, y: -0.0000002528811, z: 0.8114334, w: 0.584445}
   m_LocalPosition: {x: -4.132016e-10, y: 0.24881774, z: 0.00000007975963}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:
@@ -4493,6 +4493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570244757}
   - component: {fileID: 1570244758}
+  - component: {fileID: 1570244759}
   m_Layer: 2
   m_Name: Weapons
   m_TagString: Untagged
@@ -4535,8 +4536,24 @@ MonoBehaviour:
   recoilX: -5
   recoilY: 2
   recoilZ: 0.35
-  snappiness: 20
-  returnSpeed: 6
+  snappiness: 3
+  returnSpeed: 10
+--- !u!114 &1570244759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570244756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec40f6afe18b8d84f939b38a50cd1202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPSControllerFalcon: {fileID: 707407821}
+  controller: {fileID: 707407824}
+  smooth: 8
+  swayMultiplier: 3
+  swayMultiplierFalcon: 5
 --- !u!1 &1582087263
 GameObject:
   m_ObjectHideFlags: 0
@@ -8786,7 +8803,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: -0.00000012644055, y: -0.000000021073424, z: -0.5899472, w: 0.80744183}
+  m_LocalRotation: {x: -0.000000084293696, y: 0, z: -0.58994484, w: 0.80744356}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:

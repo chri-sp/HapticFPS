@@ -17,7 +17,7 @@ public class Recoil : MonoBehaviour
         /*NOTA: ad ogni cambio di arma dovrò avere il nuovo riferimento 
          * allo script specifico (quindi con i suoi valori di recoil) dell'arma attiva
         */
-        weapon = GameObject.Find("Weapons").GetComponent<Weapon>();
+        weapon = GameObject.Find("Pistol").GetComponent<Weapon>();
     }
 
     void Update () {
