@@ -23,9 +23,12 @@ public class Weapon : MonoBehaviour
 
     private Recoil recoil;
 
-    void Start() {
+    private Animator weaponAnimator;
 
+    void Start() {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
+        weaponAnimator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -48,9 +51,19 @@ public class Weapon : MonoBehaviour
         PlayMuzzleFlash();
         if (controller.isActive()) 
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));
+
+        StartCoroutine(recoilAnimation());
         recoil.RecoilFire();
         ProcessRaycast();
     }
+
+    IEnumerator recoilAnimation() {
+        weaponAnimator.Play("Recoil");
+        yield return new WaitForSeconds(0.1f);
+        weaponAnimator.Play("Idle");
+    }
+
+
     private void PlayMuzzleFlash()
     {
         muzzleFlash.Play();
