@@ -2472,7 +2472,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46415994, y: -0.15763396, z: -0.32533157, w: -0.80862015}
+  m_LocalRotation: {x: 0.4641604, y: -0.15763226, z: -0.32532975, w: -0.80862087}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -3663,8 +3663,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365254579}
-  m_LocalRotation: {x: 0.37326592, y: -0.15000872, z: -0.63712674, w: 0.65744925}
-  m_LocalPosition: {x: 0.000047875685, y: 0.11590736, z: 0.0000016540291}
+  m_LocalRotation: {x: 0.3732686, y: -0.15000841, z: -0.63712764, w: 0.6574469}
+  m_LocalPosition: {x: 0.000048171845, y: 0.11590873, z: 0.0000011622907}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2069403573}
@@ -4579,6 +4579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec40f6afe18b8d84f939b38a50cd1202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 707407824}
   smooth: 8
   swayMultiplier: 3
   swayMultiplierFalcon: 5
@@ -8847,7 +8848,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: 0, y: 0.000000084293696, z: -0.5897499, w: 0.807586}
+  m_LocalRotation: {x: 0.00000012644055, y: -0.00000010536712, z: -0.5897471, w: 0.80758804}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:

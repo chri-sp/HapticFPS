@@ -17,7 +17,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_isStopped = true;
 
 
-        [SerializeField] private bool m_IsWalking;
+        [SerializeField] public bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField][Range(0f, 1f)] private float m_RunstepLenghten;

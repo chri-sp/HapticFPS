@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class WeaponBobbing : MonoBehaviour {
+
+    private FirstPersonControllerFalcon FPSControllerFalcon;
 
     [Header("Bobbing")]
     public float speedCurve;
@@ -14,13 +17,17 @@ public class WeaponBobbing : MonoBehaviour {
     Vector3 bobPosition;
 
     public float bobExaggeration;
+    private float initialBobExaggeration;
     public float changeMovementSpeed = 5f;
-
 
     private Vector3 initialWeaponPosition;
 
+    Vector2 walkInput;
+
     void Start()
     {
+        initialBobExaggeration = bobExaggeration;
+        FPSControllerFalcon = FindObjectOfType<FirstPersonControllerFalcon>();
         initialWeaponPosition = transform.localPosition;
     }
 
@@ -30,11 +37,24 @@ public class WeaponBobbing : MonoBehaviour {
 
         BobOffset();
 
+        BobRunning();
+
         transform.localPosition = Vector3.Lerp(transform.localPosition, initialWeaponPosition + bobPosition, Time.deltaTime * changeMovementSpeed);
     }
 
+    void BobRunning() {
 
-    Vector2 walkInput;
+        if (FPSControllerFalcon.m_IsWalking)
+        {
+            bobExaggeration = initialBobExaggeration;
+           
+        }
+        else
+        {
+            bobExaggeration = initialBobExaggeration * 3;
+        }
+    }
+
 
     void GetInput()
     {
