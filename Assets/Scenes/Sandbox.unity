@@ -2471,7 +2471,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46415278, y: -0.15767184, z: -0.3253555, w: -0.8086072}
+  m_LocalRotation: {x: 0.46415582, y: -0.15765649, z: -0.32534564, w: -0.8086124}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -3662,8 +3662,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365254579}
-  m_LocalRotation: {x: 0.3732174, y: -0.1500152, z: -0.63710916, w: 0.6574923}
-  m_LocalPosition: {x: 0.000041660038, y: 0.115879774, z: 0.00000775233}
+  m_LocalRotation: {x: 0.37323657, y: -0.15001363, z: -0.63711476, w: 0.6574764}
+  m_LocalPosition: {x: 0.000044292537, y: 0.115889914, z: 0.0000049769883}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2069403573}
@@ -4521,7 +4521,7 @@ GameObject:
   - component: {fileID: 1570244757}
   - component: {fileID: 1570244758}
   - component: {fileID: 1570244759}
-  - component: {fileID: 1570244760}
+  - component: {fileID: 1570244761}
   m_Layer: 2
   m_Name: Weapons
   m_TagString: Untagged
@@ -4583,7 +4583,7 @@ MonoBehaviour:
   smooth: 8
   swayMultiplier: 3
   swayMultiplierFalcon: 5
---- !u!114 &1570244760
+--- !u!114 &1570244761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4591,16 +4591,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1570244756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d58813b22528a9c48a7b85b880328df8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e83c758955bf9c478439e4081026f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: {fileID: 1570244757}
-  swayAmountA: 1
-  swayAmountB: 2
-  swayScale: 200
-  swayLerpSpeed: 14
-  swayTime: 0
-  swayPosition: {x: 0, y: 0, z: 0}
+  speedCurve: 0
+  travelLimit: {x: 0.025, y: 0.025, z: 0.01}
+  bobLimit: {x: 0.005, y: 0.01, z: 0.005}
+  bobExaggeration: 5
+  changeMovementSpeed: 5
 --- !u!1 &1582087263
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,7 +8848,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: 0.000000042146848, y: -0.00000014751397, z: -0.5897931, w: 0.8075544}
+  m_LocalRotation: {x: 0.000000084293696, y: 0.00000012644055, z: -0.58977747, w: 0.80756587}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:

@@ -37,7 +37,7 @@ public class WeaponSway : MonoBehaviour
             mouseY = Input.GetAxisRaw("Mouse Y") * swayMultiplier;
         }
 
-        Debug.Log("mouse x: "+mouseX+"\n mouse y: "+mouseY);
+        //Debug.Log("mouse x: "+mouseX+"\n mouse y: "+mouseY);
 
         Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
         Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
