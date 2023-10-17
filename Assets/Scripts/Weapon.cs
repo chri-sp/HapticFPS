@@ -6,24 +6,31 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] HapticProbeFPS controller;
     [SerializeField] Camera FirstPersonCamera;
+
+    [Header("Setup")]
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
+
+    [Header("Effects")]
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    [SerializeField] private float recoilHapticIntensity = 5f;
+    private Animator weaponAnimator;
 
-    //Recoil
+
+    [Header("Recoil settings")]
     [SerializeField] public float recoilX = -5;
     [SerializeField] public float recoilY = 2;
     [SerializeField] public float recoilZ = 0.35f;
-
-        // Settings
-        [SerializeField] public float snappiness = 20;
-        [SerializeField] public float returnSpeed = 6;
-
+    [SerializeField] public float snappiness = 20;
+    [SerializeField] public float returnSpeed = 6;
+    [SerializeField] private float recoilHapticIntensity = 5f;
     private Recoil recoil;
 
-    private Animator weaponAnimator;
+    [Header("Bullet Spread")]
+    [SerializeField] public float spreadFactor = 0.1f;
+
+
+
 
     void Start() {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
@@ -33,7 +40,6 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(controller.buttonWasPressed(0));
         //Uso come input il falcon
         if (controller.isActive() && controller.buttonWasPressed(0))
         {
@@ -73,7 +79,15 @@ public class Weapon : MonoBehaviour
     private void ProcessRaycast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(FirstPersonCamera.transform.position, FirstPersonCamera.transform.forward, out hit, range))
+
+        //Spread bullets
+        Vector3 shootDirection = FirstPersonCamera.transform.forward;
+        float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
+        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor);
+        shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
+
+
+        if (Physics.Raycast(FirstPersonCamera.transform.position, shootDirection, out hit, range))
         {
             Debug.Log("Colpito: " + hit.transform.name);
             HitImpact(hit);
