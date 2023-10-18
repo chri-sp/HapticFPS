@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -11,12 +12,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonControllerFalcon : MonoBehaviour
     {
         private HapticProbeFPS controller;
+
+        [Header("Haptic Settings")]
         [SerializeField] private float jumpHapticIntensity = 4f;
         [SerializeField] private float jumpLandingHapticIntensity = 4f;
         [SerializeField] private float runHapticIntensity = 4f;
         private bool m_isStopped = true;
 
+  
+        private CharacterDash characterDash;
 
+        [Header("Setup")]
         [SerializeField] public bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -63,11 +69,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
             controller = GetComponent<HapticProbeFPS>();
             m_MouseLook.Init(transform, m_Camera.transform, controller);
+
+            characterDash = GetComponent<CharacterDash>();  
         }
 
         public bool characterIsLanded() {
-
-            return !m_PreviouslyGrounded && m_CharacterController.isGrounded;
+            return !m_PreviouslyGrounded && m_CharacterController.isGrounded && !characterDash.dashing;
         }
 
 
