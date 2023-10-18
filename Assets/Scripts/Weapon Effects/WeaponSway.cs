@@ -5,9 +5,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class WeaponSway : MonoBehaviour
 {
-    private FirstPersonControllerFalcon FPSControllerFalcon;
+    [SerializeField] private FirstPersonControllerFalcon FPSControllerFalcon;
     private MouseLookFalcon falconLook;
-    [SerializeField] HapticProbeFPS controller;
+    [SerializeField] private HapticProbeFPS controller;
 
     [Header("Sway Settings")]
     [SerializeField] private float smooth=8;
@@ -19,7 +19,6 @@ public class WeaponSway : MonoBehaviour
     void Start()
     {
         falconLook = FPSControllerFalcon.m_MouseLook;
-        FPSControllerFalcon = FindObjectOfType<FirstPersonControllerFalcon>();
     }
 
     // Update is called once per frame

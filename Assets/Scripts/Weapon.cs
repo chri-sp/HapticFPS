@@ -14,6 +14,8 @@ public class Weapon : MonoBehaviour
     [Header("Effects")]
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] LineRenderer bulletTrail;
+    [SerializeField] Transform bulletTrailShootPoint;
     private Animator weaponAnimator;
 
 
@@ -80,23 +82,54 @@ public class Weapon : MonoBehaviour
     {
         RaycastHit hit;
 
-        //Spread bullets
+        Vector3 shootDirection = SpreadBullets();
+
+        Vector3 shootPoint = FirstPersonCamera.transform.position;
+
+        Vector3 hitPoint = FirstPersonCamera.transform.forward*range;
+
+        if (Physics.Raycast(shootPoint, shootDirection, out hit, range))
+        {
+            Debug.Log("Colpito: " + hit.transform.name);
+            HitImpact(hit);
+
+            ProcessDamage(hit);
+
+            hitPoint = hit.point;
+        }
+
+        SpawnBulletTrail(hitPoint);
+    }
+
+    private void ProcessDamage(RaycastHit hit)
+    {
+        EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+
+        if (target)
+        {
+            target.TakeDamage(damage);
+        }
+    }
+
+    private Vector3 SpreadBullets()
+    {
         Vector3 shootDirection = FirstPersonCamera.transform.forward;
         float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
         float randomSpreadY = Random.Range(-spreadFactor, spreadFactor);
         shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
+        return shootDirection;
+    }
 
+    private void SpawnBulletTrail(Vector3 hitPoint) {
 
-        if (Physics.Raycast(FirstPersonCamera.transform.position, shootDirection, out hit, range))
-        {
-            Debug.Log("Colpito: " + hit.transform.name);
-            HitImpact(hit);
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-            //evito NullReference se colpisco un oggetto senza lo script EnemyHealth 
-            if (target == null) return;
-            target.TakeDamage(damage);
-        }
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, bulletTrailShootPoint.position, Quaternion.identity);
 
+        LineRenderer lineR = bulletTrailEffect.GetComponent<LineRenderer>();
+
+        lineR.SetPosition(0, bulletTrailShootPoint.position);
+        lineR.SetPosition(1, hitPoint);
+
+        Destroy(bulletTrailEffect, .2f);
     }
 
     private void HitImpact(RaycastHit hit)
