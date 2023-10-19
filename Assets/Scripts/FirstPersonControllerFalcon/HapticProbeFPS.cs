@@ -178,23 +178,23 @@ public class HapticProbeFPS : MonoBehaviour
         //Debug.Log("Posizione falcon: " + falcon.position);
 
         //Arrivo al bordo destro
-        if (falcon.position.x  > startPositionX + 3)
+        if (falcon.position.x  > startPositionX + 4)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
-        else if (falcon.position.x < startPositionX - 3)
+        else if (falcon.position.x < startPositionX - 4)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
 
         //Arrivo al bordo superiore
-        if (falcon.position.y > startPositionY + 3)
+        if (falcon.position.y > startPositionY + 3.5)
         {
             virtualPositionY = virtualPositionY + 0.1f;
         }
         //Arrivo al bordo inferiore
-        else if (falcon.position.y < startPositionY - 3)
+        else if (falcon.position.y < startPositionY - 3.5)
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }

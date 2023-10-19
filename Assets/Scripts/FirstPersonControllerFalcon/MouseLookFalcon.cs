@@ -7,11 +7,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class MouseLookFalcon
     {
+        //Falcon Settings
         private HapticProbeFPS controller;
         private float XFalconSensitivity = 4f;
         private float YFalconSensitivity = 4f;
-        private float lastAxisXFalcon;
-        private float lastAxisYFalcon;
 
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
@@ -40,7 +39,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float axisX = 0;
             if (controller.isActive()) {
                 axisX = -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity;
-                lastAxisXFalcon = controller.getFalconPosition().x;
+                lastAxis.x = controller.getFalconPosition().x;
             }
             return axisX;
         }
@@ -51,7 +50,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (controller.isActive())
             {
                 axisY = -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity;
-                lastAxisYFalcon = controller.getFalconPosition().y;
+                lastAxis.y = controller.getFalconPosition().y;
             }
             return axisY;
         }
