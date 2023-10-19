@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class CharacterDash : MonoBehaviour {
 
+    [SerializeField] private HapticProbeFPS controller;
     CharacterController CharacterController;
-    public bool dashing =false;
+    public bool dashing = false;
 
     [Header("Settings")]
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] public float dashTime = 1.5f;
     [SerializeField] private float TBWDashes = 3.5f;
-
-    [Header("Time between double click ")]
-    [SerializeField] private float timeBetweenClick=.3f;
-
-    private float lastClickTime;
-
 
     float WaitTime;
     private void Start()
@@ -27,35 +22,36 @@ public class CharacterDash : MonoBehaviour {
 
     private void Update()
     {
-        WaitTime -= Time.time;
+        WaitTime -=  Time.deltaTime;
 
-        if (hasDashed())
+        //la prima condizione deve essere necessariamente nell'update per evitare che venga perso l'input del falcon
+        if ((controller.buttonWasPressed(3) && WaitTime <= 0) || hasDashed())
         {
             StartCoroutine(Dash());
+            StartCoroutine(dalyDashingEnable());
         }
     }
 
-    public bool hasDashed() { 
-        return doubleClickShift() && WaitTime <= 0;
+    IEnumerator dalyDashingEnable() {
+        yield return new WaitForSeconds(dashTime+.2f);
+        dashing = false;    
     }
 
-    private bool doubleClickShift() {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { 
-            float timeSinceLastClick = Time.time - lastClickTime;
+    public bool hasDashed() {      
+        return inputDash() && WaitTime <= 0;
+    }
 
-            if (timeSinceLastClick <= timeBetweenClick) { 
+    public bool inputDash() {
+        if ((Input.GetKey(KeyCode.LeftShift) && (Input.GetKeyDown(KeyCode.Space))))
+            {
                 return true;
             }
-
-            lastClickTime = Time.time;
-        }
         return false;
     }
 
     IEnumerator Dash()
     {
         dashing = true;
-
         float startTime = Time.time;
 
         while (Time.time < startTime + dashTime)
@@ -71,7 +67,5 @@ public class CharacterDash : MonoBehaviour {
 
             yield return null;
         }
-
-        dashing = false;
     }
 }
