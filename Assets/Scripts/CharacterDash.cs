@@ -22,23 +22,25 @@ public class CharacterDash : MonoBehaviour {
 
     private void Update()
     {
-        WaitTime -=  Time.deltaTime;
+        WaitTime -= Time.deltaTime;
 
-        //la prima condizione deve essere necessariamente nell'update per evitare che venga perso l'input del falcon
-        if ((controller.buttonWasPressed(3) && WaitTime <= 0) || hasDashed())
+        //la seconda condizione deve essere necessariamente nell'update per evitare che venga perso l'input del falcon
+        if (hasDashed() || (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0))
         {
             StartCoroutine(Dash());
             StartCoroutine(dalyDashingEnable());
         }
     }
 
-    IEnumerator dalyDashingEnable() {
-        yield return new WaitForSeconds(dashTime+.2f);
-        dashing = false;    
+    IEnumerator dalyDashingEnable()
+    {
+        yield return new WaitForSeconds(dashTime + .2f);
+        dashing = false;
     }
 
-    public bool hasDashed() {      
-        return inputDash() && WaitTime <= 0;
+    public bool hasDashed()
+    {
+        return inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0;
     }
 
     public bool inputDash() {
