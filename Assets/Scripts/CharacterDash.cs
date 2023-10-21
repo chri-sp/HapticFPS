@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterDash : MonoBehaviour {
 
     [SerializeField] private HapticProbeFPS controller;
+    private TrailRenderer trailRenderer;
     CharacterController CharacterController;
     public bool dashing = false;
 
@@ -12,12 +13,16 @@ public class CharacterDash : MonoBehaviour {
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] public float dashTime = 1.5f;
     [SerializeField] private float TBWDashes = 3.5f;
+    [SerializeField] private float dashEffectDuration = .6f;
+
 
     float WaitTime;
     private void Start()
     {
         CharacterController = GetComponentInParent<CharacterController>();
         WaitTime = TBWDashes;
+        trailRenderer = GetComponent<TrailRenderer>();
+        trailRenderer.enabled = false;
     }
 
     private void Update()
@@ -28,6 +33,7 @@ public class CharacterDash : MonoBehaviour {
         if (hasDashed() || (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0))
         {
             StartCoroutine(Dash());
+            StartCoroutine(DashTrailEffect());
             StartCoroutine(dalyDashingEnable());
         }
     }
@@ -50,6 +56,14 @@ public class CharacterDash : MonoBehaviour {
             }
         return false;
     }
+
+    
+    IEnumerator DashTrailEffect() {
+        trailRenderer.enabled = true;
+        yield return new WaitForSeconds(dashEffectDuration);   
+        trailRenderer.enabled = false;  
+    }
+    
 
     IEnumerator Dash()
     {
