@@ -19,7 +19,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float runHapticIntensity = 4f;
         private bool m_isStopped = true;
 
-  
+
         private CharacterDash characterDash;
 
         [Header("Setup")]
@@ -55,6 +55,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public float crosshairSize;
+
         // Use this for initialization
         private void Start()
         {
@@ -70,10 +72,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             controller = GetComponent<HapticProbeFPS>();
             m_MouseLook.Init(transform, m_Camera.transform, controller);
 
-            characterDash = GetComponent<CharacterDash>();  
+            characterDash = GetComponent<CharacterDash>();
         }
 
-        public bool characterIsLanded() {
+        public bool characterIsLanded()
+        {
             return !m_PreviouslyGrounded && m_CharacterController.isGrounded && !characterDash.dashing;
         }
 
@@ -81,6 +84,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+
+            setCrosshairSize();
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash())
@@ -107,6 +112,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
+        private void setCrosshairSize()
+        {
+            if (m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0))
+            {
+                crosshairSize = 2;
+
+            }
+            else if (Input.GetKey(KeyCode.LeftShift) && m_CharacterController.velocity.sqrMagnitude > 0 && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+            {
+                crosshairSize = m_RunSpeed;
+            }
+            else
+            {
+                crosshairSize = m_WalkSpeed;
+            }
+
+        }
+
+
 
         private void PlayLandingSound()
         {
@@ -132,12 +156,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x * speed;
             m_MoveDir.z = desiredMove.z * speed;
 
-            if (desiredMove.x == 0 && desiredMove.z == 0) {
+            if (desiredMove.x == 0 && desiredMove.z == 0)
+            {
                 m_isStopped = true;
             }
 
 
-            if ((desiredMove.x != 0 || desiredMove.z != 0) && !m_IsWalking && m_isStopped )
+            if ((desiredMove.x != 0 || desiredMove.z != 0) && !m_IsWalking && m_isStopped)
             {
                 m_isStopped = false;
                 //Debug.Log("lato: " + desiredMove.x + "\n avanti: " + desiredMove.z);
@@ -267,7 +292,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
+            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0 && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
