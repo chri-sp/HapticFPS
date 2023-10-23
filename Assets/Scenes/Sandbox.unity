@@ -965,6 +965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 707407824}
   FirstPersonCamera: {fileID: 1356661257}
+  crosshair: {fileID: 1326262312}
+  player: {fileID: 707407821}
   range: 100
   damage: 30
   muzzleFlash: {fileID: 1942409179}
@@ -978,7 +980,7 @@ MonoBehaviour:
   snappiness: 3
   returnSpeed: 10
   recoilHapticIntensity: 5
-  spreadFactor: 0.03
+  spreadFactor: 0.005
 --- !u!1 &139764208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,8 +1960,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400086, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588485910}
-  m_LocalRotation: {x: 0.19369484, y: -0.0018374175, z: 0.21590337, w: 0.95700824}
-  m_LocalPosition: {x: -0.000014893363, y: 0.11578803, z: -0.000009026379}
+  m_LocalRotation: {x: 0.1938259, y: -0.0018236486, z: 0.21596092, w: 0.95696867}
+  m_LocalPosition: {x: -0.000034888744, y: 0.11586001, z: -0.0000285171}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_Children:
   - {fileID: 1440497237}
@@ -2221,7 +2223,7 @@ MonoBehaviour:
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   m_Jump: 0
-  crosshairSize: 0
+  m_CharacterController: {fileID: 0}
 --- !u!143 &707407822
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2347,32 +2349,32 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.0896554, b: 1, a: 1}
-      key1: {r: 0.9034486, g: 0, b: 1, a: 1}
-      key2: {r: 1, g: 0.16176468, b: 0.97687644, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.6985294, g: 0.3492647, b: 0.55882365, a: 1}
+      key1: {r: 0.19999981, g: 0, b: 1, a: 1}
+      key2: {r: 0.014435568, g: 0.5484846, b: 0.6544118, a: 1}
+      key3: {r: 0.043522913, g: 0.6271239, b: 0.8455882, a: 0}
+      key4: {r: 0.89497566, g: 0.8886522, b: 0, a: 0}
+      key5: {r: 1, g: 0.84159476, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 25058
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
+      ctime0: 771
+      ctime1: 28334
+      ctime2: 51272
+      ctime3: 65535
+      ctime4: 53006
+      ctime5: 58403
       ctime6: 0
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
@@ -2749,7 +2751,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46420377, y: -0.15741667, z: -0.32522622, w: -0.8086797}
+  m_LocalRotation: {x: 0.464256, y: -0.15715228, z: -0.32508287, w: -0.80875874}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -3824,8 +3826,7 @@ MonoBehaviour:
   Value: 0
   speed: 10
   margin: 25
-  multiplier: 5
-  player: {fileID: 707407821}
+  multiplier: 2
   Top: {fileID: 730741281}
   Bottom: {fileID: 89161329}
   Left: {fileID: 2116245656}
@@ -3938,8 +3939,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365254579}
-  m_LocalRotation: {x: 0.37353438, y: -0.14995745, z: -0.63724965, w: 0.65718937}
-  m_LocalPosition: {x: 0.00008738565, y: 0.11607899, z: -0.00001544878}
+  m_LocalRotation: {x: 0.3738574, y: -0.14992256, z: -0.63735133, w: 0.6569149}
+  m_LocalPosition: {x: 0.00013791758, y: 0.11625479, z: -0.00005233661}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2069403573}
@@ -3967,7 +3968,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400092, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425649987}
-  m_LocalRotation: {x: -0.1746162, y: -0.37207943, z: -0.3308018, w: 0.8494918}
+  m_LocalRotation: {x: -0.17467117, y: -0.37193045, z: -0.33091712, w: 0.84950083}
   m_LocalPosition: {x: 0.000000004614658, y: 0.22722015, z: -0.00000015592319}
   m_LocalScale: {x: 1, y: 0.99999976, z: 1}
   m_Children:
@@ -4191,7 +4192,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440497236}
-  m_LocalRotation: {x: -0.000000084293696, y: -0.0000002528811, z: 0.81145096, w: 0.58442056}
+  m_LocalRotation: {x: -0.000000042146848, y: -0.00000037932165, z: 0.8114981, w: 0.5843551}
   m_LocalPosition: {x: -4.132016e-10, y: 0.24881774, z: 0.00000007975963}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:
@@ -4832,6 +4833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 707407824}
   FirstPersonCamera: {fileID: 1356661257}
+  crosshair: {fileID: 0}
+  player: {fileID: 0}
   range: 100
   damage: 30
   muzzleFlash: {fileID: 1942409179}
@@ -5859,7 +5862,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -719102083
+  randomSeed: -1872004178
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9222,7 +9225,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: 0.000000084293696, y: -0.000000105367114, z: -0.5895055, w: 0.8077644}
+  m_LocalRotation: {x: 0, y: -0.00000008429369, z: -0.5892519, w: 0.80794936}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:

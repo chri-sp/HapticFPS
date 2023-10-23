@@ -13,16 +13,21 @@ public class Crosshair : MonoBehaviour
     public float margin;
     public float multiplier;
 
-    [SerializeField] private FirstPersonControllerFalcon player;
-
     public RectTransform Top, Bottom, Left, Right, Center;
+
+    private float crosshairSize;
+
+    public void setCrosshairSize(float spreadFactor)
+    {
+        crosshairSize = spreadFactor * 1000;
+    }
 
 
     // Update is called once per frame
     void Update()
     {
 
-        Value = player.crosshairSize * multiplier;
+        Value = crosshairSize * multiplier;
 
         float TopValue, BottomValue, LeftValue, RightValue;
 

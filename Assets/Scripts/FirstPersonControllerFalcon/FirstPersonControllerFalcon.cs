@@ -24,8 +24,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         [Header("Setup")]
         [SerializeField] public bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
-        [SerializeField] private float m_RunSpeed;
+        [SerializeField] public float m_WalkSpeed;
+        [SerializeField] public float m_RunSpeed;
         [SerializeField][Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
-        private CharacterController m_CharacterController;
+        public CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
         private Vector3 m_OriginalCameraPosition;
@@ -55,7 +55,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        public float crosshairSize;
 
         // Use this for initialization
         private void Start()
@@ -85,7 +84,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
 
-            setCrosshairSize();
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash())
@@ -111,26 +109,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
-        private void setCrosshairSize()
-        {
-            if (m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0))
-            {
-                crosshairSize = 2;
-
-            }
-            else if (Input.GetKey(KeyCode.LeftShift) && m_CharacterController.velocity.sqrMagnitude > 0 && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
-            {
-                crosshairSize = m_RunSpeed;
-            }
-            else
-            {
-                crosshairSize = m_WalkSpeed;
-            }
-
-        }
-
-
 
         private void PlayLandingSound()
         {

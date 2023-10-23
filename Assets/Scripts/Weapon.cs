@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] HapticProbeFPS controller;
     [SerializeField] Camera FirstPersonCamera;
+    [SerializeField] private Crosshair crosshair;
+    [SerializeField] private FirstPersonControllerFalcon player;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -29,7 +33,8 @@ public class Weapon : MonoBehaviour
     private Recoil recoil;
 
     [Header("Bullet Spread")]
-    [SerializeField] public float spreadFactor = 0.1f;
+    [SerializeField] public float spreadFactor;
+    private float initialSpreadFactor;
 
 
 
@@ -37,11 +42,14 @@ public class Weapon : MonoBehaviour
     void Start() {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
         weaponAnimator = GetComponent<Animator>();
-
+        initialSpreadFactor = spreadFactor;
     }
 
     void Update()
     {
+
+        setSpreadFactor();
+        crosshair.setCrosshairSize(spreadFactor);
         //Uso come input il falcon
         if (controller.isActive() && controller.buttonWasPressed(0))
         {
@@ -52,6 +60,29 @@ public class Weapon : MonoBehaviour
         {
             Shoot();
         }
+    }
+
+    public void setSpreadFactor()
+    {
+        //il player è fermo
+        if (player.m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 || 
+            Input.GetAxis("Vertical") == 0))
+        {
+            spreadFactor = initialSpreadFactor;
+        }
+        //il player sta correndo
+        else if (Input.GetKey(KeyCode.LeftShift) && player.m_CharacterController.velocity.sqrMagnitude > 0 && 
+            (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        {
+            spreadFactor = initialSpreadFactor * 4f;
+        }
+
+        //il player sta camminando
+        else
+        {
+            spreadFactor = initialSpreadFactor * 2.5f;
+        }
+
     }
 
     private void Shoot()
