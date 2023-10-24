@@ -82,6 +82,11 @@ public class HapticProbeFPS : MonoBehaviour
 
     void FixedUpdate()
     {
+        //test funzione creazione molla
+        if (isActive() && buttonWasPressed(1))
+        {
+            springHapticFeedback(1);
+        }
         // Move probe		
         //SetPosition();
 
@@ -270,4 +275,15 @@ public class HapticProbeFPS : MonoBehaviour
         FalconFPS.RemoveSimpleForce(runIndex);
     }
 
+    public IEnumerator springHapticFeedback(int button) {
+        int springIndex = FalconFPS.AddSpring(transform.position, 2.0f, 0.01f, 0.0f, -1.0f);
+
+        //il bottone è mantenuto premuto
+        while (getButtonState(button)) {
+            yield return null;
+        }
+
+        //il bottone è stato rilasciato
+        FalconFPS.RemoveSpring(springIndex);
+    }
 }
