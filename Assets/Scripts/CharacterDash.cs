@@ -29,8 +29,7 @@ public class CharacterDash : MonoBehaviour {
     {
         WaitTime -= Time.deltaTime;
 
-        //la seconda condizione deve essere necessariamente nell'update per evitare che venga perso l'input del falcon
-        if (hasDashed() || (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0))
+        if (hasDashed() || falconHasDashed())
         {
             StartCoroutine(Dash());
             StartCoroutine(DashTrailEffect());
@@ -42,6 +41,11 @@ public class CharacterDash : MonoBehaviour {
     {
         yield return new WaitForSeconds(dashTime + .2f);
         dashing = false;
+    }
+
+    public bool falconHasDashed()
+    {
+        return (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0);
     }
 
     public bool hasDashed()

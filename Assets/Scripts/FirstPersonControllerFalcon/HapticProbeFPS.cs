@@ -261,11 +261,11 @@ public class HapticProbeFPS : MonoBehaviour
         FalconFPS.RemoveSimpleForce(jumpIndex);
     }
 
-    public IEnumerator startRunHapticFeedback(float corsaLaterale, float corsaInAvanti, float runIntensity)
+    public IEnumerator dashHapticFeedback(float dashIntensity)
     {
-        Debug.Log("lato: " + corsaLaterale + "\n avanti: " + corsaInAvanti);
+        //Debug.Log(Input.GetAxis("Horizontal") + "\n" + Input.GetAxis("Vertical"));
         //int runIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, 10));
-        int runIndex = FalconFPS.AddSimpleForce(new Vector3(corsaLaterale * runIntensity, 0, corsaInAvanti * runIntensity));
+        int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity));
         yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(runIndex);
     }

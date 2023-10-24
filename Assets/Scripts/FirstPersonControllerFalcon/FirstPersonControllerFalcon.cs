@@ -16,9 +16,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [Header("Haptic Settings")]
         [SerializeField] private float jumpHapticIntensity = 4f;
         [SerializeField] private float jumpLandingHapticIntensity = 4f;
-        [SerializeField] private float runHapticIntensity = 4f;
-        private bool m_isStopped = true;
-
+        [SerializeField] private float dashHapticIntensity = 4f;
 
         private CharacterDash characterDash;
 
@@ -90,6 +88,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+            
+            //feedback aptico dash
+            if (controller.isActive() && characterDash.falconHasDashed())
+            {
+                controller.dashHapticFeedback(dashHapticIntensity);
+            }
 
             if (characterIsLanded())
             {
@@ -133,21 +137,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x * speed;
             m_MoveDir.z = desiredMove.z * speed;
-
-            if (desiredMove.x == 0 && desiredMove.z == 0)
-            {
-                m_isStopped = true;
-            }
-
-
-            if ((desiredMove.x != 0 || desiredMove.z != 0) && !m_IsWalking && m_isStopped)
-            {
-                m_isStopped = false;
-                //Debug.Log("lato: " + desiredMove.x + "\n avanti: " + desiredMove.z);
-
-                //bisogna richiamare una volta la coroutine
-                //StartCoroutine(controller.startRunHapticFeedback(desiredMove.x, desiredMove.z, runHapticIntensity));
-            }
 
 
             if (m_CharacterController.isGrounded)
