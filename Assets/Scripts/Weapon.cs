@@ -117,12 +117,13 @@ public class Weapon : MonoBehaviour
 
         Vector3 shootPoint = FirstPersonCamera.transform.position;
 
+        //hitpoint se non colpisco nulla
         Vector3 hitPoint = FirstPersonCamera.transform.forward*range;
 
         if (Physics.Raycast(shootPoint, shootDirection, out hit, range))
         {
             Debug.Log("Colpito: " + hit.transform.name);
-            HitImpact(hit);
+            HitImpactEffect(hit);
 
             ProcessDamage(hit);
 
@@ -163,7 +164,7 @@ public class Weapon : MonoBehaviour
         Destroy(bulletTrailEffect, .2f);
     }
 
-    private void HitImpact(RaycastHit hit)
+    private void HitImpactEffect(RaycastHit hit)
     {
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         impact.SetActive(true);
