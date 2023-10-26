@@ -11,6 +11,8 @@ public class CharacterDash : MonoBehaviour {
     private TrailRenderer trailRenderer;
     CharacterController CharacterController;
     public bool dashing = false;
+    //Variabile usata per assicurasi che non vengo perso l'input di dash 
+    public bool falconDashed = false;
 
     [Header("Settings")]
     [SerializeField] private float dashSpeed = 20f;
@@ -34,8 +36,9 @@ public class CharacterDash : MonoBehaviour {
     {
         WaitTime -= Time.deltaTime;
 
-        if (hasDashed() || falconHasDashed())
+        if (falconDashed || hasDashed())
         {
+            falconDashed = false;
             StartCoroutine(Dash());
             StartCoroutine(DashPostProccessingEffect());
             StartCoroutine(DashTrailEffect());        
@@ -51,7 +54,13 @@ public class CharacterDash : MonoBehaviour {
 
     public bool falconHasDashed()
     {
-        return (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0);
+        
+        if (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0) {
+            falconDashed = true;
+            return true;
+        }
+
+        return false;
     }
 
     public bool hasDashed()

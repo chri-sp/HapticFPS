@@ -268,9 +268,9 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
     {
-        //Debug.Log(Input.GetAxis("Horizontal") + "\n" + Input.GetAxis("Vertical"));
-        //int runIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, 10));
-        int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity));
+
+        float multiplierVertical = 3;
+        int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity* multiplierVertical));
         yield return new WaitForSeconds(0.1f);
         FalconFPS.RemoveSimpleForce(runIndex);
     }

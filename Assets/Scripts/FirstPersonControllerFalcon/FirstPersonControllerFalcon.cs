@@ -90,9 +90,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             
             //feedback aptico dash
-            if (controller.isActive() && characterDash.falconHasDashed())
+            if ( characterDash.falconHasDashed())
             {
-                controller.dashHapticFeedback(dashHapticIntensity);
+                StartCoroutine(controller.dashHapticFeedback(dashHapticIntensity));
             }
 
             if (characterIsLanded())
