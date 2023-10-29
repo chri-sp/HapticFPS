@@ -9,6 +9,7 @@
 
 =========================================================================*/
 
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public class FalconFPS : MonoBehaviour
     public bool useForceFeedback = true;
 
     //Il falcon è attivo
-    public bool isActive = true;
+    [HideInInspector] public bool isActive = false;
 
     // Load functions from DLL
 
@@ -185,30 +186,47 @@ public class FalconFPS : MonoBehaviour
         // Initialize buttons
         buttons = new bool[] { false, false, false, false };
 
-        if (Initialize())
+        try
         {
-            Renderer renderer = GetComponent<Renderer>();
-            SetGraphicsWorkspace(renderer.bounds.center,
-                                 renderer.bounds.size);
+            if (Initialize())
+            {
+                Renderer renderer = GetComponent<Renderer>();
+                SetGraphicsWorkspace(renderer.bounds.center,
+                                     renderer.bounds.size);
 
-            UpdateState();
+                UpdateState();
 
-            UseForceFeedback(useForceFeedback);
+                UseForceFeedback(useForceFeedback);
 
-            Debug.Log("Falcon success");
-            isActive = true;
+                Debug.Log("Falcon success");
+                isActive = true;
+            }
+            else
+            {
+                Debug.Log("Falcon failure");
+                isActive = false;
+            }
         }
-        else
+        catch (DllNotFoundException e)
         {
-            Debug.Log("Falcon failure");
-            isActive = false;
+
         }
+
     }
 
     void OnDestroy()
     {
-        Debug.Log("Falcon cleaned up");
-        CleanUp();
+        try
+        {
+            Debug.Log("Falcon cleaned up");
+            CleanUp();
+        }
+
+        catch (DllNotFoundException e)
+        {
+
+        }
+
     }
 
     void FixedUpdate()
@@ -218,16 +236,25 @@ public class FalconFPS : MonoBehaviour
 
     void UpdateState()
     {
-        // Update position
-        position = GetPosition();
-
-        // Update force
-        force = GetForce();
-
-        // Update buttons
-        for (int i = 0; i < buttons.Length; i++)
+        try
         {
-            buttons[i] = GetButton(i);
+            // Update position
+            position = GetPosition();
+
+            // Update force
+            force = GetForce();
+
+            // Update buttons
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i] = GetButton(i);
+            }
         }
+
+        catch (DllNotFoundException e)
+        {
+
+        }
+
     }
 }
