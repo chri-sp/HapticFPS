@@ -35,9 +35,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             this.controller = controller;
         }
 
-        public float getAxisXFalcon() {
+        public float getAxisXFalcon()
+        {
             float axisX = 0;
-            if (controller.isActive()) {
+            if (controller.isActive())
+            {
                 axisX = -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity;
                 lastAxis.x = controller.getFalconPosition().x;
             }
@@ -75,7 +77,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
-                yRot =  getAxisXFalcon() * XSensitivity;
+                yRot = getAxisXFalcon() * XSensitivity;
                 xRot = getAxisYFalcon() * YSensitivity;
             }
             //prendo input movimento visuale dal mouse
@@ -84,6 +86,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
                 xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
             }
+
+            
+          
+            aimHelper(ref xRot, ref yRot);
 
             m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
@@ -105,6 +111,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             UpdateCursorLock();
+
+            
+        }
+
+        private void aimHelper(ref float inputLookX,ref float inputLookY)
+        {
+            
+            if (BasicAimHelper.I)
+            {
+                BasicAimHelper.I.AllowForAutoAim(ref inputLookX, ref inputLookY);
+            }
+
         }
 
         public void SetCursorLock(bool value)
