@@ -60,21 +60,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public void LookRotation(Transform character, Transform camera)
         {
 
-            /*
-            Vector3 axis = new Vector3(
-                -(lastAxis.x - Input.mousePosition.x) * 0.1f,
-                -(lastAxis.y - Input.mousePosition.y) * 0.1f,
-                Input.GetAxis("Mouse ScrollWheel")
-                );
-
-            lastAxis = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            */
-
             float yRot;
             float xRot;
 
-
-            //prendo input movimento visuale dal falcon
+           //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
                 yRot = getAxisXFalcon() * XSensitivity;
@@ -86,10 +75,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
                 xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
             }
-
-            
           
-            aimHelper(ref xRot, ref yRot);
+            aimHelper(ref yRot, ref xRot);
 
             m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);

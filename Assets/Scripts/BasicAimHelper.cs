@@ -3,35 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // @kurtdekker
-//
-// FPS Aim helper, super-generic screenspace aimbot helper.
-//
-// This only needs is to be called with your actual proposed
-// mouse inputs and to know which way it is facing.
-//
-// Add GameObject children with the AimhelperTarget script (just an empty marker)
-// on every piece of your enemy you want "attraction" to work on (head, chest, etc.)
-//
-// You can try it out alongside the BasicFPCC script from Alucard, located here:
-//
-// https://forum.unity.com/threads/a-basic-first-person-character-controller-for-prototyping.1169491/
-//
-// You will need the BasicFPCC.cs script above. Set it up fully as instructions explain.
-//
-// Add this script onto that same Player's Camera (must be on camera for alignment!)
-//
-// Modify the BasicFPCC script, immediately after the
-// mouse look is read in ProcessInputs(), as follows:
-//
-//		// code to insert in BasicFPCC.cs (or in your own mouse look script
-//		if (BasicAimHelper.I)
-//		{
-//			BasicAimHelper.I.AllowForAutoAim( ref inputLookX, ref inputLookY);
-//		}
-//
-// NOTE: the BasicFPCC script is hosted as a gist and may change,
-// making these patches invalid or even breaking this script.
-//
 
 public class BasicAimHelper : MonoBehaviour
 {
