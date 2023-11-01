@@ -64,6 +64,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
+    }
+
     private void Chasing()
     {
         //  The enemy is chasing the player
