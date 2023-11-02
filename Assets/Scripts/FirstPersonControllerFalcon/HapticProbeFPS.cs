@@ -66,6 +66,7 @@ public class HapticProbeFPS : MonoBehaviour
             Debug.LogError("Can't find Falcon");
         }
 
+        StartCoroutine(setInitialPosition());
         //SetPosition();
 
         startPositionX = transform.position.x;
@@ -82,11 +83,14 @@ public class HapticProbeFPS : MonoBehaviour
 
     void FixedUpdate()
     {
+
         //test funzione creazione molla
+        /*
         if (isActive() && buttonWasPressed(1))
         {
-            springHapticFeedback(1);
+            StartCoroutine(springHapticFeedback(1));
         }
+        */
         // Move probe		
         //SetPosition();
 
@@ -180,29 +184,57 @@ public class HapticProbeFPS : MonoBehaviour
     //Ritorna il vettore di coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        //Debug.Log("Posizione falcon: " + falcon.position);
+        //Debug.Log("Falcon position x: " + falcon.position.x+ "\n Falcon position y: "+ falcon.position.y);
 
+        //Arrivo al bordo inferiore-destro
+        if (falcon.position.x > startPositionX + 2 && falcon.position.y < startPositionY - 1.5)
+        {
+            virtualPositionX = virtualPositionX + 0.1f;
+            virtualPositionY = virtualPositionY - 0.1f;
+        }
+
+        //Arrivo al bordo inferiore-sinistro
+        else if (falcon.position.x < startPositionX - 2 && falcon.position.y < startPositionY - 1.5)
+        {
+            virtualPositionX = virtualPositionX - 0.1f;
+            virtualPositionY = virtualPositionY - 0.1f;
+        }
+
+        //Arrivo al bordo superiore-sinistro
+        else if ((falcon.position.x < startPositionX - 2) && (falcon.position.y > startPositionY + 1.3))
+        {
+            virtualPositionX = virtualPositionX - 0.1f;
+            virtualPositionY = virtualPositionY + 0.1f;
+        }
+
+        
+        //Arrivo al bordo superiore-destro
+        else if ((falcon.position.x > startPositionX + 2.5) && (falcon.position.y > startPositionY + 1.5)) {
+            virtualPositionX = virtualPositionX + 0.1f;
+            virtualPositionY = virtualPositionY + 0.1f;
+        }
+        
         //Arrivo al bordo destro
-        if (falcon.position.x > startPositionX + 4)
+        else if (falcon.position.x > startPositionX + 4.2)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
-        else if (falcon.position.x < startPositionX - 4)
+        else if (falcon.position.x < startPositionX - 4.2)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
-
         //Arrivo al bordo superiore
-        if (falcon.position.y > startPositionY + 3.5)
+        else if (falcon.position.y > startPositionY + 4.5)
         {
             virtualPositionY = virtualPositionY + 0.1f;
         }
         //Arrivo al bordo inferiore
-        else if (falcon.position.y < startPositionY - 3.5)
+        else if (falcon.position.y < startPositionY - 4)
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }
+        
 
 
 
@@ -259,8 +291,6 @@ public class HapticProbeFPS : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(recoilIndex);
         }
-
-
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
@@ -272,7 +302,6 @@ public class HapticProbeFPS : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(jumpIndex);
         }
-
     }
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
@@ -284,7 +313,6 @@ public class HapticProbeFPS : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(runIndex);
         }
-
     }
 
     public IEnumerator springHapticFeedback(int button)
@@ -302,6 +330,15 @@ public class HapticProbeFPS : MonoBehaviour
             //il bottone è stato rilasciato
             FalconFPS.RemoveSpring(springIndex);
         }
-
     }
+
+    public IEnumerator setInitialPosition() {
+        if (isActive())
+        {
+            int springIndex = FalconFPS.AddSpring(transform.position, 2.0f, 0.01f, 0.0f, -1.0f);
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.RemoveSpring(springIndex);
+        }
+    }
+
 }

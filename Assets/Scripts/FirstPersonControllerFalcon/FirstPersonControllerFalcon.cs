@@ -81,12 +81,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash())
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+            //Input salto da falcon
+            if (controller.buttonWasPressed(2) && !m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash()) {
+                m_Jump = true;
             }
             
             //feedback aptico dash
