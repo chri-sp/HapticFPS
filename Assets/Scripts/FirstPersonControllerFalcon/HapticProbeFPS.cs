@@ -55,6 +55,12 @@ public class HapticProbeFPS : MonoBehaviour
     //Variabile usata per rilevare quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
 
+    private float timer;
+
+    private bool recoiling = false;
+    private bool isJumping = false;
+    private bool isDashing = false;
+
     // Use this for initialization
     void Start()
     {
@@ -83,14 +89,14 @@ public class HapticProbeFPS : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        timer += Time.deltaTime;
         //test funzione creazione molla
-        /*
+        
         if (isActive() && buttonWasPressed(1))
         {
             StartCoroutine(springHapticFeedback(1));
         }
-        */
+        
         // Move probe		
         //SetPosition();
 
@@ -192,28 +198,23 @@ public class HapticProbeFPS : MonoBehaviour
             virtualPositionX = virtualPositionX + 0.1f;
             virtualPositionY = virtualPositionY - 0.1f;
         }
-
         //Arrivo al bordo inferiore-sinistro
         else if (falcon.position.x < startPositionX - 2 && falcon.position.y < startPositionY - 1.5)
         {
             virtualPositionX = virtualPositionX - 0.1f;
             virtualPositionY = virtualPositionY - 0.1f;
         }
-
         //Arrivo al bordo superiore-sinistro
         else if ((falcon.position.x < startPositionX - 2) && (falcon.position.y > startPositionY + 1.3))
         {
             virtualPositionX = virtualPositionX - 0.1f;
             virtualPositionY = virtualPositionY + 0.1f;
         }
-
-        
         //Arrivo al bordo superiore-destro
         else if ((falcon.position.x > startPositionX + 2.5) && (falcon.position.y > startPositionY + 1.5)) {
             virtualPositionX = virtualPositionX + 0.1f;
             virtualPositionY = virtualPositionY + 0.1f;
         }
-        
         //Arrivo al bordo destro
         else if (falcon.position.x > startPositionX + 4.2)
         {
@@ -234,9 +235,6 @@ public class HapticProbeFPS : MonoBehaviour
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }
-        
-
-
 
         return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
     }
@@ -284,34 +282,42 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
-        if (isActive())
+        if (isActive() && !recoiling)
         {
+            recoiling = true;
             float intensityRecoilMultiplier = 2f;
             int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(recoilIndex);
+            recoiling = false;
         }
+
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
-        if (isActive())
+        //timer evita feedback salto iniziale in gioco
+        if (isActive() && !isJumping && timer>1)
         {
+            isJumping = true;
             float intensityJumpMultiplier = 1.5f;
             int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(jumpIndex);
+            isJumping = false;
         }
     }
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
     {
-        if (isActive())
+        if (isActive() && !isDashing)
         {
+            isDashing = true;
             float multiplierVertical = 3;
             int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(runIndex);
+            isDashing = false;
         }
     }
 
@@ -319,7 +325,7 @@ public class HapticProbeFPS : MonoBehaviour
     {
         if (isActive())
         {
-            int springIndex = FalconFPS.AddSpring(transform.position, 2.0f, 0.01f, 0.0f, -1.0f);
+            int springIndex = FalconFPS.AddSpring(Vector3.zero, 2.0f, 0.01f, 0.0f, -1.0f);
 
             //il bottone è mantenuto premuto
             while (getButtonState(button))
@@ -335,8 +341,8 @@ public class HapticProbeFPS : MonoBehaviour
     public IEnumerator setInitialPosition() {
         if (isActive())
         {
-            int springIndex = FalconFPS.AddSpring(transform.position, 2.0f, 0.01f, 0.0f, -1.0f);
-            yield return new WaitForSeconds(0.2f);
+            int springIndex = FalconFPS.AddSpring(Vector3.zero, 4.0f, 0.01f, 0.0f, -1.0f);
+            yield return new WaitForSeconds(1f);
             FalconFPS.RemoveSpring(springIndex);
         }
     }
