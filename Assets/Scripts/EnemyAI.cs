@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SocialPlatforms;
+
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
+    public Animator animator;
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
@@ -44,6 +47,7 @@ public class EnemyAI : MonoBehaviour
 
         m_CurrentWaypointIndex = 0;                 //  Set the initial waypoint
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
@@ -62,6 +66,8 @@ public class EnemyAI : MonoBehaviour
         {
             Patroling();
         }
+
+        animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
     }
 
     void OnDrawGizmosSelected()
@@ -100,6 +106,8 @@ public class EnemyAI : MonoBehaviour
                     Stop();
                 m_WaitTime -= Time.deltaTime;
             }
+
+            animator.SetTrigger("attack");
         }
     }
 

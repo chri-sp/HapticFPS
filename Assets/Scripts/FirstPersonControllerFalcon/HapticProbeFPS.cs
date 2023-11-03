@@ -341,7 +341,7 @@ public class HapticProbeFPS : MonoBehaviour
     public IEnumerator setInitialPosition() {
         if (isActive())
         {
-            int springIndex = FalconFPS.AddSpring(Vector3.zero, 4.0f, 0.01f, 0.0f, -1.0f);
+            int springIndex = FalconFPS.AddSpring(Vector3.zero, 1f, 0.01f, 0.0f, -1.0f);
             yield return new WaitForSeconds(1f);
             FalconFPS.RemoveSpring(springIndex);
         }
