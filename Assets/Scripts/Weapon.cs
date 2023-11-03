@@ -113,13 +113,24 @@ public class Weapon : MonoBehaviour
     {
         RaycastHit hit;
 
+        Vector3 hitPoint;
+
+        Vector3 shootPoint = bulletTrailShootPoint.position;
+
         Vector3 shootDirection = SpreadBullets();
 
-        Vector3 shootPoint = FirstPersonCamera.transform.position;
+        //trovo il punto di impatto
+        if (Physics.Raycast(FirstPersonCamera.transform.position, shootDirection, out hit, range))
+        {
+            hitPoint = hit.point;
+        }
+        else {
+            //hitpoint se non colpisco nulla
+            hitPoint = transform.position + FirstPersonCamera.transform.forward * range / 3;
+        }
 
-        //hitpoint se non colpisco nulla
-        Vector3 hitPoint = FirstPersonCamera.transform.forward*range;
-
+        //verifico raycast partendo dall'arma in direzione del punto di impatto
+        shootDirection = hitPoint - shootPoint;
         if (Physics.Raycast(shootPoint, shootDirection, out hit, range))
         {
             Debug.Log("Colpito: " + hit.transform.name);
@@ -154,9 +165,11 @@ public class Weapon : MonoBehaviour
 
     private void SpawnBulletTrail(Vector3 hitPoint) {
 
-        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, bulletTrailShootPoint.position, Quaternion.identity);
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject);
 
         LineRenderer lineR = bulletTrailEffect.GetComponent<LineRenderer>();
+
+        lineR.positionCount = 2;
 
         lineR.SetPosition(0, bulletTrailShootPoint.position);
         lineR.SetPosition(1, hitPoint);
