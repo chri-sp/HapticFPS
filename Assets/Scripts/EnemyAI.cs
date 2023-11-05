@@ -67,7 +67,17 @@ public class EnemyAI : MonoBehaviour
             Patroling();
         }
 
+        Animations();  
+    }
+
+    private void Animations() {
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
+
+        //L'animazione di attacco sta eseguendo
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            navMeshAgent.velocity = Vector3.zero;
+        }
     }
 
     void OnDrawGizmosSelected()
@@ -78,6 +88,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Chasing()
     {
+        animator.SetBool("isAttacking", false);
         //  The enemy is chasing the player
         m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
         playerLastPosition = Vector3.zero;          //  Reset the player near position
@@ -105,11 +116,10 @@ public class EnemyAI : MonoBehaviour
                     //  Wait if the current position is not the player position
                     Stop();
                 m_WaitTime -= Time.deltaTime;
+                animator.SetBool("isAttacking", true);
             }
-
-            animator.SetTrigger("attack");
         }
-    }
+     }
 
     private void Patroling()
     {
