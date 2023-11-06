@@ -146,7 +146,7 @@ public class Weapon : MonoBehaviour
 
     private void ProcessDamage(RaycastHit hit)
     {
-        EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+        EnemyHealth target = hit.transform.root.GetComponent<EnemyHealth>();
 
         if (target)
         {
