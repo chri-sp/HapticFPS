@@ -56,20 +56,30 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
-
-        if (!m_IsPatrol)
+        if (!isDead())
         {
-            Chasing();
-        }
-        else
-        {
-            Patroling();
-        }
+            EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
 
-        Animations();  
+            if (!m_IsPatrol)
+            {
+                Chasing();
+            }
+            else
+            {
+                Patroling();
+            }
+
+            Animations();
+        }
     }
 
+    private bool isDead() {
+        if (animator.GetBool("death").Equals(true)) {
+            navMeshAgent.enabled = false;
+            return true;
+        }
+        return false;   
+    }
     private void Animations() {
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
 
