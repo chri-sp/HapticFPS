@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
        hitPoints -= damage;
+        animator.SetTrigger("shot");
         if (hitPoints <= 0)
         {
             Destroy(transform.root.gameObject, 3f);

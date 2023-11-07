@@ -35,6 +35,8 @@ public class EnemyAI : MonoBehaviour
     bool m_IsPatrol;                                //  If the enemy is patrol, state of patroling
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
 
+    private Transform m_Player;
+
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -52,6 +54,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
+        m_Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -63,32 +66,24 @@ public class EnemyAI : MonoBehaviour
             if (!m_IsPatrol)
             {
                 Chasing();
+                Attack();
             }
             else
             {
                 Patroling();
             }
-
-            Animations();
         }
+        animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
     }
 
     private bool isDead() {
         if (animator.GetBool("death").Equals(true)) {
-            navMeshAgent.enabled = false;
+            Stop();
             return true;
         }
         return false;   
     }
-    private void Animations() {
-        animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
 
-        //L'animazione di attacco sta eseguendo
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            navMeshAgent.velocity = Vector3.zero;
-        }
-    }
 
     void OnDrawGizmosSelected()
     {
@@ -96,9 +91,28 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 
+    private void Attack()
+    {
+        //se abbastanza vicino effettua attacco o si avvicina ulteriormente
+        if (Vector3.Distance(transform.position, m_Player.position) <= navMeshAgent.stoppingDistance)
+        {
+            animator.SetBool("isAttacking", true);
+        }
+        else if (Vector3.Distance(transform.position, m_Player.position) <= navMeshAgent.stoppingDistance+0.5f) {
+            navMeshAgent.SetDestination(m_Player.position);
+        }
+        else {
+            animator.SetBool("isAttacking", false);
+        }
+
+        //L'animazione di attacco sta eseguendo
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            Stop();
+        }
+    }
     private void Chasing()
     {
-        animator.SetBool("isAttacking", false);
         //  The enemy is chasing the player
         m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
         playerLastPosition = Vector3.zero;          //  Reset the player near position
@@ -110,7 +124,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
         {
-            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f)
+            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, m_Player.position) >= 6f)
             {
                 //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
                 m_IsPatrol = true;
@@ -122,11 +136,10 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 2.5f)
+                if (Vector3.Distance(transform.position, m_Player.position) > navMeshAgent.stoppingDistance)
                     //  Wait if the current position is not the player position
                     Stop();
                 m_WaitTime -= Time.deltaTime;
-                animator.SetBool("isAttacking", true);
             }
         }
      }
