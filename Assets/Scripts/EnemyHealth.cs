@@ -8,12 +8,14 @@ public class EnemyHealth : MonoBehaviour
 
     private Animator animator;
     private Transform aimTarget;
+    private float previousHitPoints;
     [SerializeField] float hitPoints = 100f;
 
 
     void Start() { 
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
+        previousHitPoints = hitPoints;
     }
 
 
@@ -27,5 +29,13 @@ public class EnemyHealth : MonoBehaviour
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true); 
         }
+    }
+
+    public bool getHit() {
+        if (hitPoints< previousHitPoints) {
+            previousHitPoints = hitPoints;
+            return true;
+        }
+        return false;
     }
 }

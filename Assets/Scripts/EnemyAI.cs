@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
     public Animator animator;
+    private EnemyHealth healt;
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
@@ -55,10 +56,12 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.speed = speedWalk;             //  Set the navemesh speed with the normal speed of the enemy
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
         m_Player = GameObject.FindGameObjectWithTag("Player").transform;
+        healt = GetComponent<EnemyHealth>();
     }
 
     private void Update()
     {
+        
         if (!isDead())
         {
             EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
@@ -71,9 +74,47 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 Patroling();
+                alertedAfterHit();
             }
+       
+            isJumping();
         }
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
+    }
+
+    private void alertedAfterHit()
+    {
+        if (healt.getHit() && Vector3.Distance(transform.position, m_Player.position) <= viewRadius)
+        {
+            StartCoroutine(lookPlayer(2));
+        }
+    }
+
+    IEnumerator lookPlayer(float rotationTime) {
+
+        Vector3 dir = m_Player.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        float elapsedTime= 0;
+
+        while (elapsedTime < rotationTime)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, (elapsedTime / rotationTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+        }
+    }
+
+    private void isJumping() {
+        if (navMeshAgent.isOnOffMeshLink)
+        {
+            animator.SetBool("jump", true);
+        }
+        else
+        {
+            animator.SetBool("jump", false);
+        }
     }
 
     private bool isDead() {
