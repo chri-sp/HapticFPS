@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FirstPersonCamera;
     [SerializeField] private Crosshair crosshair;
     [SerializeField] private FirstPersonControllerFalcon player;
+    public bool hasShooted =false;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -35,8 +36,6 @@ public class Weapon : MonoBehaviour
     [Header("Bullet Spread")]
     [SerializeField] public float spreadFactor;
     private float initialSpreadFactor;
-
-
 
 
     void Start() {
@@ -85,8 +84,15 @@ public class Weapon : MonoBehaviour
 
     }
 
+    IEnumerator HasShooted() { 
+        hasShooted = true;
+        yield return new WaitForSeconds(1f);
+        hasShooted = false;
+    }
+
     private void Shoot()
     {
+        StartCoroutine(HasShooted());
         PlayMuzzleFlash();
         if (controller.isActive()) 
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));

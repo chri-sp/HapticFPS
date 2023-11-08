@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
     private Animator animator;
     private EnemyHealth healt;
+    private Weapon weapon;
+
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
@@ -59,6 +61,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);    //  Set the destination to the first waypoint
         m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         healt = GetComponent<EnemyHealth>();
+        weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
     }
 
     private void Update()
@@ -75,7 +78,7 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 Patroling();
-                alertedAfterHit();
+                Alerted();
             }
        
             isJumping();
@@ -93,11 +96,18 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void alertedAfterHit()
+    private void Alerted()
     {
-        if (healt.getHit())
-        {   
-            float currentSpeed = navMeshAgent.speed;
+        float currentSpeed;
+        if (weapon.hasShooted && Vector3.Distance(transform.position, m_Player.position) < viewRadius)
+        {
+            currentSpeed = navMeshAgent.speed;
+            Stop();
+            StartCoroutine(lookPlayer(2f));
+        }
+        else if (healt.getHit())
+        {
+            currentSpeed = navMeshAgent.speed;
             Stop();
             StartCoroutine(lookPlayer(2f));
             StartCoroutine(resumeSpeed(2f, currentSpeed));
