@@ -9,6 +9,12 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private Transform aimTarget;
     private float previousHitPoints;
+    private SkinnedMeshRenderer mesh;
+    private bool isDead =false;
+
+    [Header("Effects")]
+    [SerializeField] GameObject deathExplosion;
+
     [SerializeField] float hitPoints = 100f;
 
 
@@ -16,18 +22,17 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
+        mesh=GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
 
     public void TakeDamage(float damage)
     {
-       hitPoints -= damage;
+        hitPoints -= damage;
         animator.SetTrigger("shot");
         if (hitPoints <= 0)
         {
-            Destroy(transform.root.gameObject, 3f);
-            aimTarget.gameObject.SetActive(false);
-            animator.SetBool("death", true); 
+            StartCoroutine(Death());      
         }
     }
 
@@ -37,5 +42,25 @@ public class EnemyHealth : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    IEnumerator Death() {
+        float explosionDuration = 3f;
+        if (isDead == false) {
+            isDead = true;
+            aimTarget.gameObject.SetActive(false);
+            animator.SetBool("death", true);
+            yield return new WaitForSeconds(1);
+            DeathExplosion();
+            mesh.enabled = false;
+            yield return new WaitForSeconds(explosionDuration);
+            Destroy(transform.root.gameObject);
+        }
+    }
+
+    private void DeathExplosion()
+    {
+        GameObject explosion = Instantiate(deathExplosion, transform);
+        explosion.SetActive(true);
     }
 }
