@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
-    public Animator animator;
+    private Animator animator;
     private EnemyHealth healt;
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
@@ -37,6 +37,8 @@ public class EnemyAI : MonoBehaviour
     bool m_CaughtPlayer;                            //  if the enemy has caught the player
 
     private Transform m_Player;
+
+    bool isLooking = false;
 
     void Start()
     {
@@ -69,7 +71,6 @@ public class EnemyAI : MonoBehaviour
             if (!m_IsPatrol)
             {
                 Chasing();
-                Attack();
             }
             else
             {
@@ -78,31 +79,56 @@ public class EnemyAI : MonoBehaviour
             }
        
             isJumping();
+            Animations();
         }
+    }
+
+    private void Animations() {
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            Stop();
+            StartCoroutine(lookPlayer(1f));
+        }
     }
 
     private void alertedAfterHit()
     {
-        if (healt.getHit() && Vector3.Distance(transform.position, m_Player.position) <= viewRadius)
-        {
-            StartCoroutine(lookPlayer(2));
+        if (healt.getHit())
+        {   
+            float currentSpeed = navMeshAgent.speed;
+            Stop();
+            StartCoroutine(lookPlayer(2f));
+            StartCoroutine(resumeSpeed(2f, currentSpeed));
         }
     }
+    IEnumerator resumeSpeed(float seconds, float speed) {
+        yield return new WaitForSeconds(seconds);
+        Move(speed);
+    }
+
 
     IEnumerator lookPlayer(float rotationTime) {
+        if (!isLooking) {
+            isLooking = true;
+            Vector3 dir = m_Player.position - transform.position;
 
-        Vector3 dir = m_Player.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        float elapsedTime= 0;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            lookRotation.x = 0;
+            lookRotation.z = 0;
 
-        while (elapsedTime < rotationTime)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, (elapsedTime / rotationTime));
-            elapsedTime += Time.deltaTime;
+            float elapsedTime = 0;
 
-            // Yield here
-            yield return null;
+            while (elapsedTime < rotationTime)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, (elapsedTime / rotationTime));
+                elapsedTime += Time.deltaTime;
+
+                // Yield here
+                yield return null;
+            }
+            isLooking = false;
         }
     }
 
@@ -110,6 +136,7 @@ public class EnemyAI : MonoBehaviour
         if (navMeshAgent.isOnOffMeshLink)
         {
             animator.SetBool("jump", true);
+            StartCoroutine(lookPlayer(1f));
         }
         else
         {
@@ -132,26 +159,12 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 
-    private void Attack()
-    {
-        //se abbastanza vicino effettua attacco o si avvicina ulteriormente
-        if (Vector3.Distance(transform.position, m_Player.position) <= navMeshAgent.stoppingDistance)
-        {
-            animator.SetBool("isAttacking", true);
-        }
-        else if (Vector3.Distance(transform.position, m_Player.position) <= navMeshAgent.stoppingDistance+0.5f) {
-            navMeshAgent.SetDestination(m_Player.position);
-        }
-        else {
-            animator.SetBool("isAttacking", false);
-        }
-
-        //L'animazione di attacco sta eseguendo
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            Stop();
-        }
+    public bool isClose () {
+        if ((Vector3.Distance(transform.position, m_Player.position)<= navMeshAgent.stoppingDistance+0.5f) && (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance))
+            return true;
+        return false;
     }
+
     private void Chasing()
     {
         //  The enemy is chasing the player
@@ -177,7 +190,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, m_Player.position) > navMeshAgent.stoppingDistance)
+                if (Vector3.Distance(transform.position, m_Player.position) >= navMeshAgent.stoppingDistance)
                     //  Wait if the current position is not the player position
                     Stop();
                 m_WaitTime -= Time.deltaTime;
