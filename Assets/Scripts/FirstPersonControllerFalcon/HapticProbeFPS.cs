@@ -17,6 +17,8 @@ public class HapticProbeFPS : MonoBehaviour
     // The Falcon device
     private FalconFPS falcon;
 
+    private Vector3 startPlayerPosition;
+
     //NOTA: xxxIndex e l'indice della forza di una certa tipologia (semplice, viscosità, ecc..), quindi potrò avere piu forze dello stesso tipo con indici diversi
 
     // Simple force
@@ -81,7 +83,6 @@ public class HapticProbeFPS : MonoBehaviour
 
         startPositionY = transform.position.y;
         virtualPositionY = startPositionY;
-
 
         //simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
 
@@ -236,8 +237,8 @@ public class HapticProbeFPS : MonoBehaviour
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }
-
-        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
+        Vector2 currentPosition = new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
+        return currentPosition;
     }
 
     //Metodo usato per verificare se il falcon è attivo
@@ -326,7 +327,7 @@ public class HapticProbeFPS : MonoBehaviour
     {
         if (isActive())
         {
-            int springIndex = FalconFPS.AddSpring(Vector3.zero, 2.0f, 0.01f, 0.0f, -1.0f);
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f);
 
             //il bottone è mantenuto premuto
             while (getButtonState(button))
@@ -342,7 +343,8 @@ public class HapticProbeFPS : MonoBehaviour
     public IEnumerator setInitialPosition() {
         if (isActive())
         {
-            int springIndex = FalconFPS.AddSpring(Vector3.zero, 1f, 0.01f, 0.0f, -1.0f);
+            startPlayerPosition = transform.position;
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f);
             yield return new WaitForSeconds(.5f);
             FalconFPS.RemoveSpring(springIndex);
         }
@@ -353,7 +355,7 @@ public class HapticProbeFPS : MonoBehaviour
         if (isActive() && !isReceivingAttack)
         {
             isReceivingAttack = true;
-            int springIndex = FalconFPS.AddSpring(Vector3.zero, 2f, 0.01f, 0.0f, -1.0f);
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f);
             yield return new WaitForSeconds(.5f);
             FalconFPS.RemoveSpring(springIndex);
             isReceivingAttack = false;
