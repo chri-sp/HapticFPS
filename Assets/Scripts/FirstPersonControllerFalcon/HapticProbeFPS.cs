@@ -60,6 +60,7 @@ public class HapticProbeFPS : MonoBehaviour
     private bool recoiling = false;
     private bool isJumping = false;
     private bool isDashing = false;
+    private bool isReceivingAttack = false;
 
     // Use this for initialization
     void Start()
@@ -342,8 +343,20 @@ public class HapticProbeFPS : MonoBehaviour
         if (isActive())
         {
             int springIndex = FalconFPS.AddSpring(Vector3.zero, 1f, 0.01f, 0.0f, -1.0f);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.5f);
             FalconFPS.RemoveSpring(springIndex);
+        }
+    }
+
+    public IEnumerator attackHapticFeedback()
+    {
+        if (isActive() && !isReceivingAttack)
+        {
+            isReceivingAttack = true;
+            int springIndex = FalconFPS.AddSpring(Vector3.zero, 2f, 0.01f, 0.0f, -1.0f);
+            yield return new WaitForSeconds(.5f);
+            FalconFPS.RemoveSpring(springIndex);
+            isReceivingAttack = false;
         }
     }
 

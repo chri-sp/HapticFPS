@@ -9,8 +9,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         //Falcon Settings
         private HapticProbeFPS controller;
-        private float XFalconSensitivity = 4f;
-        private float YFalconSensitivity = 4f;
+        private float XFalconSensitivity = 6f;
+        private float YFalconSensitivity = 5f;
 
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
