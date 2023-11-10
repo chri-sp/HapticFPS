@@ -4254,6 +4254,8 @@ MonoBehaviour:
   returnSpeed: 10
   recoilHapticIntensity: 5
   spreadFactor: 0.005
+  spreadShoot: 0.001
+  maxSpreadShoot: 0.02
 --- !u!1 &139764208
 GameObject:
   m_ObjectHideFlags: 0
@@ -12219,8 +12221,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400086, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588485910}
-  m_LocalRotation: {x: 0.19387835, y: -0.0018264353, z: 0.21602446, w: 0.95694375}
-  m_LocalPosition: {x: -0.000047865855, y: 0.11592081, z: -0.000022992495}
+  m_LocalRotation: {x: 0.19388391, y: -0.001825839, z: 0.2160272, w: 0.95694196}
+  m_LocalPosition: {x: -0.000048515918, y: 0.11592388, z: -0.000023804609}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_Children:
   - {fileID: 1440497237}
@@ -24873,7 +24875,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400092, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425649987}
-  m_LocalRotation: {x: -0.17472209, y: -0.3718573, z: -0.33102953, w: 0.84947854}
+  m_LocalRotation: {x: -0.17472425, y: -0.37185103, z: -0.33103427, w: 0.849479}
   m_LocalPosition: {x: 0.000000004614658, y: 0.22722015, z: -0.00000015592319}
   m_LocalScale: {x: 1, y: 0.99999976, z: 1}
   m_Children:
@@ -25097,7 +25099,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440497236}
-  m_LocalRotation: {x: -0.000000105367114, y: -0.0000002528811, z: 0.8115378, w: 0.5842999}
+  m_LocalRotation: {x: -0.0000002528811, y: -0.00000033717478, z: 0.81153953, w: 0.5842976}
   m_LocalPosition: {x: -4.132016e-10, y: 0.24881774, z: 0.00000007975963}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:

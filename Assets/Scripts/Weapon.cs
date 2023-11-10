@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FirstPersonCamera;
     [SerializeField] private Crosshair crosshair;
     [SerializeField] private FirstPersonControllerFalcon player;
-    public bool hasShooted =false;
+    public bool hasShooted = false;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -35,56 +35,67 @@ public class Weapon : MonoBehaviour
 
     [Header("Bullet Spread")]
     [SerializeField] public float spreadFactor;
+    [SerializeField] public float spreadShoot;
+    [SerializeField] public float maxSpreadAfterShoot = 0.05f;
+    private float resetSpreadDelay = .2f;
+    private float resetSpreadTimer;
     private float initialSpreadFactor;
+    private float surplusSpreadAfterShoot;
 
 
     void Start() {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
         weaponAnimator = GetComponent<Animator>();
         initialSpreadFactor = spreadFactor;
+        resetSpreadTimer = resetSpreadDelay;
     }
 
     void Update()
     {
-
+        spreadAfterShoootTimer();
+       
         setSpreadFactor();
         crosshair.setCrosshairSize(spreadFactor);
         //Uso come input il falcon
         if (controller.isActive() && controller.buttonWasPressed(0))
         {
             Shoot();
+            IncreaseSpreadAfterShoot();
+            resetSpreadTimer = resetSpreadDelay;
         }
         //Uso come input il mouse
         else if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            IncreaseSpreadAfterShoot();
+            resetSpreadTimer = resetSpreadDelay;
         }
     }
 
     public void setSpreadFactor()
     {
         //il player è fermo
-        if (player.m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 || 
+        if (player.m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 ||
             Input.GetAxis("Vertical") == 0))
         {
-            spreadFactor = initialSpreadFactor;
+            spreadFactor = initialSpreadFactor + surplusSpreadAfterShoot;
         }
         //il player sta correndo
-        else if (Input.GetKey(KeyCode.LeftShift) && player.m_CharacterController.velocity.sqrMagnitude > 0 && 
+        else if (Input.GetKey(KeyCode.LeftShift) && player.m_CharacterController.velocity.sqrMagnitude > 0 &&
             (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
         {
-            spreadFactor = initialSpreadFactor * 4f;
+            spreadFactor = initialSpreadFactor * 4f + surplusSpreadAfterShoot;
         }
 
         //il player sta camminando
         else
         {
-            spreadFactor = initialSpreadFactor * 2.5f;
+            spreadFactor = initialSpreadFactor * 2.5f + surplusSpreadAfterShoot;
         }
 
     }
 
-    IEnumerator HasShooted() { 
+    IEnumerator HasShooted() {
         hasShooted = true;
         yield return new WaitForSeconds(1f);
         hasShooted = false;
@@ -94,7 +105,7 @@ public class Weapon : MonoBehaviour
     {
         StartCoroutine(HasShooted());
         PlayMuzzleFlash();
-        if (controller.isActive()) 
+        if (controller.isActive())
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));
 
         StartCoroutine(recoilAnimation());
@@ -147,7 +158,7 @@ public class Weapon : MonoBehaviour
             hitPoint = hit.point;
         }
 
-        SpawnBulletTrail(hitPoint);
+        SpawnBulletTrail(hitPoint); 
     }
 
     private void ProcessDamage(RaycastHit hit)
@@ -160,11 +171,31 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
+    void spreadAfterShoootTimer(){
+        if (resetSpreadTimer <= 0)
+        {
+            surplusSpreadAfterShoot = 0;
+        }
+
+        if (resetSpreadTimer > 0)
+        {
+            resetSpreadTimer -= Time.deltaTime;
+        }
+    }
+
+    private void IncreaseSpreadAfterShoot() {
+        if (surplusSpreadAfterShoot <= maxSpreadAfterShoot)
+        {
+            surplusSpreadAfterShoot = spreadFactor + Random.Range(spreadShoot, spreadShoot * 2);
+        }
+    }
+
     private Vector3 SpreadBullets()
     {
         Vector3 shootDirection = FirstPersonCamera.transform.forward;
         float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
-        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor*4);
+        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor*2);
         shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
         return shootDirection;
     }
