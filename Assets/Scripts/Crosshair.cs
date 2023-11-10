@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
@@ -22,6 +23,10 @@ public class Crosshair : MonoBehaviour
         crosshairSize = spreadFactor * 1000;
     }
 
+    void Start() {
+        setMargin();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -42,5 +47,15 @@ public class Crosshair : MonoBehaviour
 
         Left.position = new Vector2(LeftValue, Center.position.y);
         Right.position = new Vector2(RightValue, Center.position.y);
+    }
+
+    private void setMargin() { 
+        float startResolution = 2560;
+
+        float percentage = (Screen.width / startResolution) * 100;
+
+        float surplusValue = (1 - (percentage / 100)) * margin;
+
+        margin = margin - surplusValue;
     }
 }

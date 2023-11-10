@@ -164,7 +164,7 @@ public class Weapon : MonoBehaviour
     {
         Vector3 shootDirection = FirstPersonCamera.transform.forward;
         float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
-        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor);
+        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor*4);
         shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
         return shootDirection;
     }
