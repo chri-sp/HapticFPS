@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private Transform aimTarget;
     private float previousHitPoints;
-    private SkinnedMeshRenderer mesh;
+    private SkinnedMeshRenderer[] meshes;
     private bool isDead =false;
 
     [Header("Effects")]
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
-        mesh=GetComponentInChildren<SkinnedMeshRenderer>();
+        meshes = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
 
@@ -52,7 +52,8 @@ public class EnemyHealth : MonoBehaviour
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
             DeathExplosion();
-            mesh.enabled = false;
+            foreach (SkinnedMeshRenderer mesh in meshes)
+                mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
             Destroy(transform.root.gameObject);
         }
