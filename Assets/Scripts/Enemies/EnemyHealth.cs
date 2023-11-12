@@ -9,7 +9,8 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private Transform aimTarget;
     private float previousHitPoints;
-    private SkinnedMeshRenderer[] meshes;
+    private Color[] initialColorMeshes;
+    private Renderer[] meshes;
     private bool isDead =false;
 
     [Header("Effects")]
@@ -22,20 +23,37 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
-        meshes = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        meshes = GetComponentsInChildren<Renderer>();
+        initialColorMeshes = new Color[meshes.Length];
+        for (int i = 0; i < initialColorMeshes.Length; i++)
+            initialColorMeshes[i] = meshes[i].material.color;
     }
 
 
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
-        animator.SetTrigger("shot");
+        StartCoroutine(hitEffects());
         if (hitPoints <= 0)
         {
             StartCoroutine(Death());      
         }
     }
 
+    IEnumerator hitEffects()
+    {
+        animator.SetTrigger("shot");
+
+        //effetto cambio colore
+        if (!isDead) {
+            foreach (Renderer mesh in meshes)
+                mesh.material.color = Color.red;
+            yield return new WaitForSeconds(.1f);
+            for (int i = 0; i < meshes.Length; i++)
+                meshes[i].material.color = initialColorMeshes[i];
+        }     
+    }
     public bool getHit() {
         if (hitPoints< previousHitPoints) {
             previousHitPoints = hitPoints;
@@ -52,7 +70,7 @@ public class EnemyHealth : MonoBehaviour
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
             DeathExplosion();
-            foreach (SkinnedMeshRenderer mesh in meshes)
+            foreach (Renderer mesh in meshes)
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
             Destroy(transform.root.gameObject);
