@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
         {
             currentSpeed = navMeshAgent.speed;
             Stop();
-            StartCoroutine(lookPlayer(2f));
+            StartCoroutine(lookPlayer(1f));
         }
         else if (healt.getHit())
         {
@@ -132,7 +132,7 @@ public class EnemyAI : MonoBehaviour
 
             while (elapsedTime < rotationTime)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, (elapsedTime / rotationTime));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (elapsedTime / rotationTime));
                 elapsedTime += Time.deltaTime;
 
                 // Yield here

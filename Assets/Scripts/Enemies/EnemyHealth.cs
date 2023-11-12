@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private Transform aimTarget;
     private float previousHitPoints;
-    private Color[] initialColorMeshes;
+    private List<Color> changeColorHit=new List<Color>();
     private Renderer[] meshes;
     private bool isDead =false;
 
@@ -25,9 +25,10 @@ public class EnemyHealth : MonoBehaviour
         previousHitPoints = hitPoints;
 
         meshes = GetComponentsInChildren<Renderer>();
-        initialColorMeshes = new Color[meshes.Length];
-        for (int i = 0; i < initialColorMeshes.Length; i++)
-            initialColorMeshes[i] = meshes[i].material.color;
+
+        foreach (Renderer mesh in meshes)
+            foreach (Material mat in mesh.materials)
+                changeColorHit.Add(mat.color);
     }
 
 
@@ -47,11 +48,19 @@ public class EnemyHealth : MonoBehaviour
 
         //effetto cambio colore
         if (!isDead) {
+            Color HitColor = new Color(1f, 0f, 0.1f, 1f);
             foreach (Renderer mesh in meshes)
-                mesh.material.color = Color.red;
+                foreach (Material mat in mesh.materials)
+                    mat.color = HitColor;
             yield return new WaitForSeconds(.1f);
-            for (int i = 0; i < meshes.Length; i++)
-                meshes[i].material.color = initialColorMeshes[i];
+
+            int i = 0;
+            foreach (Renderer mesh in meshes)
+                foreach (Material mat in mesh.materials) {
+                    mat.color = changeColorHit[i];
+                    i++;
+                }
+                    
         }     
     }
     public bool getHit() {
