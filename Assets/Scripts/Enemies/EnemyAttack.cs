@@ -5,9 +5,9 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] HapticProbeFPS controller;
-    [SerializeField] private PostProcessVolume dashPostprocessing;
+ 
+    private HapticProbeFPS controller;
+    private PostProcessVolume dashPostprocessing;
 
     [Header("Settings")]
     [SerializeField] float damage = 40f;
@@ -17,8 +17,10 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         animator = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
+        dashPostprocessing = GetComponentInChildren<PostProcessVolume>();
         dashPostprocessing.weight = 0;
     }
 
