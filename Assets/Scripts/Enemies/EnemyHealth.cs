@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator Death() {
         float explosionDuration = 3f;
-        if (isDead == false) {
+        if (!isDead) {
             isDead = true;
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true);
@@ -61,7 +61,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void DeathExplosion()
     {
-        GameObject explosion = Instantiate(deathExplosion, transform);
+        GameObject explosion = Instantiate(deathExplosion, transform.position, Quaternion.identity);
         explosion.SetActive(true);
     }
 }
