@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4468631, g: 0.49674118, b: 0.57498664, a: 1}
+  m_IndirectSpecularColor: {r: 0.4468631, g: 0.4967412, b: 0.57498664, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1615,7 +1615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453e0c1a5d665034e996473b0a57bf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 707407824}
   damage: 40
   durationHitEffect: 0.2
 --- !u!1 &246096962
@@ -1798,7 +1797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453e0c1a5d665034e996473b0a57bf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 707407824}
   damage: 40
   durationHitEffect: 0.2
 --- !u!114 &326225075
@@ -2720,8 +2718,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400086, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588485910}
-  m_LocalRotation: {x: 0.19390038, y: -0.0018260176, z: 0.21604377, w: 0.95693487}
-  m_LocalPosition: {x: -0.000051512507, y: 0.11593966, z: -0.000023536388}
+  m_LocalRotation: {x: 0.19390388, y: -0.0018256158, z: 0.2160449, w: 0.956934}
+  m_LocalPosition: {x: -0.00005216251, y: 0.115941346, z: -0.000024132434}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_Children:
   - {fileID: 1440497237}
@@ -3592,7 +3590,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46427116, y: -0.15708853, z: -0.32508793, w: -0.80876034}
+  m_LocalRotation: {x: 0.4642711, y: -0.1570885, z: -0.3250879, w: -0.8087604}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -5750,7 +5748,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400092, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425649987}
-  m_LocalRotation: {x: -0.17473717, y: -0.3718296, z: -0.33106193, w: 0.84947497}
+  m_LocalRotation: {x: -0.17473836, y: -0.37182572, z: -0.3310648, w: 0.8494753}
   m_LocalPosition: {x: 0.000000004614658, y: 0.22722015, z: -0.00000015592319}
   m_LocalScale: {x: 1, y: 0.99999976, z: 1}
   m_Children:
@@ -5974,7 +5972,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440497236}
-  m_LocalRotation: {x: -0.000000089406974, y: -0.00000020861627, z: 0.8115489, w: 0.5842846}
+  m_LocalRotation: {x: -0.00000012644054, y: -0.00000025288108, z: 0.81155014, w: 0.58428276}
   m_LocalPosition: {x: -4.132016e-10, y: 0.24881774, z: 0.00000007975963}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:
@@ -11249,7 +11247,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.23333333
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: c572118c27e38fe4985fdc256eceeaee, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7609c0c52734b5e4e954edcb99681548, type: 2}
 --- !u!114 &1989865309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11277,7 +11275,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: e86016b6b3e17e84cbd1ff22c6c62616, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 17368d3c86a733e44ba3b1188663d95b, type: 2}
 --- !u!1 &2004293254
 GameObject:
   m_ObjectHideFlags: 0
@@ -11593,7 +11591,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: 0.00000005960465, y: -0.00000029802325, z: -0.5891889, w: 0.8079954}
+  m_LocalRotation: {x: 0.000000042146848, y: -0.00000027395453, z: -0.5891889, w: 0.8079954}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:
