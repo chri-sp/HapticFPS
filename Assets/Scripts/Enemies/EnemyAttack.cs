@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
 {
  
     private HapticProbeFPS controller;
-    private PostProcessVolume dashPostprocessing;
+    private PostProcessVolume attackPostprocessing;
 
     [Header("Settings")]
     [SerializeField] float damage = 40f;
@@ -20,8 +20,8 @@ public class EnemyAttack : MonoBehaviour
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         animator = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
-        dashPostprocessing = GetComponentInChildren<PostProcessVolume>();
-        dashPostprocessing.weight = 0;
+        attackPostprocessing = GetComponentInChildren<PostProcessVolume>();
+        attackPostprocessing.weight = 0;
     }
 
     void Update()
@@ -70,7 +70,7 @@ public class EnemyAttack : MonoBehaviour
 
             if (t > 1) t = 1;
 
-            dashPostprocessing.weight = Mathf.Lerp(0, 1, Mathf.SmoothStep(0, 1, t));
+            attackPostprocessing.weight = Mathf.Lerp(0, 1, Mathf.SmoothStep(0, 1, t));
 
             yield return null;
         }
@@ -86,7 +86,7 @@ public class EnemyAttack : MonoBehaviour
 
             if (t > 1) t = 1;
 
-            dashPostprocessing.weight = Mathf.Lerp(1, 0, Mathf.SmoothStep(0, 1, t));
+            attackPostprocessing.weight = Mathf.Lerp(1, 0, Mathf.SmoothStep(0, 1, t));
 
             yield return null;
         }
