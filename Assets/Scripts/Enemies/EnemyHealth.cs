@@ -78,7 +78,7 @@ public class EnemyHealth : MonoBehaviour
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
-            DeathExplosion();
+            DeathExplosion(explosionDuration);
             foreach (Renderer mesh in meshes)
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
@@ -86,9 +86,10 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void DeathExplosion()
+    void DeathExplosion(float explosionDuration)
     {
         GameObject explosion = Instantiate(deathExplosion, transform.position, Quaternion.identity);
         explosion.SetActive(true);
+        Destroy(explosion, explosionDuration);
     }
 }

@@ -52,13 +52,13 @@ public class EnemyAttack : MonoBehaviour
     {
         if (enemyAI.isClose())
         {
-            StartCoroutine(DashPostProccessingEffect());
+            StartCoroutine(attackPostprocessingEffect());
             StartCoroutine(controller.attackHapticFeedback());
             Debug.Log("Danneggiato");
         }
     }
 
-    private IEnumerator DashPostProccessingEffect()
+    private IEnumerator attackPostprocessingEffect()
     {
         float t = 0f;
         float attesaDisattivazioneEffetto = .1f;
