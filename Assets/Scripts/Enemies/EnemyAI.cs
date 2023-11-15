@@ -6,11 +6,11 @@ using UnityEngine.SocialPlatforms;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
+    private NavMeshAgent navMeshAgent;               //  Nav mesh agent component
     private Animator animator;
     private EnemyHealth healt;
     private Weapon weapon;
-
+    [Header("Settings")]
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
     public float speedWalk = 6;                     //  Walking speed, speed in the nav mesh agent
@@ -42,6 +42,17 @@ public class EnemyAI : MonoBehaviour
 
     bool isLooking = false;
 
+    [Header("Dodge settings")]
+    //dodgeDuration < resetDodgeDelay
+    public float dodgeProbability = 1;
+    public float dodgeDistance;
+    public float dodgeDuration = .2f;
+    Camera FirstPersonCamera;
+    private float resetDodgeDelay = 1f;
+    private float resetDodgeTimer;
+    private bool isDodging = false;
+
+    Transform enemyViewPoint;
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -62,11 +73,14 @@ public class EnemyAI : MonoBehaviour
         m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         healt = GetComponent<EnemyHealth>();
         weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
+        FirstPersonCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        resetDodgeTimer = resetDodgeDelay;
+        enemyViewPoint = transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform;
     }
 
     private void Update()
     {
-        
+        dodgetTimer();
         if (!isDead())
         {
             EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
@@ -74,19 +88,21 @@ public class EnemyAI : MonoBehaviour
             if (!m_IsPatrol)
             {
                 Chasing();
+                StartCoroutine(Dodge());
             }
             else
             {
                 Patroling();
                 Alerted();
             }
-       
+
             isJumping();
             Animations();
         }
     }
 
-    private void Animations() {
+    private void Animations()
+    {
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
@@ -94,6 +110,90 @@ public class EnemyAI : MonoBehaviour
             Stop();
             StartCoroutine(lookPlayer(1f));
         }
+    }
+
+    public bool isViewing()
+    {
+        RaycastHit hit;
+        Vector3 directionToPlayer = transform.forward;
+
+        if (m_playerInRange && Vector3.Distance(transform.position, m_Player.position) <= viewRadius)
+        {
+            if (Physics.Raycast(enemyViewPoint.position, directionToPlayer, out hit))
+            {
+                if (hit.collider.tag.Equals("Player"))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    private IEnumerator Dodge()
+    {
+        RaycastHit hit;
+        Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
+
+        //aumento probabilità dodge se nemico ha meno vita
+        if (healt.getHit()) {
+           incrementDodgeProbability((1-healt.fractionRemaining())/4);
+        }
+
+        if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
+        {
+            isDodging = true;
+            yield return new WaitForSeconds(.15f);
+            if (hit.collider.transform.root.gameObject == transform.root.gameObject)
+            {
+                if (Random.value <= dodgeProbability)
+                {
+                    float movementChoice = Random.value;
+                    // Nemico esegue una schivata
+                    if (movementChoice <= .45f)
+                        StartCoroutine(DodgeMove(transform.right * dodgeDistance));
+                    else if (movementChoice <= .9f)
+                        StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
+                    else
+                        StartCoroutine(DodgeMove(transform.forward * dodgeDistance));
+                }
+                resetDodgeTimer = resetDodgeDelay;
+            }
+            isDodging = false;
+        }
+    }
+
+    IEnumerator DodgeMove(Vector3 direction)
+    {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = transform.position + direction;
+
+        if (navMeshAgent.SetDestination(endPos))
+        {
+            float countTime = 0;
+            while (countTime <= dodgeDuration)
+            {
+                float percentTime = countTime / dodgeDuration;
+                transform.position = Vector3.Lerp(startPos, endPos, percentTime);
+                yield return null; // wait for next frame
+                countTime += Time.deltaTime;
+            }
+            // because of the frame rate and the way we are running LERP,
+            // the last timePercent in the loop may not = 1
+            // therefore, this line ensures we end exactly where desired.
+            transform.position = endPos;
+        }
+    }
+
+    void dodgetTimer()
+    {
+        if (resetDodgeTimer > 0)
+        {
+            resetDodgeTimer -= Time.deltaTime;
+        }
+    }
+
+    private void incrementDodgeProbability(float moreProbability) { 
+        dodgeProbability += moreProbability;
     }
 
     private void Alerted()
@@ -113,14 +213,17 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(resumeSpeed(2f, currentSpeed));
         }
     }
-    IEnumerator resumeSpeed(float seconds, float speed) {
+    IEnumerator resumeSpeed(float seconds, float speed)
+    {
         yield return new WaitForSeconds(seconds);
         Move(speed);
     }
 
 
-    IEnumerator lookPlayer(float rotationTime) {
-        if (!isLooking) {
+    IEnumerator lookPlayer(float rotationTime)
+    {
+        if (!isLooking)
+        {
             isLooking = true;
             Vector3 dir = m_Player.position - transform.position;
 
@@ -142,7 +245,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void isJumping() {
+    private void isJumping()
+    {
         if (navMeshAgent.isOnOffMeshLink)
         {
             animator.SetBool("jump", true);
@@ -154,12 +258,14 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private bool isDead() {
-        if (animator.GetBool("death").Equals(true)) {
+    private bool isDead()
+    {
+        if (animator.GetBool("death").Equals(true))
+        {
             Stop();
             return true;
         }
-        return false;   
+        return false;
     }
 
 
@@ -169,8 +275,9 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 
-    public bool isClose () {
-        if ((Vector3.Distance(transform.position, m_Player.position)<= navMeshAgent.stoppingDistance+0.5f) && (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance))
+    public bool isClose()
+    {
+        if ((Vector3.Distance(transform.position, m_Player.position) <= navMeshAgent.stoppingDistance + 0.5f) && (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance))
             return true;
         return false;
     }
@@ -206,7 +313,7 @@ public class EnemyAI : MonoBehaviour
                 m_WaitTime -= Time.deltaTime;
             }
         }
-     }
+    }
 
     private void Patroling()
     {

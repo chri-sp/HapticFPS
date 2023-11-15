@@ -17,9 +17,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject deathExplosion;
 
     [SerializeField] float hitPoints = 100f;
+    private float initialHitPoints;
 
 
     void Start() { 
+        initialHitPoints = hitPoints;
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
@@ -31,7 +33,9 @@ public class EnemyHealth : MonoBehaviour
                 changeColorHit.Add(mat.color);
     }
 
-
+    public float fractionRemaining() {
+        return hitPoints/ initialHitPoints;
+    }
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;

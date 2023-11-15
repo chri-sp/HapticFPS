@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SocialPlatforms;
 
 public class EnemyAIShooting : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;               //  Nav mesh agent component
+    private NavMeshAgent navMeshAgent;               //  Nav mesh agent component
     private Animator animator;
     private EnemyHealth healt;
     private Weapon weapon;
 
+    [Header("Settings")]
     public float stoppingDistanceShooting;
     private float InitialStoppingDistanceShooting;
     public float startWaitTime = 4;                 //  Wait time of every action
@@ -44,6 +46,16 @@ public class EnemyAIShooting : MonoBehaviour
 
     bool isLooking = false;
 
+    [Header("Dodge settings")]
+    //dodgeDuration < resetDodgeDelay
+    public float dodgeProbability = 1;
+    public float dodgeDistance;
+    public float dodgeDuration = .2f;
+    Camera FirstPersonCamera;
+    private float resetDodgeDelay = 1f;
+    private float resetDodgeTimer;
+    private bool isDodging = false;
+
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -66,17 +78,21 @@ public class EnemyAIShooting : MonoBehaviour
         weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
         InitialStoppingDistanceShooting = stoppingDistanceShooting;
         randomDistanceShooting();
+        FirstPersonCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        resetDodgeTimer = resetDodgeDelay;
     }
 
     private void Update()
     {
+        dodgetTimer();
         if (!isDead())
         {
             EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
 
-            if (!m_IsPatrol && !isViewing())
+            if (!m_IsPatrol)
             {
                 Chasing();
+                StartCoroutine(Dodge());
             }
             else
             {
@@ -98,7 +114,73 @@ public class EnemyAIShooting : MonoBehaviour
             StartCoroutine(lookPlayer(1f));
         }
     }
+    private IEnumerator Dodge()
+    {
+        RaycastHit hit;
+        Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
 
+        //aumento probabilità dodge se nemico ha meno vita
+        if (healt.getHit())
+        {
+            incrementDodgeProbability((1 - healt.fractionRemaining()) / 4);
+        }
+
+        if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
+        {
+            isDodging = true;
+            yield return new WaitForSeconds(.15f);
+            if (hit.collider.transform.root.gameObject == transform.root.gameObject)
+            {
+                if (Random.value <= dodgeProbability)
+                {
+                    float movementChoice = Random.value;
+                    // Nemico esegue una schivata
+                    if (movementChoice <= .5f)
+                        StartCoroutine(DodgeMove(transform.right * dodgeDistance));
+                    else
+                        StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
+                }
+                resetDodgeTimer = resetDodgeDelay;
+            }
+            isDodging = false;
+        }
+    }
+
+    IEnumerator DodgeMove(Vector3 direction)
+    {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = transform.position + direction;
+
+        if (navMeshAgent.SetDestination(endPos))
+        {
+            float countTime = 0;
+            while (countTime <= dodgeDuration)
+            {
+                float percentTime = countTime / dodgeDuration;
+                transform.position = Vector3.Lerp(startPos, endPos, percentTime);
+                yield return null; // wait for next frame
+                countTime += Time.deltaTime;
+            }
+            // because of the frame rate and the way we are running LERP,
+            // the last timePercent in the loop may not = 1
+            // therefore, this line ensures we end exactly where desired.
+            transform.position = endPos;
+        }
+    }
+
+
+    void dodgetTimer()
+    {
+        if (resetDodgeTimer > 0)
+        {
+            resetDodgeTimer -= Time.deltaTime;
+        }
+    }
+
+    private void incrementDodgeProbability(float moreProbability)
+    {
+        dodgeProbability += moreProbability;
+    }
     private void Alerted()
     {
         float currentSpeed;
@@ -190,33 +272,35 @@ public class EnemyAIShooting : MonoBehaviour
     }
     private void Chasing()
     {
-        //  The enemy is chasing the player
-        m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
-        playerLastPosition = Vector3.zero;          //  Reset the player near position
+        if (!isViewing()) {
+            //  The enemy is chasing the player
+            m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
+            playerLastPosition = Vector3.zero;          //  Reset the player near position
 
-        if (!m_CaughtPlayer)
-        {
-            Move(speedRun);
-            navMeshAgent.SetDestination(m_PlayerPosition);          //  set the destination of the enemy to the player location
-        }
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
-        {
-            if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, m_Player.position) >= 6f)
+            if (!m_CaughtPlayer)
             {
-                //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
-                m_IsPatrol = true;
-                m_PlayerNear = false;
-                Move(speedWalk);
-                m_TimeToRotate = timeToRotate;
-                m_WaitTime = startWaitTime;
-                navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+                Move(speedRun);
+                navMeshAgent.SetDestination(m_PlayerPosition);          //  set the destination of the enemy to the player location
             }
-            else
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)    //  Control if the enemy arrive to the player location
             {
-                if (Vector3.Distance(transform.position, m_Player.position) >= navMeshAgent.stoppingDistance)
-                    //  Wait if the current position is not the player position
-                    Stop();
-                m_WaitTime -= Time.deltaTime;
+                if (m_WaitTime <= 0 && !m_CaughtPlayer && Vector3.Distance(transform.position, m_Player.position) >= 6f)
+                {
+                    //  Check if the enemy is not near to the player, returns to patrol after the wait time delay
+                    m_IsPatrol = true;
+                    m_PlayerNear = false;
+                    Move(speedWalk);
+                    m_TimeToRotate = timeToRotate;
+                    m_WaitTime = startWaitTime;
+                    navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
+                }
+                else
+                {
+                    if (Vector3.Distance(transform.position, m_Player.position) >= navMeshAgent.stoppingDistance)
+                        //  Wait if the current position is not the player position
+                        Stop();
+                    m_WaitTime -= Time.deltaTime;
+                }
             }
         }
      }
