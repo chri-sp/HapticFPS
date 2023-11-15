@@ -74,7 +74,7 @@ public class EnemyAIShooting : MonoBehaviour
         {
             EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
 
-            if (!m_IsPatrol)
+            if (!m_IsPatrol && !isViewing())
             {
                 Chasing();
             }
