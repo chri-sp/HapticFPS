@@ -116,34 +116,37 @@ public class EnemyAIShooting : MonoBehaviour
     }
     private IEnumerator Dodge()
     {
-        RaycastHit hit;
-        Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
-
         //aumento probabilità dodge se nemico ha meno vita
         if (healt.getHit())
         {
             incrementDodgeProbability((1 - healt.fractionRemaining()) / 4);
         }
 
-        if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
-        {
-            isDodging = true;
-            yield return new WaitForSeconds(.05f);
-            if (hit.collider.transform.root.gameObject == transform.root.gameObject)
+        float noDodegRadius = 4f;
+        if (Vector3.Distance(transform.position, m_Player.position) > noDodegRadius) {
+            RaycastHit hit;
+            Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
+
+            if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
             {
-                if (Random.value <= dodgeProbability)
+                isDodging = true;
+                yield return new WaitForSeconds(.05f);
+                if (hit.collider.transform.root.gameObject == transform.root.gameObject)
                 {
-                    float movementChoice = Random.value;
-                    // Nemico esegue una schivata
-                    if (movementChoice <= .5f)
-                        StartCoroutine(DodgeMove(transform.right * dodgeDistance));
-                    else
-                        StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
+                    if (Random.value <= dodgeProbability)
+                    {
+                        float movementChoice = Random.value;
+                        // Nemico esegue una schivata
+                        if (movementChoice <= .5f)
+                            StartCoroutine(DodgeMove(transform.right * dodgeDistance));
+                        else
+                            StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
+                    }
+                    resetDodgeTimer = resetDodgeDelay;
                 }
-                resetDodgeTimer = resetDodgeDelay;
+                isDodging = false;
             }
-            isDodging = false;
-        }
+        }  
     }
 
     IEnumerator DodgeMove(Vector3 direction)
