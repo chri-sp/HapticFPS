@@ -26,6 +26,8 @@ public class EnemyShoot : MonoBehaviour
     private EnemyAIShooting enemyAI;
     private Animator animator;
     private Transform player;
+    public float timeBetweenShoot = .5f;
+    private float initialTimeBetweenShoot;
 
     void Start()
     {
@@ -35,11 +37,20 @@ public class EnemyShoot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         attackPostprocessing = GetComponentInChildren<PostProcessVolume>();
         attackPostprocessing.weight = 0;
+        initialTimeBetweenShoot = timeBetweenShoot;
     }
 
     void Update()
     {
+        shootTimer();
         Attack();
+    }
+
+    private void shootTimer() {
+        if (timeBetweenShoot > 0)
+        {
+            timeBetweenShoot -= Time.deltaTime;
+        }
     }
 
 
@@ -61,7 +72,7 @@ public class EnemyShoot : MonoBehaviour
             hit.point = shootPoint.position + shootPoint.forward + direction * bulletDistance;
             StartCoroutine(SpawnTrail(trail, hit));
         }
-
+        timeBetweenShoot = initialTimeBetweenShoot;
     }
     private Vector3 GetDirection()
     {
@@ -113,7 +124,7 @@ public class EnemyShoot : MonoBehaviour
     }
     public void Attack()
     {
-        if (enemyAI.isViewing())
+        if (enemyAI.isViewing() && timeBetweenShoot <= 0)
         {
             animator.SetBool("isAttacking", true);
         }

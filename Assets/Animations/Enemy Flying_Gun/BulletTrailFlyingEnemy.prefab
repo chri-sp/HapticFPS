@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4741040284159928}
   - component: {fileID: 96846799463040678}
   m_Layer: 0
-  m_Name: BulletTrailEnemy
+  m_Name: BulletTrailFlyingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,8 +97,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.15862082, g: 0, b: 1, a: 1}
-      key1: {r: 1, g: 0, b: 0.972414, a: 1}
+      key0: {r: 1, g: 0.93103456, b: 0, a: 1}
+      key1: {r: 1, g: 0.55862063, b: 0, a: 1}
       key2: {r: 0.6544118, g: 0.014435607, b: 0.014435607, a: 1}
       key3: {r: 0.043522913, g: 0.6271239, b: 0.8455882, a: 0}
       key4: {r: 0.89497566, g: 0.8886522, b: 0, a: 0}
