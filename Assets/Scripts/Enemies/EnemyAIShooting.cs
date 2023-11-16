@@ -128,7 +128,7 @@ public class EnemyAIShooting : MonoBehaviour
         if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
         {
             isDodging = true;
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.05f);
             if (hit.collider.transform.root.gameObject == transform.root.gameObject)
             {
                 if (Random.value <= dodgeProbability)
@@ -276,6 +276,11 @@ public class EnemyAIShooting : MonoBehaviour
             //  The enemy is chasing the player
             m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
             playerLastPosition = Vector3.zero;          //  Reset the player near position
+
+            if (weapon.hasShooted && Vector3.Distance(transform.position, m_Player.position) < viewRadius)
+            {
+                m_PlayerPosition = m_Player.position;
+            }
 
             if (!m_CaughtPlayer)
             {
