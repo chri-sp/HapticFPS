@@ -12,6 +12,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform shootPoint; 
     public Transform gunPoint;  
     public float bulletDistance;
+    private PlayerHealth playerHealth;
 
     [Header("Gun")]
     public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
@@ -35,6 +36,7 @@ public class EnemyShoot : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAIShooting>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         attackPostprocessing = GetComponentInChildren<PostProcessVolume>();
         attackPostprocessing.weight = 0;
         initialTimeBetweenShoot = timeBetweenShoot;
@@ -118,6 +120,7 @@ public class EnemyShoot : MonoBehaviour
             {
                 StartCoroutine(attackPostprocessingEffect());
                 StartCoroutine(controller.attackHapticFeedback());
+                playerHealth.TakeDamage(damage);
                 Debug.Log("Danneggiato");
             }
         }

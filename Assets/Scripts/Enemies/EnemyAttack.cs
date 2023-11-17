@@ -8,6 +8,7 @@ public class EnemyAttack : MonoBehaviour
  
     private HapticProbeFPS controller;
     private PostProcessVolume attackPostprocessing;
+    private PlayerHealth playerHealth;
 
     [Header("Settings")]
     [SerializeField] float damage = 40f;
@@ -20,6 +21,7 @@ public class EnemyAttack : MonoBehaviour
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         animator = GetComponent<Animator>();
         enemyAI = GetComponent<EnemyAI>();
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         attackPostprocessing = GetComponentInChildren<PostProcessVolume>();
         attackPostprocessing.weight = 0;
     }
@@ -54,6 +56,7 @@ public class EnemyAttack : MonoBehaviour
         {
             StartCoroutine(attackPostprocessingEffect());
             StartCoroutine(controller.attackHapticFeedback());
+            playerHealth.TakeDamage(damage);
             Debug.Log("Danneggiato");
         }
     }
