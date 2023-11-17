@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
 
     private Animator animator;
     private Transform aimTarget;
+    private FloatingHealtBar healtBar;
     private float previousHitPoints;
     private List<Color> changeColorHit=new List<Color>();
     private Renderer[] meshes;
@@ -19,13 +20,15 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float hitPoints = 100f;
     private float initialHitPoints;
 
-
+    void Awake() {
+        healtBar = gameObject.GetComponentInChildren<FloatingHealtBar>();
+    }
     void Start() { 
         initialHitPoints = hitPoints;
         animator = GetComponent<Animator>();
         aimTarget= gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
-
+        healtBar.UpdateHealthBar(fractionRemaining());
         meshes = GetComponentsInChildren<Renderer>();
 
         foreach (Renderer mesh in meshes)
@@ -34,11 +37,16 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public float fractionRemaining() {
-        return hitPoints/ initialHitPoints;
+        if (hitPoints <= 0)
+        {
+            return 0;
+        }
+        return hitPoints / initialHitPoints;
     }
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
+        healtBar.UpdateHealthBar(fractionRemaining());
         StartCoroutine(hitEffects());
         if (hitPoints <= 0)
         {
@@ -83,6 +91,7 @@ public class EnemyHealth : MonoBehaviour
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
             DeathExplosion(explosionDuration);
+            Destroy(healtBar.gameObject);
             foreach (Renderer mesh in meshes)
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
