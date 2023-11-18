@@ -5,6 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class CharacterDash : MonoBehaviour {
 
+    private PlayerStamina playerStamina;
     [SerializeField] private HapticProbeFPS controller;
     [SerializeField] private PostProcessVolume dashPostprocessing;
     private LensDistortion ls;
@@ -25,6 +26,7 @@ public class CharacterDash : MonoBehaviour {
     private void Start()
     {
         CharacterController = GetComponentInParent<CharacterController>();
+        playerStamina = GameObject.FindWithTag("Player").GetComponent<PlayerStamina>();
         WaitTime = TBWDashes;
         trailRenderer = GetComponent<TrailRenderer>();
         trailRenderer.enabled = false;
@@ -42,11 +44,11 @@ public class CharacterDash : MonoBehaviour {
             StartCoroutine(Dash());
             StartCoroutine(DashPostProccessingEffect());
             StartCoroutine(DashTrailEffect());        
-            StartCoroutine(dalyDashingEnable());
+            StartCoroutine(delayDashingEnable());
         }
     }
 
-    IEnumerator dalyDashingEnable()
+    IEnumerator delayDashingEnable()
     {
         yield return new WaitForSeconds(dashTime + .2f);
         dashing = false;
@@ -55,7 +57,7 @@ public class CharacterDash : MonoBehaviour {
     public bool falconHasDashed()
     {
         
-        if (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0) {
+        if (controller.buttonWasPressed(3) && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0 && playerStamina.currentStamina()>0) {
             falconDashed = true;
             return true;
         }
@@ -65,7 +67,13 @@ public class CharacterDash : MonoBehaviour {
 
     public bool hasDashed()
     {
-        return inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0;
+        if (inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0 && playerStamina.currentStamina() > 0)
+        {
+            return true;
+        }
+        else { 
+            return false;
+        }
     }
 
     public bool inputDash() {

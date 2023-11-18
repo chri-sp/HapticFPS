@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
 
     [SerializeField] float health = 100f;
     private float initialHealth;
@@ -10,14 +11,14 @@ public class PlayerHealth : MonoBehaviour {
     [SerializeField] public float resetHealthDelay = 3f;
     private float resetHealthTimer;
 
-    void Start ()
+    void Start()
     {
         initialHealth = health;
         healthController = GameObject.FindWithTag("Canvas").GetComponentInChildren<HealthController>();
         resetHealthTimer = resetHealthDelay;
     }
 
-    void Update ()
+    void Update()
     {
         IncreaseHealthTimer();
         resetHealth();
@@ -42,7 +43,8 @@ public class PlayerHealth : MonoBehaviour {
         return health / initialHealth;
     }
 
-    public float currentHealth() {
+    public float currentHealth()
+    {
         return health;
     }
 
@@ -55,8 +57,9 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-    void resetHealth() {
-        if (resetHealthTimer <= 0)
+    void resetHealth()
+    {
+        if (resetHealthTimer <= 0 && health < initialHealth)
         {
             health = initialHealth;
             healthController.healthIncrease();
