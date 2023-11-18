@@ -3194,8 +3194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stamina: 100
-  runStaminaConsumed: 1
-  dashStaminaConsumed: 200
+  runStaminaConsumed: 0.4
+  dashStaminaConsumed: 10
   resetStaminaDelay: 1
   resetStaminaEndedDelay: 2
 --- !u!1 &723974256

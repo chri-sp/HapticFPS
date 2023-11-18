@@ -41,6 +41,7 @@ public class CharacterDash : MonoBehaviour {
         if (falconDashed || hasDashed())
         {
             falconDashed = false;
+            playerStamina.hasDashed();
             StartCoroutine(Dash());
             StartCoroutine(DashPostProccessingEffect());
             StartCoroutine(DashTrailEffect());        
@@ -67,13 +68,8 @@ public class CharacterDash : MonoBehaviour {
 
     public bool hasDashed()
     {
-        if (inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0 && playerStamina.currentStamina() > 0)
-        {
-            return true;
-        }
-        else { 
-            return false;
-        }
+
+        return inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0 && playerStamina.currentStamina() > 0;
     }
 
     public bool inputDash() {

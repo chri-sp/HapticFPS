@@ -7,11 +7,10 @@ public class PlayerStamina : MonoBehaviour
 
     private StaminaController staminaController;
     private CharacterController characterController;
-    private CharacterDash characterDash;
 
     [SerializeField] float stamina = 100f;
     private float maxStamina;
-    [SerializeField] public float runStaminaConsumed = 1f;
+    [SerializeField] public float runStaminaConsumed = .1f;
     [SerializeField] public float dashStaminaConsumed = 10f;
     [SerializeField] public float resetStaminaDelay = 1f;
     private float initialResetStaminaDelay;
@@ -24,8 +23,7 @@ public class PlayerStamina : MonoBehaviour
         maxStamina = stamina;
         initialResetStaminaDelay = resetStaminaDelay;
         staminaController = GameObject.FindWithTag("Canvas").GetComponentInChildren<StaminaController>();
-        characterDash = GameObject.FindWithTag("Player").GetComponent<CharacterDash>();
-        characterController = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         resetStaminaTimer = resetStaminaDelay;
     }
 
@@ -33,20 +31,33 @@ public class PlayerStamina : MonoBehaviour
     {
         IncreaseStaminaTimer();
         resetStamina();
+        changeDelayIfStaminaIsConsumed();
+    }
+
+    void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.LeftShift) && characterController.velocity.sqrMagnitude > 0)
         {
             resetStaminaTimer = resetStaminaDelay;
             decreaseStamina(runStaminaConsumed);
         }
+    }
 
-        if (characterDash.hasDashed() || characterDash.falconHasDashed())
-        {
-            resetStaminaTimer = resetStaminaDelay;
-            decreaseStamina(dashStaminaConsumed);
-        }
 
-        changeDelayIfStaminaIsConsumed();
+    public void hasDashed() {
+        resetStaminaTimer = resetStaminaDelay;
+        decreaseStamina(dashStaminaConsumed);
+    }
 
+
+    private void decreaseStamina(float value)
+    {
+        if (stamina > 0)
+            stamina = stamina - value;
+        else
+            stamina = 0f;
+
+        staminaController.staminaDecrease();
     }
 
     private void changeDelayIfStaminaIsConsumed()
@@ -60,21 +71,6 @@ public class PlayerStamina : MonoBehaviour
         {
             resetStaminaDelay = initialResetStaminaDelay;
         }
-    }
-
-    private void decreaseStamina(float value)
-    {
-        value = value * 10;
-        if (stamina > 0)
-        {
-            stamina = stamina - (value * Time.deltaTime);
-        }
-        else
-        {
-            stamina = 0f;
-        }
-
-        staminaController.staminaDecrease();
     }
 
     public float fractionRemaining()
