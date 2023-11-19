@@ -44,11 +44,7 @@ public class HealthController : MonoBehaviour
 
     private IEnumerator smoothDecreaseHealth()
     {
-        while (isDecreasing)
-        {
-            yield return null;
-        }
-
+       
         if (!isDecreasing)
         {
             isDecreasing = true;
