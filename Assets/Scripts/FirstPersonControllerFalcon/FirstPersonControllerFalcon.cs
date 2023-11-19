@@ -12,6 +12,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonControllerFalcon : MonoBehaviour
     {
         private HapticProbeFPS controller;
+        private PlayerStamina playerStamina;
 
         [Header("Haptic Settings")]
         [SerializeField] private float jumpHapticIntensity = 4f;
@@ -70,6 +71,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.Init(transform, m_Camera.transform, controller);
 
             characterDash = GetComponent<CharacterDash>();
+            playerStamina = GetComponent<PlayerStamina>();
         }
 
         public bool characterIsLanded()
@@ -81,18 +83,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash())
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
-            
-            //feedback aptico dash
-            if (controller.isActive() && characterDash.falconHasDashed())
+            //Input salto da falcon
+            if (controller.buttonWasPressed(2) && !m_Jump && m_CharacterController.isGrounded && !characterDash.inputDash())
             {
-                controller.dashHapticFeedback(dashHapticIntensity);
+                m_Jump = true;
+            }
+
+            //feedback aptico dash
+            if (characterDash.falconHasDashed())
+            {
+                StartCoroutine(controller.dashHapticFeedback(dashHapticIntensity));
             }
 
             if (characterIsLanded())
@@ -247,7 +253,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            if (!m_IsWalking && playerStamina.currentStamina() > 0)
+            {
+                speed = m_RunSpeed;
+            }
+            else
+            {
+                speed = m_WalkSpeed;
+            }
+            //speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+
             m_Input = new Vector2(horizontal, vertical);
 
 

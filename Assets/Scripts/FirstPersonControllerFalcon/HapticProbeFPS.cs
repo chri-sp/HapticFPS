@@ -17,6 +17,8 @@ public class HapticProbeFPS : MonoBehaviour
     // The Falcon device
     private FalconFPS falcon;
 
+    private Vector3 startPlayerPosition;
+
     //NOTA: xxxIndex e l'indice della forza di una certa tipologia (semplice, viscosità, ecc..), quindi potrò avere piu forze dello stesso tipo con indici diversi
 
     // Simple force
@@ -55,6 +57,13 @@ public class HapticProbeFPS : MonoBehaviour
     //Variabile usata per rilevare quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
 
+    private float timer;
+
+    private bool recoiling = false;
+    private bool isJumping = false;
+    private bool isDashing = false;
+    private bool isReceivingAttack = false;
+
     // Use this for initialization
     void Start()
     {
@@ -66,6 +75,7 @@ public class HapticProbeFPS : MonoBehaviour
             Debug.LogError("Can't find Falcon");
         }
 
+        StartCoroutine(setInitialPosition());
         //SetPosition();
 
         startPositionX = transform.position.x;
@@ -74,19 +84,21 @@ public class HapticProbeFPS : MonoBehaviour
         startPositionY = transform.position.y;
         virtualPositionY = startPositionY;
 
-
-        simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
+        //simpleForceIndex = FalconFPS.AddSimpleForce(simpleForce);
 
     }
 
 
     void FixedUpdate()
     {
+        timer += Time.deltaTime;
         //test funzione creazione molla
+        
         if (isActive() && buttonWasPressed(1))
         {
-            springHapticFeedback(1);
+            StartCoroutine(springHapticFeedback(1));
         }
+        
         // Move probe		
         //SetPosition();
 
@@ -180,33 +192,53 @@ public class HapticProbeFPS : MonoBehaviour
     //Ritorna il vettore di coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        //Debug.Log("Posizione falcon: " + falcon.position);
+        //Debug.Log("Falcon position x: " + falcon.position.x+ "\n Falcon position y: "+ falcon.position.y);
 
+        //Arrivo al bordo inferiore-destro
+        if (falcon.position.x > startPositionX + 2 && falcon.position.y < startPositionY - 1.5)
+        {
+            virtualPositionX = virtualPositionX + 0.1f;
+            virtualPositionY = virtualPositionY - 0.1f;
+        }
+        //Arrivo al bordo inferiore-sinistro
+        else if (falcon.position.x < startPositionX - 2 && falcon.position.y < startPositionY - 1.5)
+        {
+            virtualPositionX = virtualPositionX - 0.1f;
+            virtualPositionY = virtualPositionY - 0.1f;
+        }
+        //Arrivo al bordo superiore-sinistro
+        else if ((falcon.position.x < startPositionX - 2) && (falcon.position.y > startPositionY + 1.3))
+        {
+            virtualPositionX = virtualPositionX - 0.1f;
+            virtualPositionY = virtualPositionY + 0.1f;
+        }
+        //Arrivo al bordo superiore-destro
+        else if ((falcon.position.x > startPositionX + 2.5) && (falcon.position.y > startPositionY + 1.5)) {
+            virtualPositionX = virtualPositionX + 0.1f;
+            virtualPositionY = virtualPositionY + 0.1f;
+        }
         //Arrivo al bordo destro
-        if (falcon.position.x  > startPositionX + 4)
+        else if (falcon.position.x > startPositionX + 4.2)
         {
             virtualPositionX = virtualPositionX + 0.1f;
         }
         //Arrivo al bordo sinistro
-        else if (falcon.position.x < startPositionX - 4)
+        else if (falcon.position.x < startPositionX - 4.2)
         {
             virtualPositionX = virtualPositionX - 0.1f;
         }
-
         //Arrivo al bordo superiore
-        if (falcon.position.y > startPositionY + 3.5)
+        else if (falcon.position.y > startPositionY + 4.5)
         {
             virtualPositionY = virtualPositionY + 0.1f;
         }
         //Arrivo al bordo inferiore
-        else if (falcon.position.y < startPositionY - 3.5)
+        else if (falcon.position.y < startPositionY - 4)
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }
-
-
-
-        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
+        Vector2 currentPosition = new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
+        return currentPosition;
     }
 
     //Metodo usato per verificare se il falcon è attivo
@@ -252,38 +284,82 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
-        float intensityRecoilMultiplier = 2f;
-        int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
-        yield return new WaitForSeconds(0.1f);
-        FalconFPS.RemoveSimpleForce(recoilIndex);
+        if (isActive() && !recoiling)
+        {
+            recoiling = true;
+            float intensityRecoilMultiplier = 2f;
+            int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
+            yield return new WaitForSeconds(0.1f);
+            FalconFPS.RemoveSimpleForce(recoilIndex);
+            recoiling = false;
+        }
+
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
-        float intensityJumpMultiplier = 1.5f;
-        int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
-        yield return new WaitForSeconds(0.1f);
-        FalconFPS.RemoveSimpleForce(jumpIndex);
+        //timer evita feedback salto iniziale in gioco
+        if (isActive() && !isJumping && timer>1)
+        {
+            isJumping = true;
+            float intensityJumpMultiplier = 1.5f;
+            int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
+            yield return new WaitForSeconds(0.1f);
+            FalconFPS.RemoveSimpleForce(jumpIndex);
+            isJumping = false;
+        }
     }
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
     {
-        //Debug.Log(Input.GetAxis("Horizontal") + "\n" + Input.GetAxis("Vertical"));
-        //int runIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, 10));
-        int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity));
-        yield return new WaitForSeconds(0.1f);
-        FalconFPS.RemoveSimpleForce(runIndex);
-    }
-
-    public IEnumerator springHapticFeedback(int button) {
-        int springIndex = FalconFPS.AddSpring(transform.position, 2.0f, 0.01f, 0.0f, -1.0f);
-
-        //il bottone è mantenuto premuto
-        while (getButtonState(button)) {
-            yield return null;
+        if (isActive() && !isDashing)
+        {
+            isDashing = true;
+            float multiplierVertical = 3;
+            int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical));
+            yield return new WaitForSeconds(0.1f);
+            FalconFPS.RemoveSimpleForce(runIndex);
+            isDashing = false;
         }
-
-        //il bottone è stato rilasciato
-        FalconFPS.RemoveSpring(springIndex);
     }
+
+    public IEnumerator springHapticFeedback(int button)
+    {
+        if (isActive())
+        {
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f);
+
+            //il bottone è mantenuto premuto
+            while (getButtonState(button))
+            {
+                yield return null;
+            }
+
+            //il bottone è stato rilasciato
+            FalconFPS.RemoveSpring(springIndex);
+        }
+    }
+
+    public IEnumerator setInitialPosition() {
+        if (isActive())
+        {
+            startPlayerPosition = transform.position;
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f);
+            yield return new WaitForSeconds(.5f);
+            FalconFPS.RemoveSpring(springIndex);
+        }
+    }
+
+    public IEnumerator attackHapticFeedback()
+    {
+        if (isActive() && !isReceivingAttack)
+        {
+            isReceivingAttack = true;
+            int springIndex = FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f);
+            yield return new WaitForSeconds(.5f);
+            FalconFPS.RemoveSpring(springIndex);
+            isReceivingAttack = false;
+        }
+    }
+
 }

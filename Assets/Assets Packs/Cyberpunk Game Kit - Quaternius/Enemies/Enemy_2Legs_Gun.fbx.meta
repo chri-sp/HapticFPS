@@ -70,6 +70,7 @@ ModelImporter:
     7400008: CharacterArmature|Run
     7400010: CharacterArmature|Shoot
     7400012: CharacterArmature|Walk
+    7400014: Shooting
     9500000: //RootNode
     13700000: Cylinder
     13700002: Enemy_Robot_2Legs
@@ -95,7 +96,686 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CharacterArmature|Attack
+      takeName: CharacterArmature|Attack
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Death
+      takeName: CharacterArmature|Death
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle
+      takeName: CharacterArmature|Idle
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Jump
+      takeName: CharacterArmature|Jump
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run
+      takeName: CharacterArmature|Run
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Shoot
+      takeName: CharacterArmature|Shoot
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Walk
+      takeName: CharacterArmature|Walk
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shooting
+      takeName: CharacterArmature|Shoot
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.008474576
+        functionName: Shoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Body/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Body/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.L/Leg2.L/Leg3.L/Leg3.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Leg1.R/Leg2.R/Leg3.R/Leg3.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Enemy_Robot_2Legs
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

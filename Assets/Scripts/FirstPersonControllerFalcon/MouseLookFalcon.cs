@@ -9,8 +9,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         //Falcon Settings
         private HapticProbeFPS controller;
-        private float XFalconSensitivity = 4f;
-        private float YFalconSensitivity = 4f;
+        private float XFalconSensitivity = 6f;
+        private float YFalconSensitivity = 5f;
 
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
@@ -35,9 +35,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             this.controller = controller;
         }
 
-        public float getAxisXFalcon() {
+        public float getAxisXFalcon()
+        {
             float axisX = 0;
-            if (controller.isActive()) {
+            if (controller.isActive())
+            {
                 axisX = -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity;
                 lastAxis.x = controller.getFalconPosition().x;
             }
@@ -58,24 +60,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public void LookRotation(Transform character, Transform camera)
         {
 
-            /*
-            Vector3 axis = new Vector3(
-                -(lastAxis.x - Input.mousePosition.x) * 0.1f,
-                -(lastAxis.y - Input.mousePosition.y) * 0.1f,
-                Input.GetAxis("Mouse ScrollWheel")
-                );
-
-            lastAxis = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            */
-
             float yRot;
             float xRot;
 
-
-            //prendo input movimento visuale dal falcon
+           //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
-                yRot =  getAxisXFalcon() * XSensitivity;
+                yRot = getAxisXFalcon() * XSensitivity;
                 xRot = getAxisYFalcon() * YSensitivity;
             }
             //prendo input movimento visuale dal mouse
@@ -84,6 +75,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
                 xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
             }
+          
+            aimHelper(ref yRot, ref xRot);
 
             m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
@@ -105,6 +98,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             UpdateCursorLock();
+
+            
+        }
+
+        private void aimHelper(ref float inputLookX,ref float inputLookY)
+        {
+            
+            if (BasicAimHelper.I)
+            {
+                BasicAimHelper.I.AllowForAutoAim(ref inputLookX, ref inputLookY);
+            }
+
         }
 
         public void SetCursorLock(bool value)
