@@ -13,6 +13,8 @@ public class StaminaController : MonoBehaviour
     private bool isIncreasing = false;
     private bool isConsumed = false;
 
+    [SerializeField] private RawImage Icon;
+    [SerializeField] private RawImage endStaminaIcon;
     [SerializeField] public float smoothIncreaseStaminaDuration = .5f;
 
     // Use this for initialization
@@ -30,6 +32,8 @@ public class StaminaController : MonoBehaviour
         staminaSlider.value = 1 - playerStamina.fractionRemaining();
         if (staminaSlider.value >= 1f)
         {
+            Icon.enabled = false;
+            endStaminaIcon.enabled = true;
             StartCoroutine(staminaConsumedAnimation());
         }
     }
@@ -57,6 +61,8 @@ public class StaminaController : MonoBehaviour
         if (!isIncreasing)
         {
             isIncreasing = true;
+            endStaminaIcon.enabled = false;
+            Icon.enabled = true;
 
             animator.Play("StaminaIncrease");
             float staminaValue = 1 - playerStamina.fractionRemaining();
