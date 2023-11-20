@@ -14,11 +14,14 @@ public class HealthController : MonoBehaviour
     private bool isDecreasing = false;
     private bool isIncreasing = false;
 
+
     [SerializeField] private float smoothDecreaseDuration = .5f;
     [SerializeField] public float smoothIncreaseHealthDuration = .5f;
 
-    [Header("Damage color settings")]
+    [Header("Damage settings")]
     private Color originalHealthColor;
+    [SerializeField] private RawImage Icon;
+    [SerializeField] private RawImage damageIcon;
     [SerializeField] private Color damageHealthColor;
 
 
@@ -53,9 +56,10 @@ public class HealthController : MonoBehaviour
 
     private IEnumerator smoothDecreaseHealth()
     {
-
         if (!isDecreasing)
         {
+            Icon.enabled = false;
+            damageIcon.enabled = true;
             isDecreasing = true;
 
             animator.Play("HealthDecrease");
@@ -83,6 +87,8 @@ public class HealthController : MonoBehaviour
     {
         if (!isIncreasing)
         {
+            damageIcon.enabled = false;
+            Icon.enabled = true;
             isIncreasing = true;
 
             animator.Play("HealthIncrease");
