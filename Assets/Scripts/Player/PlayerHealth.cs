@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         initialHealth = health;
-        healthController = GameObject.FindWithTag("Canvas").GetComponentInChildren<HealthController>();
+        healthController = GameObject.FindWithTag("Canvas").GetComponentInChildren<HealthController>();       
         resetHealthTimer = resetHealthDelay;
     }
 
@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         resetHealthTimer = resetHealthDelay;
         if (health <= 0)
         {
+            healthController.death();
             Debug.Log("Game Over");
         }
     }

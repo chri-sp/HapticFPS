@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: fdf3f2354b4cf8a42b31f44cb7c9f574
+timeCreated: 1700477747
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Beyonders
+  fontNames:
+  - Beyonders
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 284488e004f1560488c3f560128c05fd, type: 3}
+  - {fileID: 12800000, guid: 64b4771a185f3e74ca8072a6fa787235, type: 3}
+  - {fileID: 12800000, guid: 1d06decabfd8d494ab7e3acfb3c0bcfe, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

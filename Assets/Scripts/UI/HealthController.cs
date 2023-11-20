@@ -7,6 +7,7 @@ public class HealthController : MonoBehaviour
 {
 
     private PlayerHealth playerHealth;
+    private DeathHandler deathHandler;
     private Slider healthSlider;
     private Image healthBarColor;
     private Animator animator;
@@ -25,12 +26,20 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        deathHandler = GameObject.FindWithTag("GameEvents").GetComponent<DeathHandler>();
         animator = GetComponent<Animator>();
         healthSlider = GetComponent<Slider>();
         healthSlider.value = 1 - playerHealth.fractionRemaining();
         healthBarColor = GetComponentInChildren<Image>();
         originalHealthColor = healthBarColor.color;
     }
+
+    public void death()
+    {
+        if (healthSlider.value >= 1)
+            deathHandler.HandleDeath();
+    }
+
 
     public void healthDecrease()
     {
@@ -44,7 +53,7 @@ public class HealthController : MonoBehaviour
 
     private IEnumerator smoothDecreaseHealth()
     {
-       
+
         if (!isDecreasing)
         {
             isDecreasing = true;

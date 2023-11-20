@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - ShootPoint
   - Canvas
+  - GameEvents
   layers:
   - Default
   - TransparentFX
