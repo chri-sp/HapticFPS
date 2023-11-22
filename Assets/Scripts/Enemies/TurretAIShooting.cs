@@ -64,10 +64,10 @@ public class TurretAIShooting : MonoBehaviour
 
     private void Alerted()
     {
-        if (weapon.hasShooted)
+        if (weapon.hasShooted && Vector3.Distance(m_Player.position, transform.position)<=viewRadius)
         {
             StartCoroutine(lookPlayer(1f));
-        }
+        }        
     }
 
 
