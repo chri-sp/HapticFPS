@@ -6394,7 +6394,7 @@ Prefab:
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeProbability
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
@@ -6420,12 +6420,12 @@ Prefab:
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeDistance
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeDuration
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83ebf2b901ffa8c4484690641d630954, type: 2}
@@ -10123,7 +10123,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400086, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588485910}
-  m_LocalRotation: {x: 0.19401908, y: -0.001827732, z: 0.21616489, w: 0.95688355}
+  m_LocalRotation: {x: 0.19401903, y: -0.0018277019, z: 0.21616478, w: 0.95688355}
   m_LocalPosition: {x: -0.00006213599, y: 0.11604357, z: -0.000026214871}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
   m_Children:
@@ -12103,7 +12103,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762281346}
-  m_LocalRotation: {x: 0.46430328, y: -0.15693535, z: -0.3250353, w: -0.8087929}
+  m_LocalRotation: {x: 0.46430328, y: -0.15693538, z: -0.3250353, w: -0.8087929}
   m_LocalPosition: {x: 0.0000000018957143, y: 0.22734597, z: -4.3350154e-10}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
   m_Children:
@@ -17930,7 +17930,7 @@ Prefab:
     - target: {fileID: 114650442568621786, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
       propertyPath: dodgeProbability
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114650442568621786, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
@@ -17964,12 +17964,12 @@ Prefab:
     - target: {fileID: 114650442568621786, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
       propertyPath: dodgeDuration
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114650442568621786, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
       propertyPath: dodgeDistance
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4efca08679fcb8449fabc0d1fd6f294, type: 2}
@@ -20077,7 +20077,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365254579}
-  m_LocalRotation: {x: 0.37411755, y: -0.14981678, z: -0.6375654, w: 0.6565832}
+  m_LocalRotation: {x: 0.37411752, y: -0.14981678, z: -0.6375654, w: 0.6565832}
   m_LocalPosition: {x: 0.00017770438, y: 0.11648728, z: -0.000025808815}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
@@ -21598,7 +21598,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400092, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425649987}
-  m_LocalRotation: {x: -0.17481667, y: -0.3716806, z: -0.33123484, w: 0.8494564}
+  m_LocalRotation: {x: -0.17481668, y: -0.37168062, z: -0.33123472, w: 0.8494565}
   m_LocalPosition: {x: 0.000000004614658, y: 0.22722015, z: -0.00000015592319}
   m_LocalScale: {x: 1, y: 0.99999976, z: 1}
   m_Children:
@@ -22096,7 +22096,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440497236}
-  m_LocalRotation: {x: -0.000000029802326, y: -0.0000002384186, z: 0.81159645, w: 0.58421844}
+  m_LocalRotation: {x: 0.000000021073424, y: -0.00000021073423, z: 0.8115965, w: 0.58421844}
   m_LocalPosition: {x: -4.132016e-10, y: 0.24881774, z: 0.00000007975963}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:
@@ -26777,7 +26777,7 @@ Prefab:
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeProbability
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
@@ -26803,12 +26803,12 @@ Prefab:
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeDuration
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114302127053035734, guid: 83ebf2b901ffa8c4484690641d630954,
         type: 2}
       propertyPath: dodgeDistance
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83ebf2b901ffa8c4484690641d630954, type: 2}
@@ -33270,7 +33270,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: 9f3e9530c6bce3d4188de19ad811289f, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069403572}
-  m_LocalRotation: {x: 0.000000029802326, y: -0.0000001192093, z: -0.58895135, w: 0.80816853}
+  m_LocalRotation: {x: 0.000000042146848, y: -0.00000012644055, z: -0.58895135, w: 0.80816853}
   m_LocalPosition: {x: 0.0000000010371696, y: 0.2488112, z: -0.00000002198707}
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999997}
   m_Children:

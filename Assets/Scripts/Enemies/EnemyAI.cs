@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private Animator animator;
     private EnemyHealth healt;
     private Weapon weapon;
+    private NavMeshPath path;
     [Header("Settings")]
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
@@ -139,6 +140,7 @@ public class EnemyAI : MonoBehaviour
 
 
         float noDodegRadius = 5f;
+
         if (Vector3.Distance(transform.position, m_Player.position) > noDodegRadius)
         {
             RaycastHit hit;
@@ -173,7 +175,9 @@ public class EnemyAI : MonoBehaviour
         Vector3 startPos = transform.position;
         Vector3 endPos = transform.position + direction;
 
-        if (navMeshAgent.SetDestination(endPos))
+        path = new NavMeshPath();
+
+        if (NavMesh.CalculatePath(transform.position, endPos, NavMesh.AllAreas, path))
         {
             float countTime = 0;
             while (countTime <= dodgeDuration)
