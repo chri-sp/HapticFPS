@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
 
     private Animator animator;
+    private TurretShoot turretShoot;
     private Transform aimTarget;
     private FloatingHealtBar healtBar;
     private float previousHitPoints;
@@ -26,7 +27,9 @@ public class EnemyHealth : MonoBehaviour
     void Start() { 
         initialHitPoints = hitPoints;
         animator = GetComponent<Animator>();
-        aimTarget= gameObject.transform.Find("AimTarget");
+        turretShoot = GetComponent<TurretShoot>();
+
+        aimTarget = gameObject.transform.Find("AimTarget");
         previousHitPoints = hitPoints;
         healtBar.UpdateHealthBar(fractionRemaining());
         meshes = GetComponentsInChildren<Renderer>();
@@ -87,6 +90,7 @@ public class EnemyHealth : MonoBehaviour
         float explosionDuration = 3f;
         if (!isDead) {
             isDead = true;
+            Destroy(turretShoot);
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);

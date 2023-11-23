@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using Debug = UnityEngine.Debug;
 
 public class TurretShoot : MonoBehaviour
 {
@@ -63,7 +62,7 @@ public class TurretShoot : MonoBehaviour
 
         if (Physics.Raycast(shootPoint.position, direction, out hit, bulletDistance))
         {
-            Debug.DrawLine(shootPoint.position, shootPoint.position + direction * 10f, Color.red, 1f);
+            UnityEngine.Debug.DrawLine(shootPoint.position, shootPoint.position + direction * 10f, Color.red, 1f);
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
             StartCoroutine(SpawnTrail(trail, hit));
         }
@@ -112,14 +111,14 @@ public class TurretShoot : MonoBehaviour
         Vector3 shootDirection = hit.point - shootPoint.position;
         if (Physics.Raycast(shootPoint.position, shootDirection, out hit, bulletDistance))
         {
-            Debug.DrawLine(shootPoint.position, shootPoint.position + shootDirection * bulletDistance, Color.red, 1f);
+            UnityEngine.Debug.DrawLine(shootPoint.position, shootPoint.position + shootDirection * bulletDistance, Color.red, 1f);
             //se ho colpito il player
             if (hit.collider.tag == "Player")
             {
                 StartCoroutine(attackPostprocessingEffect());
                 StartCoroutine(controller.attackHapticFeedback());
                 playerHealth.TakeDamage(damage);
-                Debug.Log("Danneggiato");
+                UnityEngine.Debug.Log("Danneggiato");
             }
         }
     }
