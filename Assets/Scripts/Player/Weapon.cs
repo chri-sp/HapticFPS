@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private FirstPersonControllerFalcon player;
     [SerializeField] private Animator WeaponsAnimator;
     public bool hasShooted = false;
+    private FloatingCircleReloading reloadingCircle;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -50,13 +51,16 @@ public class Weapon : MonoBehaviour
     private float surplusSpreadAfterShoot;
 
 
+
     void Start()
     {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
         weaponAnimator = GetComponent<Animator>();
+        WeaponsAnimator.enabled = false;
         initialSpreadFactor = spreadFactor;
         resetSpreadTimer = resetSpreadDelay;
         currentAmmo = maxAmmo;
+        reloadingCircle = gameObject.GetComponentInChildren<FloatingCircleReloading>();
     }
 
     void Update()
@@ -99,13 +103,16 @@ public class Weapon : MonoBehaviour
         if (!isReloading)
         {
             isReloading = true;
+            WeaponsAnimator.enabled = true;
             WeaponsAnimator.SetBool("Reloading", true);
 
             yield return new WaitForSeconds(reloadTime - .25f);
+            currentAmmo = maxAmmo;
+            reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
             WeaponsAnimator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
 
-            currentAmmo = maxAmmo;
+            WeaponsAnimator.enabled = false;           
             isReloading = false;
         }
     }
@@ -150,6 +157,7 @@ public class Weapon : MonoBehaviour
     {
         StartCoroutine(HasShooted());
         currentAmmo--;
+        reloadingCircle.UpdateReloadingCircle(currentAmmo,maxAmmo);
         PlayMuzzleFlash();
         if (controller.isActive())
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));
@@ -198,7 +206,7 @@ public class Weapon : MonoBehaviour
         shootDirection = hitPoint - shootPoint;
         if (Physics.Raycast(shootPoint, shootDirection, out hit, range))
         {
-            Debug.Log("Colpito: " + hit.transform.name);
+            //Debug.Log("Colpito: " + hit.transform.name);
             HitImpactEffect(hit);
 
             ProcessDamage(hit);

@@ -121,7 +121,7 @@ public class EnemyShoot : MonoBehaviour
                 StartCoroutine(attackPostprocessingEffect());
                 StartCoroutine(controller.attackHapticFeedback());
                 playerHealth.TakeDamage(damage);
-                Debug.Log("Danneggiato");
+                //Debug.Log("Danneggiato");
             }
         }
     }

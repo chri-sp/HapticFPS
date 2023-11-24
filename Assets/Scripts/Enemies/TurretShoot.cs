@@ -118,7 +118,7 @@ public class TurretShoot : MonoBehaviour
                 StartCoroutine(attackPostprocessingEffect());
                 StartCoroutine(controller.attackHapticFeedback());
                 playerHealth.TakeDamage(damage);
-                UnityEngine.Debug.Log("Danneggiato");
+                //UnityEngine.Debug.Log("Danneggiato");
             }
         }
     }
