@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FirstPersonCamera;
     [SerializeField] private Crosshair crosshair;
     [SerializeField] private FirstPersonControllerFalcon player;
+    [SerializeField] private Animator WeaponsAnimator;
     public bool hasShooted = false;
 
     [Header("Setup")]
@@ -23,6 +24,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] Transform bulletTrailShootPoint;
     private Animator weaponAnimator;
 
+
+    [Header("Reload settings")]
+    public int maxAmmo = 10;
+    private int currentAmmo;
+    public float reloadTime = 1f;
+    public bool isReloading = false;
 
     [Header("Recoil settings")]
     [SerializeField] public float recoilX = -5;
@@ -43,19 +50,33 @@ public class Weapon : MonoBehaviour
     private float surplusSpreadAfterShoot;
 
 
-    void Start() {
+    void Start()
+    {
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
         weaponAnimator = GetComponent<Animator>();
         initialSpreadFactor = spreadFactor;
         resetSpreadTimer = resetSpreadDelay;
+        currentAmmo = maxAmmo;
     }
 
     void Update()
     {
         spreadAfterShoootTimer();
-       
+
         setSpreadFactor();
         crosshair.setCrosshairSize(spreadFactor);
+
+        if (isReloading)
+        {
+            return;
+        }
+
+        if (currentAmmo <= 0f || (Input.GetKeyDown("r") && currentAmmo < maxAmmo))
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         //Uso come input il falcon
         if (controller.isActive() && controller.buttonWasPressed(0))
         {
@@ -70,6 +91,29 @@ public class Weapon : MonoBehaviour
             IncreaseSpreadAfterShoot();
             resetSpreadTimer = resetSpreadDelay;
         }
+    }
+
+    IEnumerator Reload()
+    {
+
+        if (!isReloading)
+        {
+            isReloading = true;
+            WeaponsAnimator.SetBool("Reloading", true);
+
+            yield return new WaitForSeconds(reloadTime - .25f);
+            WeaponsAnimator.SetBool("Reloading", false);
+            yield return new WaitForSeconds(.25f);
+
+            currentAmmo = maxAmmo;
+            isReloading = false;
+        }
+    }
+
+    void OnEnable()
+    {
+        isReloading = false;
+        WeaponsAnimator.SetBool("Reloading", false);
     }
 
     public void setSpreadFactor()
@@ -95,7 +139,8 @@ public class Weapon : MonoBehaviour
 
     }
 
-    IEnumerator HasShooted() {
+    IEnumerator HasShooted()
+    {
         hasShooted = true;
         yield return new WaitForSeconds(1f);
         hasShooted = false;
@@ -104,6 +149,7 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         StartCoroutine(HasShooted());
+        currentAmmo--;
         PlayMuzzleFlash();
         if (controller.isActive())
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));
@@ -113,7 +159,8 @@ public class Weapon : MonoBehaviour
         ProcessRaycast();
     }
 
-    IEnumerator recoilAnimation() {
+    IEnumerator recoilAnimation()
+    {
         weaponAnimator.Play("Recoil");
         yield return new WaitForSeconds(0.1f);
         weaponAnimator.Play("Idle");
@@ -141,7 +188,8 @@ public class Weapon : MonoBehaviour
         {
             hitPoint = hit.point;
         }
-        else {
+        else
+        {
             //hitpoint se non colpisco nulla
             hitPoint = transform.position + FirstPersonCamera.transform.forward * range / 3;
         }
@@ -158,7 +206,7 @@ public class Weapon : MonoBehaviour
             hitPoint = hit.point;
         }
 
-        SpawnBulletTrail(hitPoint); 
+        SpawnBulletTrail(hitPoint);
     }
 
     private void ProcessDamage(RaycastHit hit)
@@ -172,7 +220,8 @@ public class Weapon : MonoBehaviour
     }
 
 
-    void spreadAfterShoootTimer(){
+    void spreadAfterShoootTimer()
+    {
         if (resetSpreadTimer <= 0)
         {
             surplusSpreadAfterShoot = 0;
@@ -184,7 +233,8 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void IncreaseSpreadAfterShoot() {
+    private void IncreaseSpreadAfterShoot()
+    {
         if (surplusSpreadAfterShoot <= maxSpreadAfterShoot)
         {
             surplusSpreadAfterShoot = spreadFactor + Random.Range(spreadShoot, spreadShoot * 2);
@@ -195,12 +245,13 @@ public class Weapon : MonoBehaviour
     {
         Vector3 shootDirection = FirstPersonCamera.transform.forward;
         float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
-        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor*2);
+        float randomSpreadY = Random.Range(-spreadFactor, spreadFactor * 2);
         shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
         return shootDirection;
     }
 
-    private void SpawnBulletTrail(Vector3 hitPoint) {
+    private void SpawnBulletTrail(Vector3 hitPoint)
+    {
 
         GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject);
 

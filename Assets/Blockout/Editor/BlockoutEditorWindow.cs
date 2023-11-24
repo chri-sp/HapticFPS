@@ -134,7 +134,7 @@ namespace RadicalForge.Blockout
             BlockoutEditorHelper.Awake(this);
             EditorHotkeysTracker.Init(this);
             
-            BlockoutStaticFunctions.UpdateAvailable(out newVersion);
+            //BlockoutStaticFunctions.UpdateAvailable(out newVersion);
             splashScreen.newVersion = newVersion;
         }
         

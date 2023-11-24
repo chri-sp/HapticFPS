@@ -2886,7 +2886,7 @@ Animator:
   m_GameObject: {fileID: 128492073}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6d5645f2e7c59a42acc3b3f9db11bb5, type: 2}
+  m_Controller: {fileID: 9100000, guid: ad6b4143fe4d9fa43ab759b119dc4ed8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2909,6 +2909,7 @@ MonoBehaviour:
   FirstPersonCamera: {fileID: 1356661257}
   crosshair: {fileID: 1326262312}
   player: {fileID: 707407821}
+  WeaponsAnimator: {fileID: 1570244758}
   hasShooted: 0
   range: 100
   damage: 30
@@ -2917,6 +2918,9 @@ MonoBehaviour:
   bulletTrail: {fileID: 120648884187509030, guid: d2ec70c814159504cb3e12e99b00b151,
     type: 2}
   bulletTrailShootPoint: {fileID: 1942409177}
+  maxAmmo: 10
+  reloadTime: 1
+  isReloading: 0
   recoilX: -5
   recoilY: 2
   recoilZ: 0.35
@@ -24371,6 +24375,7 @@ GameObject:
   - component: {fileID: 1570244757}
   - component: {fileID: 1570244759}
   - component: {fileID: 1570244761}
+  - component: {fileID: 1570244758}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -24392,6 +24397,23 @@ Transform:
   m_Father: {fileID: 1356661254}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1570244758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570244756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0505242a1af2f1742acffc9cacce6a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1570244759
 MonoBehaviour:
   m_ObjectHideFlags: 0
