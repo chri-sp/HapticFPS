@@ -90,7 +90,7 @@ public class EnemyHealth : MonoBehaviour
         float explosionDuration = 3f;
         if (!isDead) {
             isDead = true;
-            Destroy(turretShoot);
+            turretShoot.enabled = false;
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
