@@ -90,7 +90,11 @@ public class EnemyHealth : MonoBehaviour
         float explosionDuration = 3f;
         if (!isDead) {
             isDead = true;
-            turretShoot.enabled = false;
+
+            //Disabilito torretta se presente
+            if (turretShoot!=null)
+                turretShoot.enabled = false;
+
             aimTarget.gameObject.SetActive(false);
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
@@ -99,7 +103,7 @@ public class EnemyHealth : MonoBehaviour
             foreach (Renderer mesh in meshes)
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
-            Destroy(transform.root.gameObject);
+            Destroy(gameObject);
         }
     }
 

@@ -14,7 +14,7 @@ public class FloatingHealtBar : MonoBehaviour
     void Start()
     {
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        target = transform.root.GetComponent<Transform>();
+        target = transform.parent.parent.GetComponent<Transform>();
     }
     public void UpdateHealthBar(float percentEnemyHealt)
     {
