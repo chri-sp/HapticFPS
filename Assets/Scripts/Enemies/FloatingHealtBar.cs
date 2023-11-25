@@ -22,7 +22,8 @@ public class FloatingHealtBar : MonoBehaviour
 
         //Disabilita slider se nemico ha 0 di salute
         if (slider.value <= 0) {
-           transform.GetChild(1).gameObject.SetActive(false);
+            if (transform.GetChild(1).gameObject !=null)
+                transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 
