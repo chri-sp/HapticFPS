@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+
 public class Pause : MonoBehaviour
 {
 
@@ -10,6 +11,7 @@ public class Pause : MonoBehaviour
 
     private FirstPersonControllerFalcon player;
     private Weapon weapon;
+    private WeaponManager weaponManager;
 
     // Use this for initialization
     void Start()
@@ -17,6 +19,13 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
         weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += weaponChanged;
+    }
+
+    void weaponChanged(Weapon newWeapon)
+    {
+        weapon = newWeapon;
     }
 
     // Update is called once per frame

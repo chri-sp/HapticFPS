@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private Animator animator;
     private EnemyHealth healt;
     private Weapon weapon;
+    private WeaponManager weaponManager;
     private NavMeshPath path;
     [Header("Settings")]
     public float startWaitTime = 4;                 //  Wait time of every action
@@ -77,6 +78,13 @@ public class EnemyAI : MonoBehaviour
         FirstPersonCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         resetDodgeTimer = resetDodgeDelay;
         enemyViewPoint = transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform;
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += weaponChanged;
+    }
+
+    void weaponChanged(Weapon newWeapon)
+    {
+        weapon = newWeapon;
     }
 
     private void Update()

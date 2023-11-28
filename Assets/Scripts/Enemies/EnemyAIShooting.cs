@@ -10,6 +10,7 @@ public class EnemyAIShooting : MonoBehaviour
     private Animator animator;
     private EnemyHealth healt;
     private Weapon weapon;
+    private WeaponManager weaponManager;
 
     [Header("Settings")]
     public float stoppingDistanceShooting;
@@ -79,6 +80,12 @@ public class EnemyAIShooting : MonoBehaviour
         randomDistanceShooting();
         FirstPersonCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         resetDodgeTimer = resetDodgeDelay;
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += weaponChanged;
+    }
+    void weaponChanged(Weapon newWeapon)
+    {
+        weapon = newWeapon;
     }
 
     private void Update()

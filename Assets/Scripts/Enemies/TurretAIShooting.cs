@@ -6,6 +6,7 @@ public class TurretAIShooting : MonoBehaviour
 {
     private Animator animator;
     private Weapon weapon;
+    private WeaponManager weaponManager;
 
     [Header("Settings")]
     private float stoppingDistanceShooting;
@@ -38,6 +39,13 @@ public class TurretAIShooting : MonoBehaviour
         stoppingDistanceShooting = viewRadius;
         InitialStoppingDistanceShooting = stoppingDistanceShooting;
         randomDistanceShooting();
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += weaponChanged;
+    }
+
+    void weaponChanged(Weapon newWeapon)
+    {
+        weapon = newWeapon;
     }
 
     private void Update()
@@ -47,12 +55,13 @@ public class TurretAIShooting : MonoBehaviour
             EnviromentView();                       //  Check whether or not the player is in the enemy's field of vision
 
             Alerted();
-              
+
             Animations();
         }
     }
 
-    private void Animations() {
+    private void Animations()
+    {
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
@@ -63,15 +72,17 @@ public class TurretAIShooting : MonoBehaviour
 
     private void Alerted()
     {
-        if (weapon.hasShooted && Vector3.Distance(m_Player.position, transform.position)<=viewRadius)
+        if (weapon.hasShooted && Vector3.Distance(m_Player.position, transform.position) <= viewRadius)
         {
             StartCoroutine(lookPlayer(1f));
-        }        
+        }
     }
 
 
-    IEnumerator lookPlayer(float rotationTime) {
-        if (!isLooking) {
+    IEnumerator lookPlayer(float rotationTime)
+    {
+        if (!isLooking)
+        {
             isLooking = true;
             Vector3 dir = m_Player.position - transform.position;
 
@@ -94,11 +105,13 @@ public class TurretAIShooting : MonoBehaviour
     }
 
 
-    private bool isDead() {
-        if (animator.GetBool("death").Equals(true)) {
+    private bool isDead()
+    {
+        if (animator.GetBool("death").Equals(true))
+        {
             return true;
         }
-        return false;   
+        return false;
     }
 
 
@@ -108,17 +121,20 @@ public class TurretAIShooting : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 
-    public bool isViewing() {
+    public bool isViewing()
+    {
         if (m_playerInRange && Vector3.Distance(transform.position, m_Player.position) <= stoppingDistanceShooting)
         {
             return true;
         }
-        else {
+        else
+        {
             return false;
         }
     }
 
-    private void randomDistanceShooting() {
+    private void randomDistanceShooting()
+    {
         Random.seed = System.DateTime.Now.Millisecond;
         stoppingDistanceShooting = Random.Range(InitialStoppingDistanceShooting, InitialStoppingDistanceShooting + 10f);
     }

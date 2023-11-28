@@ -31,6 +31,10 @@ public class InverseKinematics : MonoBehaviour {
 	void Start () {
 
 	}
+
+	public void setHandPosition(Transform handPosition) { 
+		target = handPosition;
+	}
 	
 	// Update is called once per frame
 	void LateUpdate () {

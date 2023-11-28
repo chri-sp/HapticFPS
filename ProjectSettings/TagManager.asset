@@ -10,6 +10,8 @@ TagManager:
   - Canvas
   - GameEvents
   - InGameMessage
+  - CharacterArms
+  - WeaponHolder
   layers:
   - Default
   - TransparentFX

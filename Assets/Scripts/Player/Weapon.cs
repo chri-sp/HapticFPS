@@ -6,11 +6,11 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Weapon : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] HapticProbeFPS controller;
-    [SerializeField] Camera FirstPersonCamera;
-    [SerializeField] private Crosshair crosshair;
-    [SerializeField] private FirstPersonControllerFalcon player;
-    [SerializeField] private Animator WeaponsAnimator;
+    HapticProbeFPS controller;
+    Camera FirstPersonCamera;
+    private Crosshair crosshair;
+    private FirstPersonControllerFalcon player;
+    private Animator WeaponsAnimator;
     public bool hasShooted = false;
     private FloatingCircleReloading reloadingCircle;
 
@@ -19,12 +19,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 30f;
 
     [Header("Effects")]
-    [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject hitEffect;
+    ParticleSystem muzzleFlash;
+    GameObject hitEffect;
     [SerializeField] LineRenderer bulletTrail;
-    [SerializeField] Transform bulletTrailShootPoint;
+    Transform bulletTrailShootPoint;
     private Animator weaponAnimator;
 
+    public float fireRate = .13f;
+    private float nextTimeToFire = 0f;
 
     [Header("Reload settings")]
     public int maxAmmo = 10;
@@ -54,6 +56,14 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
+        FirstPersonCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
+        WeaponsAnimator = transform.parent.GetComponent<Animator>();
+        muzzleFlash = GetComponentInChildren<ParticleSystem>();
+        hitEffect = transform.Find("Hit Impact VFX").gameObject;
+        bulletTrailShootPoint = muzzleFlash.gameObject.transform;
+        crosshair = GameObject.FindWithTag("Canvas").GetComponentInChildren<Crosshair>();
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
         weaponAnimator = GetComponent<Animator>();
         WeaponsAnimator.enabled = false;
@@ -81,19 +91,46 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        //Uso come input il falcon
-        if (controller.isActive() && controller.buttonWasPressed(0))
+        weaponInput();
+    }
+
+    private void weaponInput()
+    {
+        if (gameObject.name.Equals("Rifle"))
         {
-            Shoot();
-            IncreaseSpreadAfterShoot();
-            resetSpreadTimer = resetSpreadDelay;
+            //Uso come input il falcon
+            if (controller.isActive() && controller.getButtonState(0) && Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + fireRate;
+                Shoot();
+                IncreaseSpreadAfterShoot();
+                resetSpreadTimer = resetSpreadDelay;
+            }
+            //Uso come input il mouse
+            else if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + fireRate;
+                Shoot();
+                IncreaseSpreadAfterShoot();
+                resetSpreadTimer = resetSpreadDelay;
+            }
         }
-        //Uso come input il mouse
-        else if (Input.GetButtonDown("Fire1"))
+        else
         {
-            Shoot();
-            IncreaseSpreadAfterShoot();
-            resetSpreadTimer = resetSpreadDelay;
+            //Uso come input il falcon
+            if (controller.isActive() && controller.buttonWasPressed(0))
+            {
+                Shoot();
+                IncreaseSpreadAfterShoot();
+                resetSpreadTimer = resetSpreadDelay;
+            }
+            //Uso come input il mouse
+            else if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+                IncreaseSpreadAfterShoot();
+                resetSpreadTimer = resetSpreadDelay;
+            }
         }
     }
 
@@ -112,7 +149,7 @@ public class Weapon : MonoBehaviour
             WeaponsAnimator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
 
-            WeaponsAnimator.enabled = false;           
+            WeaponsAnimator.enabled = false;
             isReloading = false;
         }
     }
@@ -120,6 +157,7 @@ public class Weapon : MonoBehaviour
     void OnEnable()
     {
         isReloading = false;
+        WeaponsAnimator = transform.parent.GetComponent<Animator>();
         WeaponsAnimator.SetBool("Reloading", false);
     }
 
@@ -157,7 +195,7 @@ public class Weapon : MonoBehaviour
     {
         StartCoroutine(HasShooted());
         currentAmmo--;
-        reloadingCircle.UpdateReloadingCircle(currentAmmo,maxAmmo);
+        reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
         PlayMuzzleFlash();
         if (controller.isActive())
             StartCoroutine(controller.recoilHapticFeedback(recoilHapticIntensity));

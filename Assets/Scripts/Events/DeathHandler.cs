@@ -11,6 +11,7 @@ public class DeathHandler : MonoBehaviour
     private FirstPersonControllerFalcon player;
     private HapticProbeFPS controller;
     private Weapon weapon;
+    private WeaponManager weaponManager;
 
     private void Start()
     {
@@ -18,6 +19,13 @@ public class DeathHandler : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
         weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += weaponChanged;
+    }
+
+    void weaponChanged(Weapon newWeapon)
+    {
+        weapon = newWeapon;
     }
 
     public void HandleDeath()
