@@ -149,16 +149,25 @@ public class EnemyAI : MonoBehaviour
 
         float noDodegRadius = 5f;
 
+        //se nemico è troppo vicino al player non effettua dodge
         if (Vector3.Distance(transform.position, m_Player.position) > noDodegRadius)
         {
             RaycastHit hit;
             Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
-
+            
+            //se nemico vede il player ed è passato il tempo di attesa effettua dodge
             if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
             {
                 isDodging = true;
                 yield return new WaitForSeconds(.05f);
-                if (hit.collider.transform.root.gameObject == transform.root.gameObject)
+                //se il player sta mirando a questo nemico
+                GameObject enemyIsViewedByPlayer = null;
+                if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
+                {
+                    enemyIsViewedByPlayer = hit.collider.gameObject.GetComponentInParent<EnemyHealth>().gameObject;
+                }
+
+                if (enemyIsViewedByPlayer == transform.gameObject)
                 {
                     if (Random.value <= dodgeProbability)
                     {

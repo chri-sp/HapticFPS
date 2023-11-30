@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     private Animator WeaponsAnimator;
     public bool hasShooted = false;
     private FloatingCircleReloading reloadingCircle;
+    [SerializeField] private ReloadingWaitTimeCircle reloadingWaitTimeCircle;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -53,7 +54,7 @@ public class Weapon : MonoBehaviour
     private float initialSpreadFactor;
     private float surplusSpreadAfterShoot;
 
-
+    Coroutine reloadingCoroutine;
 
     void Start()
     {
@@ -73,6 +74,8 @@ public class Weapon : MonoBehaviour
         currentAmmo = maxAmmo;
         reloadingCircle = gameObject.GetComponentInChildren<FloatingCircleReloading>();
         initialDamage = damage;
+        //reloadingWaitTimeCircle = GameObject.FindWithTag("Canvas").GetComponent<ReloadingWaitTimeCircle>();
+        reloadingWaitTimeCircle.gameObject.SetActive(false);
     }
 
     void Update()
@@ -89,7 +92,7 @@ public class Weapon : MonoBehaviour
 
         if (currentAmmo <= 0f || (Input.GetKeyDown("r") && currentAmmo < maxAmmo))
         {
-            StartCoroutine(Reload());
+            reloadingCoroutine = StartCoroutine(Reload());
             return;
         }
 
@@ -147,16 +150,28 @@ public class Weapon : MonoBehaviour
             isReloading = true;
             WeaponsAnimator.enabled = true;
             WeaponsAnimator.SetBool("Reloading", true);
+            reloadingWaitTimeCircle.gameObject.SetActive(true);
+            reloadingWaitTimeCircle.startReloadTime(this);
 
             yield return new WaitForSeconds(reloadTime - .25f);
             currentAmmo = maxAmmo;
             reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
             WeaponsAnimator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
-
             WeaponsAnimator.enabled = false;
             isReloading = false;
         }
+    }
+
+    public void fastReloading()
+    {
+        if (reloadingCoroutine!=null)
+            StopCoroutine(reloadingCoroutine);
+        currentAmmo = maxAmmo;
+        reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
+        WeaponsAnimator.SetBool("Reloading", false);
+        WeaponsAnimator.enabled = false;
+        isReloading = false;
     }
 
     void OnEnable()
