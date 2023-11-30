@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     [Header("Setup")]
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
+    private float initialDamage;
 
     [Header("Effects")]
     ParticleSystem muzzleFlash;
@@ -71,6 +72,7 @@ public class Weapon : MonoBehaviour
         resetSpreadTimer = resetSpreadDelay;
         currentAmmo = maxAmmo;
         reloadingCircle = gameObject.GetComponentInChildren<FloatingCircleReloading>();
+        initialDamage = damage;
     }
 
     void Update()
@@ -202,7 +204,71 @@ public class Weapon : MonoBehaviour
 
         StartCoroutine(recoilAnimation());
         recoil.RecoilFire();
-        ProcessRaycast();
+
+        if (gameObject.name.Equals("Shotgun"))
+            ProcessRaycastShotgun();
+        else
+            ProcessRaycast();
+    }
+
+    private void ProcessRaycastShotgun()
+    {
+        RaycastHit hit;
+
+        Vector3 hitPoint;
+
+        Vector3 shootPoint = bulletTrailShootPoint.position;
+
+        int numBulletShooted = 5;
+
+        Vector3[] shootDirection = new Vector3[numBulletShooted];
+
+        for (int i = 0; i < shootDirection.Length; i++)
+        {
+            shootDirection[i] = SpreadBullets();
+        }
+
+        int j = 0;
+        foreach (Vector3 bullet in shootDirection)
+        {
+            //trovo il punto di impatto
+            if (Physics.Raycast(FirstPersonCamera.transform.position, bullet, out hit, range))
+            {
+                hitPoint = hit.point;
+            }
+            else
+            {
+                //hitpoint se non colpisco nulla
+                hitPoint = transform.position + FirstPersonCamera.transform.forward * range / 3;
+            }
+
+            //verifico raycast partendo dall'arma in direzione del punto di impatto
+            shootDirection[j] = hitPoint - shootPoint;
+            if (Physics.Raycast(shootPoint, bullet, out hit, range))
+            {
+                hitPoint = hit.point;
+                //Debug.Log("Colpito: " + hit.transform.name);
+                HitImpactEffect(hit);
+
+                damageByDistance(shootPoint, hitPoint);
+
+                ProcessDamage(hit);
+
+                damage = initialDamage;
+                
+            }
+
+            SpawnBulletTrail(hitPoint);
+            j++;
+        }
+
+    }
+
+    private void damageByDistance(Vector3 shootPoint, Vector3 hitPoint){
+        float distance = Vector3.Distance(shootPoint, hitPoint);
+        damage = damage - (distance * 6);
+        if (damage <= 5)
+            damage = 5;
     }
 
     IEnumerator recoilAnimation()
