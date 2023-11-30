@@ -181,11 +181,14 @@ public class FalconFPS : MonoBehaviour
     [DllImport("FalconUnityPlugin")]
     public static extern void RemoveRandomForces();
 
+    private BasicAimHelper aimHelper;
+
     void Awake()
     {
         // Initialize buttons
         buttons = new bool[] { false, false, false, false };
 
+        aimHelper = GameObject.FindWithTag("MainCamera").GetComponent<BasicAimHelper>();
         try
         {
             if (Initialize())
@@ -199,11 +202,13 @@ public class FalconFPS : MonoBehaviour
                 UseForceFeedback(useForceFeedback);
 
                 Debug.Log("Falcon success");
+                aimHelper.enabled = true;
                 isActive = true;
             }
             else
             {
                 Debug.Log("Falcon failure");
+                aimHelper.enabled = false;
                 isActive = false;
             }
         }
