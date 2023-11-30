@@ -544,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1232119976987494
 GameObject:
   m_ObjectHideFlags: 1
@@ -796,7 +796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1347121279675488
 GameObject:
   m_ObjectHideFlags: 1
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1987686747885732}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6da4d7912c4a5c43a3d597c23518965, type: 3}
   m_Name: 
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasShooted: 0
   range: 50
-  damage: 80
+  damage: 50
   bulletTrail: {fileID: 120648884187509030, guid: 15ed57ca530b2974baa7158aa47ba7e6,
     type: 2}
   fireRate: 0.13
@@ -5232,7 +5232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasShooted: 0
   range: 100
-  damage: 30
+  damage: 40
   bulletTrail: {fileID: 120648884187509030, guid: d2ec70c814159504cb3e12e99b00b151,
     type: 2}
   fireRate: 0.13
@@ -5825,7 +5825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasShooted: 0
   range: 100
-  damage: 27
+  damage: 35
   bulletTrail: {fileID: 120648884187509030, guid: 02454c0ac2157c145886d9cd0fb47303,
     type: 2}
   fireRate: 0.12
@@ -6013,7 +6013,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.15}
 --- !u!198 &198032712998246400
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -53554,7 +53554,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -53743,7 +53743,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

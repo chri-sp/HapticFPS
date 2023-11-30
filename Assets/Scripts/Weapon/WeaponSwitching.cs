@@ -11,6 +11,8 @@ public class WeaponSwitching : MonoBehaviour
 
     public int selectedWeapon = 0;
 
+    private bool isSwitching = false;
+
     // Use this for initialization
     void Start()
     {
@@ -41,10 +43,23 @@ public class WeaponSwitching : MonoBehaviour
         weaponSwitchingByNumber();
 
         if (previousSelectedWeapon != selectedWeapon) {
+            StartCoroutine(switchWeapon());
+        }
+    }
+
+    IEnumerator switchWeapon()
+    {
+        if (!isSwitching) { 
+            isSwitching = true;
+            Animator weaponAnimator = GameObject.FindWithTag("Weapon").GetComponent<Animator>();
+            weaponAnimator.Play("PutWeapon");
+            yield return new WaitForSeconds(.4f);      
             selectWeapon();
             setHandsPosition();
             weaponManager.updateWeapon();
+            isSwitching = false;
         }
+        
     }
 
     private void weaponSwitchingByNumber()

@@ -93,7 +93,10 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        weaponInput();
+        if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            weaponInput();
+        }   
     }
 
     private void weaponInput()
@@ -160,7 +163,9 @@ public class Weapon : MonoBehaviour
     {
         isReloading = false;
         WeaponsAnimator = transform.parent.GetComponent<Animator>();
+        weaponAnimator = GetComponent<Animator>();
         WeaponsAnimator.SetBool("Reloading", false);
+        weaponAnimator.Play("WeaponSwitched");
     }
 
     public void setSpreadFactor()
