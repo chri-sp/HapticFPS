@@ -99,7 +99,7 @@ public class EnemyHealth : MonoBehaviour
             animator.SetBool("death", true);
             yield return new WaitForSeconds(1);
             DeathExplosion(explosionDuration);
-            Destroy(healtBar.gameObject);
+            healtBar.gameObject.SetActive(false);
             foreach (Renderer mesh in meshes)
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
