@@ -94,10 +94,12 @@ public class HapticProbeFPS : MonoBehaviour
         timer += Time.deltaTime;
         //test funzione creazione molla
         
+        /*
         if (isActive() && buttonWasPressed(1))
         {
             StartCoroutine(springHapticFeedback(1));
         }
+        */
         
         // Move probe		
         //SetPosition();

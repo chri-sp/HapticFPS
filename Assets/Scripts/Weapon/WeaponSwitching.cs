@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
+    private HapticProbeFPS controller;
+
     private InverseKinematics[] handsPosition;
 
     private WeaponManager weaponManager;
@@ -33,6 +35,8 @@ public class WeaponSwitching : MonoBehaviour
 
         handsPosition[0].setHandPosition(leftHandPosition);
         handsPosition[1].setHandPosition(rightHandPosition);
+
+        controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
     }
 
     // Update is called once per frame
@@ -41,9 +45,20 @@ public class WeaponSwitching : MonoBehaviour
         int previousSelectedWeapon = selectedWeapon;
         weaponSwitchingScrollWheel();
         weaponSwitchingByNumber();
+        weaponSwitchingFalcon();
 
         if (previousSelectedWeapon != selectedWeapon) {
             StartCoroutine(switchWeapon());
+        }
+    }
+
+    private void weaponSwitchingFalcon()
+    {
+        //Uso come input il falcon
+        if (controller.isActive() && controller.buttonWasPressed(1))
+        {
+            selectedWeapon++;
+            selectedWeapon %= transform.childCount;
         }
     }
 
