@@ -93,6 +93,7 @@ public class Weapon : MonoBehaviour
         if (currentAmmo <= 0f || (Input.GetKeyDown("r") && currentAmmo < maxAmmo))
         {
             reloadingCoroutine = StartCoroutine(Reload());
+            StartCoroutine(controller.reloadHapticFeedback());
             return;
         }
 

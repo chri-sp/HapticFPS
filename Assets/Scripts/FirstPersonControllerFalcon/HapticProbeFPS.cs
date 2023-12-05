@@ -64,6 +64,7 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isDashing = false;
     private bool isReceivingAttack = false;
     private bool isChangingWeapon = false;
+    private bool isReloading = false;
 
     // Use this for initialization
     void Start()
@@ -378,6 +379,23 @@ public class HapticProbeFPS : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             FalconFPS.RemoveSimpleForce(changeWeaponIndex);
             isChangingWeapon = false;
+        }
+    }
+
+    public IEnumerator reloadHapticFeedback()
+    {
+        if (isActive() && !isReloading)
+        {
+            isReloading = true;
+            yield return new WaitForSeconds(0.1f);
+            int reloadingIndex = FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f));
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 0f, 0f));
+            yield return new WaitForSeconds(0.5f);
+            FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 3f, 0f));
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.RemoveSimpleForce(reloadingIndex);
+            isReloading = false;
         }
     }
 
