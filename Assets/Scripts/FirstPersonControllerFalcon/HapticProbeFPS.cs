@@ -63,6 +63,7 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isJumping = false;
     private bool isDashing = false;
     private bool isReceivingAttack = false;
+    private bool isChangingWeapon = false;
 
     // Use this for initialization
     void Start()
@@ -317,7 +318,7 @@ public class HapticProbeFPS : MonoBehaviour
         if (isActive() && !isDashing)
         {
             isDashing = true;
-            float multiplierVertical = 3;
+            float multiplierVertical = 2;
             int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(runIndex);
@@ -361,6 +362,22 @@ public class HapticProbeFPS : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             FalconFPS.RemoveSpring(springIndex);
             isReceivingAttack = false;
+        }
+    }
+
+    public IEnumerator changeWeaponHapticFeedback()
+    {
+        if (isActive() && !isChangingWeapon)
+        {
+            isChangingWeapon = true;
+            int changeWeaponIndex = FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f));
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.UpdateSimpleForce(changeWeaponIndex, new Vector3(0f, 0f, 0f));
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.UpdateSimpleForce(changeWeaponIndex, new Vector3(0f, 0f, 3f));
+            yield return new WaitForSeconds(0.2f);
+            FalconFPS.RemoveSimpleForce(changeWeaponIndex);
+            isChangingWeapon = false;
         }
     }
 

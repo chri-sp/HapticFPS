@@ -59,6 +59,7 @@ public class WeaponSwitching : MonoBehaviour
         {
             selectedWeapon++;
             selectedWeapon %= transform.childCount;
+            StartCoroutine(controller.changeWeaponHapticFeedback());
         }
     }
 
