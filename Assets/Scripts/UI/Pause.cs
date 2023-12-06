@@ -9,10 +9,15 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused = false;
 
+    private FirstPersonControllerFalcon player;
+    private HapticProbeFPS controller;
+
     // Use this for initialization
     void Start()
     {
         pauseMenu.SetActive(false);
+        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
+        controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,7 @@ public class Pause : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            controller.resetAllForces();
             PauseGame();
         }
     }
@@ -41,6 +47,7 @@ public class Pause : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         isPaused = false;
+        player.lockMouse();
         Time.timeScale = 1f;
     }
 }

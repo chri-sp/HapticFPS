@@ -286,6 +286,17 @@ public class HapticProbeFPS : MonoBehaviour
         return buttonPressed[button];
     }
 
+    public void resetAllForces() {
+        if (isActive()) { 
+            FalconFPS.RemoveSurfaces();
+            FalconFPS.RemoveIntermolecularForces();
+            FalconFPS.RemoveRandomForces();
+            FalconFPS.RemoveSimpleForces();
+            FalconFPS.RemoveViscosities();
+            FalconFPS.RemoveSprings();
+        }
+    }
+
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
         if (isActive() && !recoiling)

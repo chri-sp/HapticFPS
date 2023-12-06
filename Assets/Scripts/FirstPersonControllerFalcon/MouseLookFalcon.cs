@@ -35,6 +35,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             this.controller = controller;
         }
 
+        public void lockMouseAfterPause() {
+            m_cursorIsLocked = true;
+        }
+
         public float getAxisXFalcon()
         {
             float axisX = 0;
@@ -131,7 +135,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void InternalLockUpdate()
         {
-            if (Input.GetKeyUp(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 m_cursorIsLocked = false;
             }

@@ -76,6 +76,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             pause = GameObject.FindWithTag("GameEvents").GetComponentInChildren<Pause>();
         }
 
+        public void lockMouse() {
+            m_MouseLook.lockMouseAfterPause();
+        }
+
         public bool characterIsLanded()
         {
             return !m_PreviouslyGrounded && m_CharacterController.isGrounded && !characterDash.dashing;
