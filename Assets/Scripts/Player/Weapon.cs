@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     public bool hasShooted = false;
     private FloatingCircleReloading reloadingCircle;
     [SerializeField] private ReloadingWaitTimeCircle reloadingWaitTimeCircle;
+    private Pause pause;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -76,10 +77,14 @@ public class Weapon : MonoBehaviour
         initialDamage = damage;
         //reloadingWaitTimeCircle = GameObject.FindWithTag("Canvas").GetComponent<ReloadingWaitTimeCircle>();
         reloadingWaitTimeCircle.gameObject.SetActive(false);
+        pause = GameObject.FindWithTag("GameEvents").GetComponentInChildren<Pause>();
     }
 
     void Update()
     {
+
+        if (pause.isPaused) return;
+
         spreadAfterShoootTimer();
 
         setSpreadFactor();

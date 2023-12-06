@@ -9,29 +9,20 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused = false;
 
-    private FirstPersonControllerFalcon player;
-    private Weapon weapon;
-    private WeaponManager weaponManager;
-
     // Use this for initialization
     void Start()
     {
         pauseMenu.SetActive(false);
-        player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
-        weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
-        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
-        weaponManager.onWeaponChanged += weaponChanged;
-    }
-
-    void weaponChanged(Weapon newWeapon)
-    {
-        weapon = newWeapon;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResumeGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
         }
@@ -41,8 +32,6 @@ public class Pause : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         isPaused = true;
-        player.enabled = false;
-        weapon.enabled = false;
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -52,8 +41,6 @@ public class Pause : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         isPaused = false;
-        player.enabled = true;
-        weapon.enabled = true;
-        Time.timeScale = 1f;    
+        Time.timeScale = 1f;
     }
 }
