@@ -382,7 +382,7 @@ public class HapticProbeFPS : MonoBehaviour
         }
     }
 
-    public IEnumerator reloadHapticFeedback()
+    public IEnumerator reloadHapticFeedback(Weapon weapon)
     {
         if (isActive() && !isReloading)
         {
@@ -391,7 +391,8 @@ public class HapticProbeFPS : MonoBehaviour
             int reloadingIndex = FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 0f, 0f));
-            yield return new WaitForSeconds(0.5f);
+            //attesa prima di avere arma ricaricata
+            yield return new WaitForSeconds(weapon.reloadTime-.3f - .2f);
             FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 3f, 0f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.RemoveSimpleForce(reloadingIndex);

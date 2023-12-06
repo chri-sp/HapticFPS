@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
         if (currentAmmo <= 0f || (Input.GetKeyDown("r") && currentAmmo < maxAmmo))
         {
             reloadingCoroutine = StartCoroutine(Reload());
-            StartCoroutine(controller.reloadHapticFeedback());
+            StartCoroutine(controller.reloadHapticFeedback(this));
             return;
         }
 
@@ -232,6 +232,26 @@ public class Weapon : MonoBehaviour
             ProcessRaycast();
     }
 
+    private void damageByDistance(Vector3 shootPoint, Vector3 hitPoint){
+        float distance = Vector3.Distance(shootPoint, hitPoint);
+        damage = damage - (distance * 6);
+        if (damage <= 5)
+            damage = 5;
+    }
+
+    IEnumerator recoilAnimation()
+    {
+        weaponAnimator.Play("Recoil");
+        yield return new WaitForSeconds(0.1f);
+        weaponAnimator.Play("Idle");
+    }
+
+
+    private void PlayMuzzleFlash()
+    {
+        muzzleFlash.Play();
+    }
+
     private void ProcessRaycastShotgun()
     {
         RaycastHit hit;
@@ -260,7 +280,7 @@ public class Weapon : MonoBehaviour
             else
             {
                 //hitpoint se non colpisco nulla
-                hitPoint = transform.position + FirstPersonCamera.transform.forward * range / 3;
+                hitPoint = transform.position + SpreadBullets() * range / 3;
             }
 
             //verifico raycast partendo dall'arma in direzione del punto di impatto
@@ -276,7 +296,7 @@ public class Weapon : MonoBehaviour
                 ProcessDamage(hit);
 
                 damage = initialDamage;
-                
+
             }
 
             SpawnBulletTrail(hitPoint);
@@ -284,27 +304,6 @@ public class Weapon : MonoBehaviour
         }
 
     }
-
-    private void damageByDistance(Vector3 shootPoint, Vector3 hitPoint){
-        float distance = Vector3.Distance(shootPoint, hitPoint);
-        damage = damage - (distance * 6);
-        if (damage <= 5)
-            damage = 5;
-    }
-
-    IEnumerator recoilAnimation()
-    {
-        weaponAnimator.Play("Recoil");
-        yield return new WaitForSeconds(0.1f);
-        weaponAnimator.Play("Idle");
-    }
-
-
-    private void PlayMuzzleFlash()
-    {
-        muzzleFlash.Play();
-    }
-
 
     private void ProcessRaycast()
     {
