@@ -170,6 +170,7 @@ public class EnemyAIShooting : MonoBehaviour
         Vector3 startPos = transform.position;
         Vector3 endPos = transform.position + direction;
 
+        //controlla se la posizione finale è consentita
         if (navMeshAgent.SetDestination(endPos))
         {
             float countTime = 0;

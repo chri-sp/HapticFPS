@@ -95,14 +95,14 @@ public class HapticProbeFPS : MonoBehaviour
     {
         timer += Time.deltaTime;
         //test funzione creazione molla
-        
+
         /*
         if (isActive() && buttonWasPressed(1))
         {
             StartCoroutine(springHapticFeedback(1));
         }
         */
-        
+
         // Move probe		
         //SetPosition();
 
@@ -217,7 +217,8 @@ public class HapticProbeFPS : MonoBehaviour
             virtualPositionY = virtualPositionY + 0.1f;
         }
         //Arrivo al bordo superiore-destro
-        else if ((falcon.position.x > startPositionX + 2.5) && (falcon.position.y > startPositionY + 1.5)) {
+        else if ((falcon.position.x > startPositionX + 2.5) && (falcon.position.y > startPositionY + 1.5))
+        {
             virtualPositionX = virtualPositionX + 0.1f;
             virtualPositionY = virtualPositionY + 0.1f;
         }
@@ -286,8 +287,10 @@ public class HapticProbeFPS : MonoBehaviour
         return buttonPressed[button];
     }
 
-    public void resetAllForces() {
-        if (isActive()) { 
+    public void resetAllForces()
+    {
+        if (isActive())
+        {
             FalconFPS.RemoveSurfaces();
             FalconFPS.RemoveIntermolecularForces();
             FalconFPS.RemoveRandomForces();
@@ -299,43 +302,52 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
-        if (isActive() && !recoiling)
+        if (recoiling) yield break;
+        recoiling = true;
+
+        if (isActive())
         {
-            recoiling = true;
             float intensityRecoilMultiplier = 2f;
             int recoilIndex = FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(recoilIndex);
-            recoiling = false;
         }
-
+        recoiling = false;
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
+        if (isJumping) yield break;
+        isJumping = true;
+
         //timer evita feedback salto iniziale in gioco
-        if (isActive() && !isJumping && timer>1)
+        if (isActive() && timer > 1)
         {
-            isJumping = true;
+
             float intensityJumpMultiplier = 1.5f;
             int jumpIndex = FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(jumpIndex);
-            isJumping = false;
+
         }
+
+        isJumping = false;
     }
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
     {
-        if (isActive() && !isDashing)
+        if (isDashing) yield break;
+        isDashing = true;
+
+        if (isActive())
         {
-            isDashing = true;
             float multiplierVertical = 2;
             int runIndex = FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical));
             yield return new WaitForSeconds(0.1f);
             FalconFPS.RemoveSimpleForce(runIndex);
-            isDashing = false;
         }
+
+        isDashing = false;
     }
 
     public IEnumerator springHapticFeedback(int button)
@@ -355,7 +367,8 @@ public class HapticProbeFPS : MonoBehaviour
         }
     }
 
-    public IEnumerator setInitialPosition() {
+    public IEnumerator setInitialPosition()
+    {
         if (isActive())
         {
             startPlayerPosition = transform.position;
@@ -367,21 +380,28 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator attackHapticFeedback()
     {
-        if (isActive() && !isReceivingAttack)
+        if (isReceivingAttack) yield break;
+        isReceivingAttack = true;
+
+        if (isActive())
         {
-            isReceivingAttack = true;
+
             int springIndex = FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f);
             yield return new WaitForSeconds(.5f);
             FalconFPS.RemoveSpring(springIndex);
-            isReceivingAttack = false;
+
         }
+        isReceivingAttack = false;
     }
 
     public IEnumerator changeWeaponHapticFeedback()
     {
-        if (isActive() && !isChangingWeapon)
+
+        if (isChangingWeapon) yield break;
+        isChangingWeapon = true;
+
+        if (isActive())
         {
-            isChangingWeapon = true;
             int changeWeaponIndex = FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.UpdateSimpleForce(changeWeaponIndex, new Vector3(0f, 0f, 0f));
@@ -389,26 +409,31 @@ public class HapticProbeFPS : MonoBehaviour
             FalconFPS.UpdateSimpleForce(changeWeaponIndex, new Vector3(0f, 0f, 3f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.RemoveSimpleForce(changeWeaponIndex);
-            isChangingWeapon = false;
         }
+
+        isChangingWeapon = false;
     }
 
     public IEnumerator reloadHapticFeedback(Weapon weapon)
     {
-        if (isActive() && !isReloading)
+
+        if (isReloading) yield break;
+        isReloading = true;
+
+        if (isActive())
         {
-            isReloading = true;
             yield return new WaitForSeconds(0.1f);
             int reloadingIndex = FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 0f, 0f));
             //attesa prima di avere arma ricaricata
-            yield return new WaitForSeconds(weapon.reloadTime-.3f - .2f);
+            yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
             FalconFPS.UpdateSimpleForce(reloadingIndex, new Vector3(0f, 3f, 0f));
             yield return new WaitForSeconds(0.2f);
             FalconFPS.RemoveSimpleForce(reloadingIndex);
-            isReloading = false;
         }
+
+        isReloading = false;
     }
 
 }
