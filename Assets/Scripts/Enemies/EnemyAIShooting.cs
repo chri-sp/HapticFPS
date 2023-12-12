@@ -128,10 +128,12 @@ public class EnemyAIShooting : MonoBehaviour
             incrementDodgeProbability((1 - healt.fractionRemaining()) / 4);
         }
 
-        float noDodegRadius = 4f;
+
+        float noDodegRadius = 5f;
 
         //se nemico è troppo vicino al player non effettua dodge
-        if (Vector3.Distance(transform.position, m_Player.position) > noDodegRadius) {
+        if (Vector3.Distance(transform.position, m_Player.position) > noDodegRadius)
+        {
             RaycastHit hit;
             Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
 
@@ -140,29 +142,92 @@ public class EnemyAIShooting : MonoBehaviour
             {
                 isDodging = true;
                 yield return new WaitForSeconds(.05f);
-
                 //se il player sta mirando a questo nemico
                 GameObject enemyIsViewedByPlayer = null;
-                if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null) {
+                if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
+                {
                     enemyIsViewedByPlayer = hit.collider.gameObject.GetComponentInParent<EnemyHealth>().gameObject;
                 }
-       
+
                 if (enemyIsViewedByPlayer == transform.gameObject)
                 {
                     if (Random.value <= dodgeProbability)
                     {
-                        float movementChoice = Random.value;
-                        // Nemico esegue una schivata
-                        if (movementChoice <= .5f)
-                            StartCoroutine(DodgeMove(transform.right * dodgeDistance));
-                        else
-                            StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
+                        //cerco una direzione ed una distanza giusta per un massimo di 4 volte
+                        Vector3 direction = chooseDodgeDirection();
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (!canDodge(direction, dodgeDistance))
+                            {
+                                direction = chooseDodgeDirection();
+                                direction /= 2;
+                            }
+                            else
+                                break;
+                        }
+
+                        StartCoroutine(DodgeMove(direction * dodgeDistance));
+
                     }
                     resetDodgeTimer = resetDodgeDelay;
                 }
                 isDodging = false;
             }
-        }  
+        }
+    }
+
+    private Vector3 chooseDodgeDirection()
+    {
+        Vector3 direction;
+        float movementChoice = Random.value;
+        // Nemico esegue una schivata
+        if (movementChoice <= .45f)
+        {
+            direction = transform.right;
+        }
+        else if (movementChoice <= .9f)
+        {
+            direction = -transform.right;
+        }
+        else
+        {
+            direction = transform.forward;
+        }
+        return direction;
+    }
+
+    bool canDodge(Vector3 direction, float distance)
+    {
+        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance))
+            return true;
+        else
+            return false;
+    }
+
+    bool passDodgeCollision(Vector3 direction, float distance)
+    {
+        RaycastHit hit;
+        Vector3 position = transform.position;
+        position.y = position.y + .5f;
+
+        return !Physics.Raycast(position, direction, out hit, distance);
+    }
+
+    bool passGroundDodge(Vector3 direction, float distance)
+    {
+        RaycastHit hit;
+
+        //ottengo posizione attuale oggetto
+        Vector3 position = transform.position;
+        position.y = position.y + .5f;
+
+        //verifico se esiste un elemento su cui potrà poggiare l'oggetto
+        Vector3 finalPosition = position + (direction * distance);
+        Vector3 checkGroundPosition = finalPosition;
+        checkGroundPosition.y = checkGroundPosition.y - .7f;
+        return Physics.Linecast(finalPosition, checkGroundPosition);
+
     }
 
     IEnumerator DodgeMove(Vector3 direction)

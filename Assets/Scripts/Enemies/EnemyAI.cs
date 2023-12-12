@@ -154,7 +154,7 @@ public class EnemyAI : MonoBehaviour
         {
             RaycastHit hit;
             Vector3 directionToEnemy = FirstPersonCamera.transform.forward;
-            
+
             //se nemico vede il player ed è passato il tempo di attesa effettua dodge
             if (isViewing() && resetDodgeTimer <= 0 && Physics.Raycast(FirstPersonCamera.transform.position, directionToEnemy, out hit) && !isDodging)
             {
@@ -171,14 +171,22 @@ public class EnemyAI : MonoBehaviour
                 {
                     if (Random.value <= dodgeProbability)
                     {
-                        float movementChoice = Random.value;
-                        // Nemico esegue una schivata
-                        if (movementChoice <= .45f)
-                            StartCoroutine(DodgeMove(transform.right * dodgeDistance));
-                        else if (movementChoice <= .9f)
-                            StartCoroutine(DodgeMove(-transform.right * dodgeDistance));
-                        else
-                            StartCoroutine(DodgeMove(transform.forward * dodgeDistance));
+                        //cerco una direzione ed una distanza giusta per un massimo di 4 volte
+                        Vector3 direction = chooseDodgeDirection();
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (!canDodge(direction, dodgeDistance))
+                            {
+                                direction = chooseDodgeDirection();
+                                direction /= 2;
+                            }
+                            else
+                                break;
+                        }
+
+                        StartCoroutine(DodgeMove(direction * dodgeDistance));
+
                     }
                     resetDodgeTimer = resetDodgeDelay;
                 }
@@ -187,28 +195,75 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private Vector3 chooseDodgeDirection()
+    {
+        Vector3 direction;
+        float movementChoice = Random.value;
+        // Nemico esegue una schivata
+        if (movementChoice <= .45f)
+        {
+            direction = transform.right;
+        }
+        else if (movementChoice <= .9f)
+        {
+            direction = -transform.right;
+        }
+        else
+        {
+            direction = transform.forward;
+        }
+        return direction;
+    }
+
+    bool canDodge(Vector3 direction, float distance)
+    {
+        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance))
+            return true;
+        else
+            return false;
+    }
+
+    bool passDodgeCollision(Vector3 direction, float distance)
+    {
+        RaycastHit hit;
+        Vector3 position = transform.position;
+        position.y = position.y + .5f;
+
+        return !Physics.Raycast(position, direction, out hit, distance);
+    }
+
+    bool passGroundDodge(Vector3 direction, float distance)
+    {
+        RaycastHit hit;
+
+        //ottengo posizione attuale oggetto
+        Vector3 position = transform.position;
+        position.y = position.y + .5f;
+
+        //verifico se esiste un elemento su cui potrà poggiare l'oggetto
+        Vector3 finalPosition = position + (direction * distance);
+        Vector3 checkGroundPosition = finalPosition;
+        checkGroundPosition.y = checkGroundPosition.y - .7f;
+        return Physics.Linecast(finalPosition, checkGroundPosition);
+
+    }
+
     IEnumerator DodgeMove(Vector3 direction)
     {
         Vector3 startPos = transform.position;
         Vector3 endPos = transform.position + direction;
-
-        path = new NavMeshPath();
-
-        if (NavMesh.CalculatePath(transform.position, endPos, NavMesh.AllAreas, path))
+        float countTime = 0;
+        while (countTime <= dodgeDuration)
         {
-            float countTime = 0;
-            while (countTime <= dodgeDuration)
-            {
-                float percentTime = countTime / dodgeDuration;
-                transform.position = Vector3.Lerp(startPos, endPos, percentTime);
-                yield return null; // wait for next frame
-                countTime += Time.deltaTime;
-            }
-            // because of the frame rate and the way we are running LERP,
-            // the last timePercent in the loop may not = 1
-            // therefore, this line ensures we end exactly where desired.
-            transform.position = endPos;
+            float percentTime = countTime / dodgeDuration;
+            transform.position = Vector3.Lerp(startPos, endPos, percentTime);
+            yield return null; // wait for next frame
+            countTime += Time.deltaTime;
         }
+        // because of the frame rate and the way we are running LERP,
+        // the last timePercent in the loop may not = 1
+        // therefore, this line ensures we end exactly where desired.
+        transform.position = endPos;
     }
 
     void dodgetTimer()
@@ -219,7 +274,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void incrementDodgeProbability(float moreProbability) { 
+    private void incrementDodgeProbability(float moreProbability)
+    {
         dodgeProbability += moreProbability;
     }
 
@@ -320,7 +376,7 @@ public class EnemyAI : MonoBehaviour
         {
             m_PlayerPosition = m_Player.position;
         }
-        
+
         if (!m_CaughtPlayer)
         {
             Move(speedRun);
