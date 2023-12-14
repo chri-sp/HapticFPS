@@ -179,11 +179,13 @@ public class EnemyAI : MonoBehaviour
                             if (!canDodge(direction, dodgeDistance))
                             {
                                 direction = chooseDodgeDirection();
-                                direction /= 2;
                             }
                             else
                                 break;
                         }
+
+                        //la distanza di schivata viene scelta randomicamente basandosi sulla distanza massima percorribile
+                        direction = direction / Random.Range(1f, 2f);
 
                         StartCoroutine(DodgeMove(direction * dodgeDistance));
 

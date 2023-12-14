@@ -105,13 +105,14 @@ public class EnemyAIShooting : MonoBehaviour
                 Patroling();
                 Alerted();
             }
-       
+
             isJumping();
             Animations();
         }
     }
 
-    private void Animations() {
+    private void Animations()
+    {
         animator.SetFloat("speed", navMeshAgent.desiredVelocity.sqrMagnitude);
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
@@ -161,11 +162,13 @@ public class EnemyAIShooting : MonoBehaviour
                             if (!canDodge(direction, dodgeDistance))
                             {
                                 direction = chooseDodgeDirection();
-                                direction /= 2;
                             }
                             else
                                 break;
                         }
+
+                        //la distanza di schivata viene scelta randomicamente basandosi sulla distanza massima percorribile
+                        direction = direction / Random.Range(1f, 2f);
 
                         StartCoroutine(DodgeMove(direction * dodgeDistance));
 
@@ -235,22 +238,18 @@ public class EnemyAIShooting : MonoBehaviour
         Vector3 startPos = transform.position;
         Vector3 endPos = transform.position + direction;
 
-        //controlla se la posizione finale è consentita
-        if (navMeshAgent.SetDestination(endPos))
+        float countTime = 0;
+        while (countTime <= dodgeDuration)
         {
-            float countTime = 0;
-            while (countTime <= dodgeDuration)
-            {
-                float percentTime = countTime / dodgeDuration;
-                transform.position = Vector3.Lerp(startPos, endPos, percentTime);
-                yield return null; // wait for next frame
-                countTime += Time.deltaTime;
-            }
-            // because of the frame rate and the way we are running LERP,
-            // the last timePercent in the loop may not = 1
-            // therefore, this line ensures we end exactly where desired.
-            transform.position = endPos;
+            float percentTime = countTime / dodgeDuration;
+            transform.position = Vector3.Lerp(startPos, endPos, percentTime);
+            yield return null; // wait for next frame
+            countTime += Time.deltaTime;
         }
+        // because of the frame rate and the way we are running LERP,
+        // the last timePercent in the loop may not = 1
+        // therefore, this line ensures we end exactly where desired.
+        transform.position = endPos;
     }
 
 
@@ -283,14 +282,17 @@ public class EnemyAIShooting : MonoBehaviour
             StartCoroutine(resumeSpeed(2f, currentSpeed));
         }
     }
-    IEnumerator resumeSpeed(float seconds, float speed) {
+    IEnumerator resumeSpeed(float seconds, float speed)
+    {
         yield return new WaitForSeconds(seconds);
         Move(speed);
     }
 
 
-    IEnumerator lookPlayer(float rotationTime) {
-        if (!isLooking) {
+    IEnumerator lookPlayer(float rotationTime)
+    {
+        if (!isLooking)
+        {
             isLooking = true;
             Vector3 dir = m_Player.position - transform.position;
 
@@ -312,7 +314,8 @@ public class EnemyAIShooting : MonoBehaviour
         }
     }
 
-    private void isJumping() {
+    private void isJumping()
+    {
         if (navMeshAgent.isOnOffMeshLink)
         {
             animator.SetBool("jump", true);
@@ -324,12 +327,14 @@ public class EnemyAIShooting : MonoBehaviour
         }
     }
 
-    private bool isDead() {
-        if (animator.GetBool("death").Equals(true)) {
+    private bool isDead()
+    {
+        if (animator.GetBool("death").Equals(true))
+        {
             Stop();
             return true;
         }
-        return false;   
+        return false;
     }
 
 
@@ -339,25 +344,29 @@ public class EnemyAIShooting : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 
-    public bool isViewing() {
+    public bool isViewing()
+    {
         if (m_playerInRange && Vector3.Distance(transform.position, m_Player.position) <= stoppingDistanceShooting)
         {
             Stop();
             return true;
         }
-        else {
+        else
+        {
             //randomDistanceShooting();
             return false;
         }
     }
 
-    private void randomDistanceShooting() {
+    private void randomDistanceShooting()
+    {
         Random.seed = System.DateTime.Now.Millisecond;
         stoppingDistanceShooting = Random.Range(InitialStoppingDistanceShooting, InitialStoppingDistanceShooting + 10f);
     }
     private void Chasing()
     {
-        if (!isViewing()) {
+        if (!isViewing())
+        {
             //  The enemy is chasing the player
             m_PlayerNear = false;                       //  Set false that hte player is near beacause the enemy already sees the player
             playerLastPosition = Vector3.zero;          //  Reset the player near position
@@ -393,7 +402,7 @@ public class EnemyAIShooting : MonoBehaviour
                 }
             }
         }
-     }
+    }
 
     private void Patroling()
     {
