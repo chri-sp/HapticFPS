@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     private FloatingCircleReloading reloadingCircle;
     [SerializeField] private ReloadingWaitTimeCircle reloadingWaitTimeCircle;
     private Pause pause;
+    private AudioManager audioManager;
 
     [Header("Setup")]
     [SerializeField] float range = 100f;
@@ -24,6 +25,7 @@ public class Weapon : MonoBehaviour
     [Header("Effects")]
     ParticleSystem muzzleFlash;
     GameObject hitEffect;
+    GameObject shootSound;
     [SerializeField] LineRenderer bulletTrail;
     Transform bulletTrailShootPoint;
     private Animator weaponAnimator;
@@ -65,6 +67,7 @@ public class Weapon : MonoBehaviour
         WeaponsAnimator = transform.parent.GetComponent<Animator>();
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         hitEffect = transform.Find("Hit Impact VFX").gameObject;
+        shootSound = transform.Find("ShootSound").gameObject;
         bulletTrailShootPoint = muzzleFlash.gameObject.transform;
         crosshair = GameObject.FindWithTag("Canvas").GetComponentInChildren<Crosshair>();
         recoil = GameObject.Find("CameraRecoil").GetComponent<Recoil>();
@@ -78,6 +81,7 @@ public class Weapon : MonoBehaviour
         //reloadingWaitTimeCircle = GameObject.FindWithTag("Canvas").GetComponent<ReloadingWaitTimeCircle>();
         reloadingWaitTimeCircle.gameObject.SetActive(false);
         pause = GameObject.FindWithTag("GameEvents").GetComponentInChildren<Pause>();
+        audioManager = GameObject.FindWithTag("GameEvents").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -154,6 +158,7 @@ public class Weapon : MonoBehaviour
         if (!isReloading)
         {
             isReloading = true;
+            audioManager.Play(this.name+"Reloading");
             WeaponsAnimator.enabled = true;
             WeaponsAnimator.SetBool("Reloading", true);
             reloadingWaitTimeCircle.gameObject.SetActive(true);
@@ -222,6 +227,7 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         StartCoroutine(HasShooted());
+        playShootSound();
         currentAmmo--;
         reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
         PlayMuzzleFlash();
@@ -406,6 +412,19 @@ public class Weapon : MonoBehaviour
     {
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         impact.SetActive(true);
-        Destroy(impact, .1f);
+        Destroy(impact, .5f);
+    }
+
+    private void playShootSound()
+    {
+        GameObject soundEffect = Instantiate(shootSound, transform);
+        soundEffect.SetActive(true);
+        float VolumeVariance = .1f;
+        float pitchVariance = .3f;
+        //aggiunco affetto randomico audio
+        AudioSource effect = soundEffect.GetComponent<AudioSource>();
+        effect.volume = effect.volume * (1f + UnityEngine.Random.Range(-VolumeVariance / 2f, VolumeVariance / 2f));
+        effect.pitch = effect.pitch * (1f + UnityEngine.Random.Range(-pitchVariance / 2f, pitchVariance / 2f));
+        Destroy(soundEffect, 1f);
     }
 }
