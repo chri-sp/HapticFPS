@@ -29,7 +29,10 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
 
-            s.source.outputAudioMixerGroup = mixerGroup;
+            if (s.mixerGroup == null)
+                s.source.outputAudioMixerGroup = mixerGroup;
+            else
+                s.source.outputAudioMixerGroup = s.mixerGroup;
         }
     }
 
@@ -46,6 +49,11 @@ public class AudioManager : MonoBehaviour
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
         s.source.Play();
+    }
+
+    public bool IsPlaying(string sound) {
+        Sound s = Array.Find(sounds, item => item.name == sound);
+        return s.source.isPlaying;
     }
 
 

@@ -11,11 +11,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public float resetHealthDelay = 3f;
     private float resetHealthTimer;
 
+    private AudioManager audioManager;
     void Start()
     {
         initialHealth = health;
         healthController = GameObject.FindWithTag("Canvas").GetComponentInChildren<HealthController>();       
         resetHealthTimer = resetHealthDelay;
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -39,9 +41,16 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            soundHealthFinished();
             return 0;
         }
         return health / initialHealth;
+    }
+
+    void soundHealthFinished()
+    {
+        if (!audioManager.IsPlaying("HealthFinished"))
+            audioManager.Play("HealthFinished");
     }
 
     public float currentHealth()
@@ -64,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = initialHealth;
             healthController.healthIncrease();
+            audioManager.Play("HealthReset");
             resetHealthTimer = resetHealthDelay;
         }
     }

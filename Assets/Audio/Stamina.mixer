@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Stamina
+  m_OutputGroup: {fileID: 243580544947833750, guid: b457438bc42245c4db960c736c09b63b,
+    type: 2}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - 9448553cdbc86ca4c9ce6cadbc77db1b
+    - aeb9504be26647748b1b7a05c144306c
+    - fcbb9dd28ecee8140a9eec641e34f9d4
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 9448553cdbc86ca4c9ce6cadbc77db1b
+  m_Children:
+  - {fileID: 243257674825758532}
+  - {fileID: 243232103884183366}
+  m_Volume: 4a58e0c16d22b4a44a18b6e261ae0afc
+  m_Pitch: 632bc173f3259b24ca01beb85c7e53eb
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 7ee1df0c242adb64490e7bb629360594
+  m_EffectName: Attenuation
+  m_MixLevel: d207411adb9d268448dfa3607b446866
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 55e90ba99e47bf5458f8b29b4a8d6d9d
+  m_FloatValues:
+    892b3ff4d52b52c4195586028aa8128b: -30.320126
+    5f9d01eb86bd31d419a07c357043d683: -37.04165
+  m_TransitionOverrides: {}
+--- !u!243 &243232103884183366
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: StaminaReset
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fcbb9dd28ecee8140a9eec641e34f9d4
+  m_Children: []
+  m_Volume: 5f9d01eb86bd31d419a07c357043d683
+  m_Pitch: 3b87204f2347b3745868a61d60d319d4
+  m_Effects:
+  - {fileID: 244782482092772666}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243257674825758532
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: StaminaFinished
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: aeb9504be26647748b1b7a05c144306c
+  m_Children: []
+  m_Volume: 892b3ff4d52b52c4195586028aa8128b
+  m_Pitch: 830623fd3b526444d890bd5ff9a00804
+  m_Effects:
+  - {fileID: 244223083700764322}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244223083700764322
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6c128405687b17542a6ddc87840a83bd
+  m_EffectName: Attenuation
+  m_MixLevel: 775e53cfa3f99a142a5c30cc09b50fa0
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244782482092772666
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: a5ece93bb94bd484985d49608c138dbc
+  m_EffectName: Attenuation
+  m_MixLevel: 0f769899eba537c409a2d0ba74cd922c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

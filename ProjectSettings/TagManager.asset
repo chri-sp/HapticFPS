@@ -12,6 +12,7 @@ TagManager:
   - InGameMessage
   - CharacterArms
   - WeaponHolder
+  - AudioSystem
   layers:
   - Default
   - TransparentFX

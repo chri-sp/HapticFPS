@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1606304837326066}
+  m_IsPrefabParent: 1
+--- !u!1 &1606304837326066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4642959546890212}
+  - component: {fileID: 114464186289213852}
+  m_Layer: 0
+  m_Name: AudioSystem
+  m_TagString: AudioSystem
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4642959546890212
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606304837326066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114464186289213852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606304837326066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89199ff5022a9d64d89dd304359c00a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 26326eb15941b364694acd6a2d72c06a, type: 2}
+  sounds:
+  - name: PistolReloading
+    clip: {fileID: 8300000, guid: 21b63fe58af0c734486947e8e4c7c774, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243725641028098562, guid: c9e6e7fefa7c8c34495b828127923cc0,
+      type: 2}
+    source: {fileID: 0}
+  - name: RifleReloading
+    clip: {fileID: 8300000, guid: 202d2084920313247a22f7043cf1d4ac, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243149887290738288, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: StaminaFinished
+    clip: {fileID: 8300000, guid: 9286b53fe0386a34ea68b067db29e040, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 243257674825758532, guid: 2542e9c8235101741b2bf6be8edfa78a,
+      type: 2}
+    source: {fileID: 0}
+  - name: StaminaReset
+    clip: {fileID: 8300000, guid: f752b1b0f9a80404b9de63f53d94c1f6, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 243232103884183366, guid: 2542e9c8235101741b2bf6be8edfa78a,
+      type: 2}
+    source: {fileID: 0}
+  - name: HealthFinished
+    clip: {fileID: 8300000, guid: 84bd640a7c88f554a8abe24ec96c7e4a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 243969047327172530, guid: 3658b9f7a3984f940b9b73401fd73bc3,
+      type: 2}
+    source: {fileID: 0}
+  - name: HealthReset
+    clip: {fileID: 8300000, guid: 204c8918fe0f98e40bdeaa4ad861a39f, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 243471581166843456, guid: 3658b9f7a3984f940b9b73401fd73bc3,
+      type: 2}
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: b316dd4040ccc1043813b8f6d8b42b02, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 243525648861127578, guid: b457438bc42245c4db960c736c09b63b,
+      type: 2}
+    source: {fileID: 0}

@@ -17,6 +17,7 @@ public class PlayerStamina : MonoBehaviour
     [SerializeField] public float resetStaminaEndedDelay = 3f;
     private float resetStaminaTimer;
 
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerStamina : MonoBehaviour
         staminaController = GameObject.FindWithTag("Canvas").GetComponentInChildren<StaminaController>();
         characterController = GetComponent<CharacterController>();
         resetStaminaTimer = resetStaminaDelay;
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -77,9 +79,15 @@ public class PlayerStamina : MonoBehaviour
     {
         if (stamina <= 0)
         {
+            soundStaminaFinished();
             return 0;
         }
         return stamina / maxStamina;
+    }
+
+    void soundStaminaFinished() {
+        if (!audioManager.IsPlaying("StaminaFinished"))
+            audioManager.Play("StaminaFinished");
     }
 
 
@@ -97,6 +105,7 @@ public class PlayerStamina : MonoBehaviour
         {
             stamina = maxStamina;
             staminaController.staminaIncrease();
+            audioManager.Play("StaminaReset");
             resetStaminaTimer = resetStaminaDelay;
         }
     }

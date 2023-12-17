@@ -81,7 +81,7 @@ public class Weapon : MonoBehaviour
         //reloadingWaitTimeCircle = GameObject.FindWithTag("Canvas").GetComponent<ReloadingWaitTimeCircle>();
         reloadingWaitTimeCircle.gameObject.SetActive(false);
         pause = GameObject.FindWithTag("GameEvents").GetComponentInChildren<Pause>();
-        audioManager = GameObject.FindWithTag("GameEvents").GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     void Update()

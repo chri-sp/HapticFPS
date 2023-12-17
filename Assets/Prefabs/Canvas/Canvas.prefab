@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114106879164080568}
   - component: {fileID: 114560100370487008}
   - component: {fileID: 95458211914680240}
+  - component: {fileID: 114353677928139546}
   m_Layer: 5
   m_Name: Button checkPoint
   m_TagString: Untagged
@@ -165,6 +166,7 @@ GameObject:
   - component: {fileID: 114992748539509498}
   - component: {fileID: 114326393295123666}
   - component: {fileID: 95887103819209142}
+  - component: {fileID: 114616404699937022}
   m_Layer: 5
   m_Name: Button resume
   m_TagString: Untagged
@@ -543,6 +545,7 @@ GameObject:
   - component: {fileID: 114560579010230622}
   - component: {fileID: 114607297826433868}
   - component: {fileID: 95009012189552170}
+  - component: {fileID: 114420377917849538}
   m_Layer: 5
   m_Name: Button quit
   m_TagString: Untagged
@@ -1335,6 +1338,28 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &114353677928139546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018164012468358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef35295ae4b3fc4a80401d2da4659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114420377917849538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717278889107610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef35295ae4b3fc4a80401d2da4659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114425788360765270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1658,6 +1683,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114616404699937022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226469768578156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef35295ae4b3fc4a80401d2da4659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114624935283201714
 MonoBehaviour:
   m_ObjectHideFlags: 1
