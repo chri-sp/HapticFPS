@@ -55,10 +55,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
         private Pause pause;
-
         // Use this for initialization
         private void Start()
-        {
+        {       
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -69,6 +68,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
             controller = GetComponent<HapticProbeFPS>();
+            m_MouseLook = new MouseLookFalcon();
             m_MouseLook.Init(transform, m_Camera.transform, controller);
 
             characterDash = GetComponent<CharacterDash>();

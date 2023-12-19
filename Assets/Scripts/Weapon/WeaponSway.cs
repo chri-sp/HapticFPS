@@ -5,9 +5,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class WeaponSway : MonoBehaviour
 {
-    [SerializeField] private FirstPersonControllerFalcon FPSControllerFalcon;
+    private FirstPersonControllerFalcon FPSControllerFalcon;
     private MouseLookFalcon falconLook;
-    [SerializeField] private HapticProbeFPS controller;
+    private HapticProbeFPS controller;
 
     [Header("Sway Settings")]
     [SerializeField] private float smooth=8;
@@ -18,6 +18,8 @@ public class WeaponSway : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FPSControllerFalcon = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
+        controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         falconLook = FPSControllerFalcon.m_MouseLook;
     }
 

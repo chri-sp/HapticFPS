@@ -24,14 +24,14 @@ public class SceneLoader : MonoBehaviour
         player.transform.position = playerPosition;
     }
 
-    public void spawnPoint(Vector3 position)
+    public void setSpawnPoint(Vector3 position)
     {
         playerPosition = position;
     }
 
     public void ReloadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         
         Time.timeScale = 1.0f;
     }

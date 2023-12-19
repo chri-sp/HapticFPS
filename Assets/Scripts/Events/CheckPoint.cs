@@ -21,7 +21,7 @@ public class CheckPoint : MonoBehaviour {
     }
 
 	void OnTriggerEnter() {
-		sceneLoader.spawnPoint(transform.position);
+		sceneLoader.setSpawnPoint(transform.position);
 		Destroy(gameObject);
 	}
 }
