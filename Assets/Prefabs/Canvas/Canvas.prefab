@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114544720752866626}
   - component: {fileID: 114963401892379886}
   - component: {fileID: 95787885487869280}
+  - component: {fileID: 114642606978147138}
   m_Layer: 5
   m_Name: Button checkPoint
   m_TagString: Untagged
@@ -131,6 +132,7 @@ GameObject:
   - component: {fileID: 114214563039884330}
   - component: {fileID: 114720706340451604}
   - component: {fileID: 95657913362549282}
+  - component: {fileID: 114544971116577406}
   m_Layer: 5
   m_Name: Button quit
   m_TagString: Untagged
@@ -1486,6 +1488,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114544971116577406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1134696477512330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef35295ae4b3fc4a80401d2da4659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114560100370487008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1754,6 +1767,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: quit
+--- !u!114 &114642606978147138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036140682020394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef35295ae4b3fc4a80401d2da4659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114652716272997858
 MonoBehaviour:
   m_ObjectHideFlags: 1
