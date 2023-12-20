@@ -105,6 +105,11 @@ public class HealthController : MonoBehaviour
             // verifico che il valore sia esattamente quello finale
             healthSlider.value = healtValue;
 
+            //rendo slider visualizzabile se ho valore vicino allo zero
+            if (healtValue <= .05f) {
+                healthSlider.value = .05f;
+            }
+
             animator.Play("Disabled");
             isIncreasing = false;
         }

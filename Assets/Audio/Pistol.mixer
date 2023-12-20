@@ -20,6 +20,7 @@ AudioMixerController:
     - d4db1c95c93e2f74f81d170ff0098de0
     - fdcdc5d1051671b43abc61d8870d3d23
     - 42e7dfd0f50c6c344b941a08f1d8dd10
+    - bb920bc1c0bbf1a429905d7f0998031e
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -34,6 +35,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243877805049194764}
   - {fileID: 243725641028098562}
+  - {fileID: 243022432551287916}
   m_Volume: 05ad3fd84862407429959bc298b61d0a
   m_Pitch: da3864e6fcf82994ab9dbfc2c3d86bd5
   m_Effects:
@@ -65,9 +67,27 @@ AudioMixerSnapshotController:
   m_SnapshotID: 369a5d56587a2f04dad7224aa2045243
   m_FloatValues:
     ff7dea3106241a34fb15994a83c2d77e: -5.4218082
+    e093b485acea5dc448d0f9134c453767: -17.29471
     05ad3fd84862407429959bc298b61d0a: -0.43201196
     26d0be7de03dd0e46bdac5f61c642b34: -35.30951
   m_TransitionOverrides: {}
+--- !u!243 &243022432551287916
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FastReloading
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: bb920bc1c0bbf1a429905d7f0998031e
+  m_Children: []
+  m_Volume: e093b485acea5dc448d0f9134c453767
+  m_Pitch: c9c0e0b5cfc669642964d4e26d0ef3b2
+  m_Effects:
+  - {fileID: 244467692641892524}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243725641028098562
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -102,6 +122,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &244467692641892524
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 970044b4768293d4384801ab634aaf0b
+  m_EffectName: Attenuation
+  m_MixLevel: 4c5c77916075a074687b0b53e424862c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244552121924055528
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

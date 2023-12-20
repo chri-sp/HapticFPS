@@ -40,18 +40,12 @@ public class PlayerHealth : MonoBehaviour
     public float fractionRemaining()
     {
         if (health <= 0)
-        {
-            soundHealthFinished();
+        {      
             return 0;
         }
         return health / initialHealth;
     }
 
-    void soundHealthFinished()
-    {
-        if (!audioManager.IsPlaying("HealthFinished"))
-            audioManager.Play("HealthFinished");
-    }
 
     public float currentHealth()
     {

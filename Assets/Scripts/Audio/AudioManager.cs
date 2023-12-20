@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -45,10 +46,27 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-        s.source.Play();
+        //creo nuova istanza per traccia audio se effettuo sparo, per evitare interruzione suono
+        if (sound.Contains("Shoot"))
+        {
+            StartCoroutine(shootSound(s));
+        }
+        else {
+            s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+            s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+            s.source.Play();
+        }
+        
+    }
+
+    IEnumerator shootSound(Sound s) {
+        AudioSource audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        audioSource.clip = s.clip;
+        audioSource.outputAudioMixerGroup = s.mixerGroup;
+        audioSource.Play();
+        yield return new WaitForSeconds(1f);
+        Destroy(audioSource);
     }
 
     public bool IsPlaying(string sound) {
@@ -70,5 +88,11 @@ public class AudioManager : MonoBehaviour
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
         s.source.Stop();
+    }
+
+    public void StopPlayingAll() {
+        foreach (Sound s in sounds) {
+            s.source.Stop();
+        }
     }
 }

@@ -123,3 +123,82 @@ MonoBehaviour:
     mixerGroup: {fileID: 243525648861127578, guid: b457438bc42245c4db960c736c09b63b,
       type: 2}
     source: {fileID: 0}
+  - name: ShotgunReloading
+    clip: {fileID: 0}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: FastReloadingFail
+    clip: {fileID: 8300000, guid: 6bed909cf539bef44801116390f31983, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243087195639509850, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+      type: 2}
+    source: {fileID: 0}
+  - name: PistolFastReloading
+    clip: {fileID: 8300000, guid: 618f713020934bf4eb57a1c644955070, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243022432551287916, guid: c9e6e7fefa7c8c34495b828127923cc0,
+      type: 2}
+    source: {fileID: 0}
+  - name: RifleFastReloading
+    clip: {fileID: 8300000, guid: e3c4ed377f402f647a6162d96ee6c25c, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243993000286717374, guid: f9a81307cf8647f4abdac60011415804,
+      type: 2}
+    source: {fileID: 0}
+  - name: ShotgunFastReloading
+    clip: {fileID: 8300000, guid: c94491b9835b6bc4cbd5e7b038b7d92e, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243999219266007944, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: PistolShoot
+    clip: {fileID: 8300000, guid: 16c797259821a1b4cb59f9ef81cff7f6, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243877805049194764, guid: c9e6e7fefa7c8c34495b828127923cc0,
+      type: 2}
+    source: {fileID: 0}
+  - name: RifleShoot
+    clip: {fileID: 8300000, guid: 9c7dc30eaa0a4d14698f932f1c44ae7e, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243808628216085474, guid: f9a81307cf8647f4abdac60011415804,
+      type: 2}
+    source: {fileID: 0}
+  - name: ShotgunShoot
+    clip: {fileID: 8300000, guid: 015a9a6fa51a19645801d59961fd840e, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243634132047263108, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}

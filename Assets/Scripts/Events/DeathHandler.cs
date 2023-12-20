@@ -8,6 +8,8 @@ public class DeathHandler : MonoBehaviour
 
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject hapticWorkspace;
+    [SerializeField] private GameObject reloadingCircle;
+    private AudioManager audioManager;
     private FirstPersonControllerFalcon player;
     private HapticProbeFPS controller;
     private Weapon weapon;
@@ -21,6 +23,7 @@ public class DeathHandler : MonoBehaviour
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += weaponChanged;
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     void weaponChanged(Weapon newWeapon)
@@ -32,6 +35,8 @@ public class DeathHandler : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0;
+        audioManager.StopPlayingAll();
+        audioManager.Play("HealthFinished");
         disableObjectsOnGameOver();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -40,6 +45,7 @@ public class DeathHandler : MonoBehaviour
     void disableObjectsOnGameOver() {
         player.enabled = false;
         weapon.enabled = false;
+        Destroy(reloadingCircle);
         Destroy(hapticWorkspace);
         Destroy(controller);
     }

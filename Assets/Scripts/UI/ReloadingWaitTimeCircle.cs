@@ -18,6 +18,8 @@ public class ReloadingWaitTimeCircle : MonoBehaviour
     float higherBoundRange;
     private bool failedFastReloading = false;
 
+    private AudioManager audioManager;
+
     Coroutine countDownCoroutine;
 
     void Start()
@@ -28,11 +30,13 @@ public class ReloadingWaitTimeCircle : MonoBehaviour
         fastReloadingEvent();
         weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += weaponChanged;
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     void weaponChanged(Weapon newWeapon)
     {
         fastReloadingCompleted();
+        audioManager.StopPlaying(weapon.name+"Reloading");
         weapon = newWeapon;
     }
 
@@ -57,6 +61,7 @@ public class ReloadingWaitTimeCircle : MonoBehaviour
 
     private void fastReloadingFailed()
     {
+        audioManager.Play("FastReloadingFail");
         lowerBoundRange = 1;
         higherBoundRange = 1;
         failedFastReloading = true;
