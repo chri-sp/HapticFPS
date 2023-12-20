@@ -68,7 +68,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
             controller = GetComponent<HapticProbeFPS>();
-            m_MouseLook = new MouseLookFalcon();
+            
             m_MouseLook.Init(transform, m_Camera.transform, controller);
 
             characterDash = GetComponent<CharacterDash>();

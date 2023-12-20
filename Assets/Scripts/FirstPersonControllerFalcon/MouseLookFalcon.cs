@@ -27,6 +27,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
 
+        float xAxis;
+        float yAxis;
+
         public void Init(Transform character, Transform camera, HapticProbeFPS controller)
         {
             m_CharacterTargetRot = character.localRotation;
@@ -41,26 +44,30 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_cursorIsLocked = true;
         }
 
-        public float getAxisXFalcon()
-        {
+        void setAxis() {
             float axisX = 0;
-            if (controller.isActive())
-            {
+            float axisY = 0;
+            if (controller.isActive()) {
+
                 axisX = -(lastAxis.x - controller.getFalconPosition().x) * XFalconSensitivity;
                 lastAxis.x = controller.getFalconPosition().x;
+
+                axisY = -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity;
+                lastAxis.y = controller.getFalconPosition().y;
             }
-            return axisX;
+
+            xAxis = axisX;
+            yAxis = axisY;
+        }
+
+        public float getAxisXFalcon()
+        {
+            return xAxis;
         }
 
         public float getAxisYFalcon()
         {
-            float axisY = 0;
-            if (controller.isActive())
-            {
-                axisY = -(lastAxis.y - controller.getFalconPosition().y) * YFalconSensitivity;
-                lastAxis.y = controller.getFalconPosition().y;
-            }
-            return axisY;
+            return yAxis;
         }
 
         public void LookRotation(Transform character, Transform camera)
@@ -72,6 +79,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //prendo input movimento visuale dal falcon
             if (controller.isActive())
             {
+                setAxis();
                 yRot = getAxisXFalcon() * XSensitivity;
                 xRot = getAxisYFalcon() * YSensitivity;
             }
