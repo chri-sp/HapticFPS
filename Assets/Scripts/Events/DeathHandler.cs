@@ -15,7 +15,7 @@ public class DeathHandler : MonoBehaviour
 
     private void Start()
     {
-        gameOver.active = false;
+        gameOver.SetActive(false);
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
         weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
@@ -30,13 +30,17 @@ public class DeathHandler : MonoBehaviour
 
     public void HandleDeath()
     {
-        gameOver.active = true;
+        gameOver.SetActive(true);
         Time.timeScale = 0;
+        disableObjectsOnGameOver();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void disableObjectsOnGameOver() {
         player.enabled = false;
         weapon.enabled = false;
         Destroy(hapticWorkspace);
         Destroy(controller);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 }
