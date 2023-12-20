@@ -90,9 +90,26 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+
     public void StopPlayingAll() {
         foreach (Sound s in sounds) {
             s.source.Stop();
+        }
+    }
+
+    public void PauseAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Pause();
+        }
+    }
+
+    public void ResumeAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.UnPause();
         }
     }
 }

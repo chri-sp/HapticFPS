@@ -13,6 +13,8 @@ public class Pause : MonoBehaviour
     private PlayerHealth health;
     private HapticProbeFPS controller;
 
+    private AudioManager audioManager;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +22,7 @@ public class Pause : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<FirstPersonControllerFalcon>();
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         health = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class Pause : MonoBehaviour
 
         if (health.currentHealth() <= 0) return;
 
+        audioManager.PauseAll();
         pauseMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0f;
@@ -50,6 +54,7 @@ public class Pause : MonoBehaviour
 
     public void ResumeGame()
     {
+        audioManager.ResumeAll();
         pauseMenu.SetActive(false);
         isPaused = false;
         player.lockMouse();
