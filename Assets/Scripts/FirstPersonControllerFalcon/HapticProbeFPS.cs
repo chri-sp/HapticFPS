@@ -316,31 +316,36 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
+        if (!isActive()) yield break;
         if (recoiling) yield break;
         recoiling = true;
 
-        if (isActive())
-        {
-            float intensityRecoilMultiplier = 2f;
-            forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier)));
-            yield return new WaitForSeconds(0.1f);
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-        }
+
+        float intensityRecoilMultiplier = 2f;
+        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier)));
+        yield return new WaitForSeconds(0.1f);
+        //controllo che dopo la clear della coda, posso effettuare una dequeue
+        if (forceIndexes.Count == 0) yield break;
+        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+
         recoiling = false;
     }
 
     public IEnumerator jumpHapticFeedback(float jumpIntensity)
     {
+        if (!isActive()) yield break;
         if (isJumping) yield break;
         isJumping = true;
 
         //timer evita feedback salto iniziale in gioco
-        if (isActive() && timer > 1)
+        if (timer > 1)
         {
 
             float intensityJumpMultiplier = 1.5f;
             forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0)));
             yield return new WaitForSeconds(0.1f);
+            //controllo che dopo la clear della coda, posso effettuare una dequeue
+            if (forceIndexes.Count == 0) yield break;
             FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
         }
@@ -350,102 +355,104 @@ public class HapticProbeFPS : MonoBehaviour
 
     public IEnumerator dashHapticFeedback(float dashIntensity)
     {
+        if (!isActive()) yield break;
         if (isDashing) yield break;
         isDashing = true;
 
-        if (isActive())
-        {
-            float multiplierVertical = 2;
-            forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical)));
-            yield return new WaitForSeconds(0.1f);
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-        }
+        float multiplierVertical = 2;
+        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical)));
+        yield return new WaitForSeconds(0.1f);
+        //controllo che dopo la clear della coda, posso effettuare una dequeue
+        if (forceIndexes.Count == 0) yield break;
+        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+
 
         isDashing = false;
     }
 
     public IEnumerator springHapticFeedback(int button)
     {
-        if (isActive())
+        if (!isActive()) yield break;
+
+        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f));
+
+        //il bottone è mantenuto premuto
+        while (getButtonState(button))
         {
-            springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f));
-
-            //il bottone è mantenuto premuto
-            while (getButtonState(button))
-            {
-                yield return null;
-            }
-
-            //il bottone è stato rilasciato
-            FalconFPS.RemoveSpring(springIndexes.Dequeue());
+            yield return null;
         }
+
+        //il bottone è stato rilasciato
+        FalconFPS.RemoveSpring(springIndexes.Dequeue());
+
     }
 
     public IEnumerator setInitialPosition()
     {
-        if (isActive())
-        {
-            startPlayerPosition = transform.position;
-            springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f));
-            yield return new WaitForSeconds(.5f);
-            FalconFPS.RemoveSpring(springIndexes.Dequeue());
-        }
+        if (!isActive()) yield break;
+
+        startPlayerPosition = transform.position;
+        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f));
+        yield return new WaitForSeconds(.5f);
+        FalconFPS.RemoveSpring(springIndexes.Dequeue());
+
     }
 
     public IEnumerator attackHapticFeedback()
     {
+        if (!isActive()) yield break;
         if (isReceivingAttack) yield break;
         isReceivingAttack = true;
 
-        if (isActive())
-        {
-            springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f));
-            yield return new WaitForSeconds(.5f);
-            FalconFPS.RemoveSpring(springIndexes.Dequeue());
 
-        }
+        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f));
+        yield return new WaitForSeconds(.5f);
+        FalconFPS.RemoveSpring(springIndexes.Dequeue());
+
+
         isReceivingAttack = false;
     }
 
     public IEnumerator changeWeaponHapticFeedback()
     {
-
+        if (!isActive()) yield break;
         if (isChangingWeapon) yield break;
         isChangingWeapon = true;
 
-        if (isActive())
-        {
-            forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f)));
-            yield return new WaitForSeconds(0.2f);
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
-            yield return new WaitForSeconds(0.2f);
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 3f));
-            yield return new WaitForSeconds(0.2f);
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-        }
+
+        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f)));
+        yield return new WaitForSeconds(0.2f);
+        FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
+        yield return new WaitForSeconds(0.2f);
+        FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 3f));
+        yield return new WaitForSeconds(0.2f);
+        //controllo che dopo la clear della coda, posso effettuare una dequeue
+        if (forceIndexes.Count == 0) yield break;
+        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+
 
         isChangingWeapon = false;
     }
 
     public IEnumerator reloadHapticFeedback(Weapon weapon)
     {
-
+        if (!isActive()) yield break;
         if (isReloading) yield break;
         isReloading = true;
 
-        if (isActive())
-        {
-            yield return new WaitForSeconds(0.1f);
-            forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f)));
 
-            yield return new WaitForSeconds(0.2f);
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
-            //attesa prima di avere arma ricaricata
-            yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 3f, 0f));
-            yield return new WaitForSeconds(0.2f);
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-        }
+        yield return new WaitForSeconds(0.1f);
+        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f)));
+
+        yield return new WaitForSeconds(0.2f);
+        FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
+        //attesa prima di avere arma ricaricata
+        yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
+        FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 3f, 0f));
+        yield return new WaitForSeconds(0.2f);
+        //controllo che dopo la clear della coda, posso effettuare una dequeue
+        if (forceIndexes.Count == 0) yield break;
+        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
         isReloading = false;
     }
