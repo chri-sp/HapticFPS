@@ -297,21 +297,22 @@ public class HapticProbeFPS : MonoBehaviour
 
     public void resetAllForces()
     {
-        if (isActive())
-        {
-            FalconFPS.RemoveSurfaces();
-            FalconFPS.RemoveIntermolecularForces();
-            FalconFPS.RemoveRandomForces();
-            FalconFPS.RemoveSimpleForces();
-            FalconFPS.RemoveViscosities();
-            FalconFPS.RemoveSprings();
-            forceIndexes.Clear();
-            springIndexes.Clear();
-            surfaceIndexes.Clear();
-            viscosityIndexes.Clear();
-            randomForceIndexes.Clear();
-            intermolecularIndexes.Clear();
-        }
+        if (!isActive()) return;
+
+        StopAllCoroutines();
+        FalconFPS.RemoveSurfaces();
+        FalconFPS.RemoveIntermolecularForces();
+        FalconFPS.RemoveRandomForces();
+        FalconFPS.RemoveSimpleForces();
+        FalconFPS.RemoveViscosities();
+        FalconFPS.RemoveSprings();
+        forceIndexes.Clear();
+        springIndexes.Clear();
+        surfaceIndexes.Clear();
+        viscosityIndexes.Clear();
+        randomForceIndexes.Clear();
+        intermolecularIndexes.Clear();
+
     }
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
@@ -324,8 +325,6 @@ public class HapticProbeFPS : MonoBehaviour
         float intensityRecoilMultiplier = 2f;
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier)));
         yield return new WaitForSeconds(0.1f);
-        //controllo che dopo la clear della coda, posso effettuare una dequeue
-        if (forceIndexes.Count == 0) yield break;
         FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
         recoiling = false;
@@ -344,8 +343,6 @@ public class HapticProbeFPS : MonoBehaviour
             float intensityJumpMultiplier = 1.5f;
             forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0)));
             yield return new WaitForSeconds(0.1f);
-            //controllo che dopo la clear della coda, posso effettuare una dequeue
-            if (forceIndexes.Count == 0) yield break;
             FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
         }
@@ -362,8 +359,6 @@ public class HapticProbeFPS : MonoBehaviour
         float multiplierVertical = 2;
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical)));
         yield return new WaitForSeconds(0.1f);
-        //controllo che dopo la clear della coda, posso effettuare una dequeue
-        if (forceIndexes.Count == 0) yield break;
         FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
 
@@ -426,8 +421,6 @@ public class HapticProbeFPS : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 3f));
         yield return new WaitForSeconds(0.2f);
-        //controllo che dopo la clear della coda, posso effettuare una dequeue
-        if (forceIndexes.Count == 0) yield break;
         FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
 
@@ -450,8 +443,6 @@ public class HapticProbeFPS : MonoBehaviour
         yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
         FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 3f, 0f));
         yield return new WaitForSeconds(0.2f);
-        //controllo che dopo la clear della coda, posso effettuare una dequeue
-        if (forceIndexes.Count == 0) yield break;
         FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
 
         isReloading = false;
