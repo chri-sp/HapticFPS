@@ -74,6 +74,9 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isChangingWeapon = false;
     private bool isReloading = false;
 
+    private bool isDequeing = false;
+
+
     // Use this for initialization
     void Start()
     {
@@ -102,6 +105,8 @@ public class HapticProbeFPS : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.deltaTime;
+
+        Debug.Log(forceIndexes.Count);
         //test funzione creazione molla
 
         /*
@@ -312,8 +317,42 @@ public class HapticProbeFPS : MonoBehaviour
         viscosityIndexes.Clear();
         randomForceIndexes.Clear();
         intermolecularIndexes.Clear();
-
+        reinitializeValuesCoroutine();
     }
+
+    void reinitializeValuesCoroutine()
+    {
+        recoiling = false;
+        isJumping = false;
+        isDashing = false;
+        isReceivingAttack = false;
+        isChangingWeapon = false;
+        isReloading = false;
+        isDequeing = false;
+    }
+    IEnumerator dequeConcurrentForce()
+    {
+        while (isDequeing)
+            yield return null;
+
+        isDequeing = true;
+
+        // Debug.Log("Denquieing " + name);
+        /*
+        int size = forceIndexes.Count;
+        int id = forceIndexes.Dequeue();
+
+        while ((size - 1 != forceIndexes.Count) && (forceIndexes.Count != 0))
+        {
+            id = forceIndexes.Dequeue();
+        }
+        */
+
+        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+
+        isDequeing = false;
+    }
+
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
@@ -321,11 +360,10 @@ public class HapticProbeFPS : MonoBehaviour
         if (recoiling) yield break;
         recoiling = true;
 
-
         float intensityRecoilMultiplier = 2f;
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier)));
         yield return new WaitForSeconds(0.1f);
-        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+        StartCoroutine(dequeConcurrentForce());
 
         recoiling = false;
     }
@@ -339,12 +377,10 @@ public class HapticProbeFPS : MonoBehaviour
         //timer evita feedback salto iniziale in gioco
         if (timer > 1)
         {
-
             float intensityJumpMultiplier = 1.5f;
             forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0)));
             yield return new WaitForSeconds(0.1f);
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-
+            StartCoroutine(dequeConcurrentForce());
         }
 
         isJumping = false;
@@ -359,8 +395,7 @@ public class HapticProbeFPS : MonoBehaviour
         float multiplierVertical = 2;
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical)));
         yield return new WaitForSeconds(0.1f);
-        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-
+        StartCoroutine(dequeConcurrentForce());
 
         isDashing = false;
     }
@@ -399,11 +434,9 @@ public class HapticProbeFPS : MonoBehaviour
         if (isReceivingAttack) yield break;
         isReceivingAttack = true;
 
-
         springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f));
         yield return new WaitForSeconds(.5f);
         FalconFPS.RemoveSpring(springIndexes.Dequeue());
-
 
         isReceivingAttack = false;
     }
@@ -414,15 +447,13 @@ public class HapticProbeFPS : MonoBehaviour
         if (isChangingWeapon) yield break;
         isChangingWeapon = true;
 
-
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f)));
         yield return new WaitForSeconds(0.2f);
         FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
         yield return new WaitForSeconds(0.2f);
         FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 3f));
         yield return new WaitForSeconds(0.2f);
-        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-
+        StartCoroutine(dequeConcurrentForce());
 
         isChangingWeapon = false;
     }
@@ -433,7 +464,6 @@ public class HapticProbeFPS : MonoBehaviour
         if (isReloading) yield break;
         isReloading = true;
 
-
         yield return new WaitForSeconds(0.1f);
         forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f)));
 
@@ -443,7 +473,7 @@ public class HapticProbeFPS : MonoBehaviour
         yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
         FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 3f, 0f));
         yield return new WaitForSeconds(0.2f);
-        FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+        StartCoroutine(dequeConcurrentForce());
 
         isReloading = false;
     }
