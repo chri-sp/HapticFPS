@@ -40,10 +40,17 @@ public class HapticProbeFPS : MonoBehaviour
     //Variabile usata per rilevare quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
 
+    //timer utilizzato per evitare feedback aptico ad inizio scena
     private float timer;
-    private float TimerInitialLastElementQueue = .3f; //DA CAMBIARE PER TEMPO ATTESA FEEDBACK APTICO MOLLA
-    private float TimerLastElementQueueForce;
-    private float TimerLastElementQueueSpring;
+    
+    //questo valore deve essere maggiore del tempo in cui è applicata una certa forza
+    private float initialTimerLastElementQueue = .6f;
+    //timer alla cui scadenza verica se è necessario rimuovere un elemento dalla coda
+    private float expireDurationLastElementOnQueue_Force;
+    private float expireDurationLastElementOnQueue_Spring;
+
+    private bool isDequeingForce = false;
+    private bool isDequeingSpring = false;
 
     private bool recoiling = false;
     private bool isJumping = false;
@@ -52,15 +59,12 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isChangingWeapon = false;
     private bool isReloading = false;
 
-    private bool isDequeingForce = false;
-    private bool isDequeingSpring = false;
-
 
     // Use this for initialization
     void Start()
     {
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-        TimerLastElementQueueSpring = TimerInitialLastElementQueue;
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+        expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
         // Set Falcon
         falcon = FindObjectOfType<FalconFPS>();
 
@@ -80,32 +84,22 @@ public class HapticProbeFPS : MonoBehaviour
 
     void FixedUpdate()
     {
-        timer += Time.deltaTime;
-        TimerLastElementQueueForce -= Time.deltaTime;
-        TimerLastElementQueueSpring -= Time.deltaTime;
-
-        lastElementOnQueueExpiredForce();
-        lastElementOnQueueExpiredSpring();
+        updateTimers();
+        checkLastElementsOnQueueExpired();
         //Debug.Log(forceIndexes.Count);
     }
-    void lastElementOnQueueExpiredForce()
-    {
-        if (TimerLastElementQueueForce <= 0 && forceIndexes.Count > 0)
-        {
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-            reinitializeValuesCoroutine();
-            TimerLastElementQueueForce = TimerInitialLastElementQueue;
-        }
+
+    //aggiorna i timer presenti nello script
+    void updateTimers() {
+        timer += Time.deltaTime;
+        expireDurationLastElementOnQueue_Force -= Time.deltaTime;
+        expireDurationLastElementOnQueue_Spring -= Time.deltaTime;
     }
 
-    void lastElementOnQueueExpiredSpring()
-    {
-        if (TimerLastElementQueueSpring <= 0 && springIndexes.Count > 0)
-        {
-            FalconFPS.RemoveSpring(springIndexes.Dequeue());
-            reinitializeValuesCoroutine();
-            TimerLastElementQueueSpring = TimerInitialLastElementQueue;
-        }
+    //controlla se l'ultimo elemento in ogni coda deve essere rimosso, per garantire che non rimangano applicate forze sul controller
+    void checkLastElementsOnQueueExpired() {
+        lastElementOnQueueExpiredForce();
+        lastElementOnQueueExpiredSpring();
     }
 
     public void resetAllForces()
@@ -138,32 +132,6 @@ public class HapticProbeFPS : MonoBehaviour
         isReloading = false;
         isDequeingForce = false;
     }
-    IEnumerator dequeConcurrentForce()
-    {
-        while (isDequeingForce)
-            yield return null;
-        isDequeingForce = true;
-
-        if (forceIndexes.Count > 0)
-            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
-        isDequeingForce = false;
-    }
-
-    IEnumerator dequeConcurrentSpring()
-    {
-        while (isDequeingSpring)
-            yield return null;
-        isDequeingSpring = true;
-
-        if (springIndexes.Count > 0)
-            FalconFPS.RemoveSimpleForce(springIndexes.Dequeue());
-        TimerLastElementQueueSpring = TimerInitialLastElementQueue;
-
-        isDequeingSpring = false;
-    }
-
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
     {
@@ -173,11 +141,9 @@ public class HapticProbeFPS : MonoBehaviour
 
 
         float intensityRecoilMultiplier = 2f;
-        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier)));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        addForce(new Vector3(0, 0, -recoilIntensity * intensityRecoilMultiplier));
         yield return new WaitForSeconds(0.1f);
-        StartCoroutine(dequeConcurrentForce());
+        removeForce();
 
 
         recoiling = false;
@@ -187,20 +153,16 @@ public class HapticProbeFPS : MonoBehaviour
     {
 
         if (!isActive()) yield break;
+        //timer che evita feedback salto iniziale in gioco
+        if (timer > 1) yield break;
         if (isJumping) yield break;
         isJumping = true;
 
 
-        //timer evita feedback salto iniziale in gioco
-        if (timer > 1)
-        {
-            float intensityJumpMultiplier = 1.5f;
-            forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0)));
-            TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(dequeConcurrentForce());
-        }
+        float intensityJumpMultiplier = 1.5f;
+        addForce(new Vector3(0, jumpIntensity * intensityJumpMultiplier, 0));
+        yield return new WaitForSeconds(0.1f);
+        removeForce();
 
 
         isJumping = false;
@@ -215,11 +177,9 @@ public class HapticProbeFPS : MonoBehaviour
 
 
         float multiplierVertical = 2;
-        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical)));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        addForce(new Vector3(Input.GetAxis("Horizontal") * dashIntensity, 0, Input.GetAxis("Vertical") * dashIntensity * multiplierVertical));
         yield return new WaitForSeconds(0.1f);
-        StartCoroutine(dequeConcurrentForce());
+        removeForce();
 
 
         isDashing = false;
@@ -229,8 +189,8 @@ public class HapticProbeFPS : MonoBehaviour
     {
         if (!isActive()) yield break;
 
-        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f));
-        TimerLastElementQueueSpring = TimerInitialLastElementQueue;
+        addSpring(startPlayerPosition, 2.0f, 0.01f, 0.0f, -1.0f);
+
         //il bottone è mantenuto premuto
         while (getButtonState(button))
         {
@@ -238,7 +198,7 @@ public class HapticProbeFPS : MonoBehaviour
         }
 
         //il bottone è stato rilasciato
-        StartCoroutine(dequeConcurrentSpring());
+        removeSpring();
     }
 
     public IEnumerator setInitialPosition()
@@ -246,11 +206,10 @@ public class HapticProbeFPS : MonoBehaviour
         if (!isActive()) yield break;
 
         startPlayerPosition = transform.position;
-        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f));
-        TimerLastElementQueueSpring = TimerInitialLastElementQueue;
-
+        addSpring(startPlayerPosition, 1f, 0.01f, 0.0f, -1.0f);
         yield return new WaitForSeconds(.5f);
-        StartCoroutine(dequeConcurrentSpring());
+        removeSpring();
+
     }
 
     public IEnumerator attackHapticFeedback()
@@ -259,12 +218,9 @@ public class HapticProbeFPS : MonoBehaviour
         if (isReceivingAttack) yield break;
         isReceivingAttack = true;
 
-
-        springIndexes.Enqueue(FalconFPS.AddSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f));
-        TimerLastElementQueueSpring = TimerInitialLastElementQueue;
-
+        addSpring(startPlayerPosition, 2f, 0.01f, 0.0f, -1.0f);
         yield return new WaitForSeconds(.5f);
-        StartCoroutine(dequeConcurrentSpring());
+        removeSpring();
 
 
         isReceivingAttack = false;
@@ -276,22 +232,13 @@ public class HapticProbeFPS : MonoBehaviour
         if (isChangingWeapon) yield break;
         isChangingWeapon = true;
 
-
-        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, 0f, -6f)));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        addForce(new Vector3(0f, 0f, -6f));
         yield return new WaitForSeconds(0.2f);
-        if (forceIndexes.Count > 0)
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        updateForce(new Vector3(0f, 0f, 0f));
         yield return new WaitForSeconds(0.2f);
-        if (forceIndexes.Count > 0)
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 3f));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        updateForce(new Vector3(0f, 0f, 3f));
         yield return new WaitForSeconds(0.2f);
-        StartCoroutine(dequeConcurrentForce());
+        removeForce();
 
 
         isChangingWeapon = false;
@@ -305,25 +252,108 @@ public class HapticProbeFPS : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.1f);
-        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(new Vector3(0f, -3f, 0f)));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        addForce(new Vector3(0f, -3f, 0f));
         yield return new WaitForSeconds(0.2f);
-        if (forceIndexes.Count > 0)
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 0f, 0f));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        updateForce(new Vector3(0f, 0f, 0f));
         //attesa prima di avere arma ricaricata
         yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
-        if (forceIndexes.Count > 0)
-            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), new Vector3(0f, 3f, 0f));
-        TimerLastElementQueueForce = TimerInitialLastElementQueue;
-
+        updateForce(new Vector3(0f, 3f, 0f));
         yield return new WaitForSeconds(0.2f);
-        StartCoroutine(dequeConcurrentForce());
+        removeForce();
 
 
         isReloading = false;
+    }
+
+    //verifica e corregge la presenza di forze semplici non corrette
+    void lastElementOnQueueExpiredForce()
+    {
+        if (expireDurationLastElementOnQueue_Force <= 0 && forceIndexes.Count > 0)
+        {
+            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+            reinitializeValuesCoroutine();
+            expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+        }
+    }
+
+    //verifica e corregge la presenza di forze di tipo molla non corrette
+    void lastElementOnQueueExpiredSpring()
+    {
+        if (expireDurationLastElementOnQueue_Spring <= 0 && springIndexes.Count > 0)
+        {
+            FalconFPS.RemoveSpring(springIndexes.Dequeue());
+            reinitializeValuesCoroutine();
+            expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
+        }
+    }
+
+    void removeForce()
+    {
+        StartCoroutine(dequeConcurrentForce());
+    }
+
+    void addForce(Vector3 force)
+    {
+        forceIndexes.Enqueue(FalconFPS.AddSimpleForce(force));
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+    }
+
+    void updateForce(Vector3 force)
+    {
+        if (forceIndexes.Count > 0)
+            FalconFPS.UpdateSimpleForce(forceIndexes.Peek(), force);
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+    }
+
+    void removeSpring()
+    {
+        StartCoroutine(dequeConcurrentSpring());
+    }
+
+    // Springs
+    // p: Position
+    // k: Spring constant
+    // c: Damping coefficient
+    // r: Rest length
+    // m: Maximum length. Negative value for no maximum.
+    void addSpring(Vector3 position, float k, float c, float r, float m)
+    {
+        springIndexes.Enqueue(FalconFPS.AddSpring(position, k, c, r, m));
+        expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
+    }
+
+    void updateSpring(Vector3 position, float k, float c, float r, float m)
+    {
+        if (springIndexes.Count > 0)
+            FalconFPS.UpdateSpring(springIndexes.Peek(), position, k, c, r, m);
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+    }
+
+
+    IEnumerator dequeConcurrentForce()
+    {
+        while (isDequeingForce)
+            yield return null;
+        isDequeingForce = true;
+
+        if (forceIndexes.Count > 0)
+            FalconFPS.RemoveSimpleForce(forceIndexes.Dequeue());
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+
+        isDequeingForce = false;
+    }
+
+    IEnumerator dequeConcurrentSpring()
+    {
+        while (isDequeingSpring)
+            yield return null;
+        isDequeingSpring = true;
+
+        if (springIndexes.Count > 0)
+            FalconFPS.RemoveSpring(springIndexes.Dequeue());
+        expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
+
+        isDequeingSpring = false;
     }
 
     //Metodo usato per verificare se il falcon è attivo
