@@ -131,6 +131,7 @@ public class HapticProbeFPS : MonoBehaviour
         isChangingWeapon = false;
         isReloading = false;
         isDequeingForce = false;
+        isDequeingSpring = false;
     }
 
     public IEnumerator recoilHapticFeedback(float recoilIntensity)
