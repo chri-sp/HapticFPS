@@ -22,6 +22,8 @@ public class HapticProbeFPS : MonoBehaviour
     private Queue<int> randomForceIndexes = new Queue<int>();
     private Queue<int> intermolecularIndexes = new Queue<int>();
 
+    WeaponManager weaponManager;
+
     // The Falcon device
     private FalconFPS falcon;
 
@@ -58,13 +60,14 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isReceivingAttack = false;
     private bool isChangingWeapon = false;
     private bool isReloading = false;
+    private bool isReloadingFast = false;
 
 
     // Use this for initialization
     void Start()
     {
-        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
-        expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
+        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
+        reinitializeValuesCoroutine();
         // Set Falcon
         falcon = FindObjectOfType<FalconFPS>();
 
@@ -124,12 +127,15 @@ public class HapticProbeFPS : MonoBehaviour
 
     void reinitializeValuesCoroutine()
     {
+        expireDurationLastElementOnQueue_Force = initialTimerLastElementQueue;
+        expireDurationLastElementOnQueue_Spring = initialTimerLastElementQueue;
         recoiling = false;
         isJumping = false;
         isDashing = false;
         isReceivingAttack = false;
         isChangingWeapon = false;
         isReloading = false;
+        isReloadingFast = false;
         isDequeingForce = false;
         isDequeingSpring = false;
     }
@@ -255,15 +261,38 @@ public class HapticProbeFPS : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         addForce(new Vector3(0f, -3f, 0f));
         yield return new WaitForSeconds(0.2f);
-        updateForce(new Vector3(0f, 0f, 0f));
+        removeForce();
         //attesa prima di avere arma ricaricata
         yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
-        updateForce(new Vector3(0f, 3f, 0f));
+
+        if (canReload(weapon)) {
+            StartCoroutine(reloadHapticFeedbackFinished());
+        }
+           
+        isReloading = false;
+    }
+
+
+    //verifico se non ho cambiato arma e non ho effettuato la ricarica veloce
+    bool canReload(Weapon weapon) {
+        return (weapon == weaponManager.currentWeapon() && weapon.currentAmmo!= weapon.maxAmmo);
+    }
+
+
+    //feedback ricarica completata
+    public IEnumerator reloadHapticFeedbackFinished()
+    {
+        if (!isActive()) yield break;
+        if (isReloadingFast) yield break;
+        isReloadingFast = true;
+
+
+        addForce(new Vector3(0f, 3f, 0f));
         yield return new WaitForSeconds(0.2f);
         removeForce();
 
 
-        isReloading = false;
+        isReloadingFast = false;
     }
 
     //verifica e corregge la presenza di forze semplici non corrette

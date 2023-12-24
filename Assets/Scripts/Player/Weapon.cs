@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
 
     [Header("Reload settings")]
     public int maxAmmo = 10;
-    private int currentAmmo;
+    public int currentAmmo;
     public float reloadTime = 1f;
     public bool isReloading = false;
 
@@ -179,6 +179,7 @@ public class Weapon : MonoBehaviour
 
         //audioManager.StopPlaying(this.name + "Reloading");
         audioManager.Play(this.name + "FastReloading");
+        controller.reloadHapticFeedbackFinished();
 
         currentAmmo = maxAmmo;
         reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);

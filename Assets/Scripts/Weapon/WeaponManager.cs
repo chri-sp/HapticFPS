@@ -16,5 +16,9 @@ public class WeaponManager : MonoBehaviour {
 	void Start () {
 		weapon = GameObject.FindWithTag("Weapon").GetComponent<Weapon>();
     }
+
+	public Weapon currentWeapon() { 
+		return weapon;
+	}
 	
 }
