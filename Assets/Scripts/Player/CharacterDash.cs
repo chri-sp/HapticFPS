@@ -6,6 +6,8 @@ using UnityEngine.Rendering.PostProcessing;
 public class CharacterDash : MonoBehaviour {
 
     private PlayerStamina playerStamina;
+    private AudioManager audioManager;
+
     [SerializeField] private HapticProbeFPS controller;
     [SerializeField] private PostProcessVolume dashPostprocessing;
     private LensDistortion ls;
@@ -32,6 +34,7 @@ public class CharacterDash : MonoBehaviour {
         trailRenderer.enabled = false;
         dashPostprocessing.weight = 0;
         dashPostprocessing.profile.TryGetSettings(out ls);
+        audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -153,6 +156,7 @@ public class CharacterDash : MonoBehaviour {
     IEnumerator Dash()
     {  
         dashing = true;
+        audioManager.Play("Dash");
         float startTime = Time.time;
 
         while (Time.time < startTime + dashTime)

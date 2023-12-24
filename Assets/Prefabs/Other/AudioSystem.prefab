@@ -64,13 +64,13 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: RifleReloading
-    clip: {fileID: 8300000, guid: 202d2084920313247a22f7043cf1d4ac, type: 3}
+    clip: {fileID: 8300000, guid: 8e3e0f562d1b0ea42976821077718616, type: 3}
     volume: 1
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 243149887290738288, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+    mixerGroup: {fileID: 243830095105596468, guid: f9a81307cf8647f4abdac60011415804,
       type: 2}
     source: {fileID: 0}
   - name: StaminaFinished
@@ -124,13 +124,14 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: ShotgunReloading
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: adeaa675ccf88ce469c4895ad4bae053, type: 3}
     volume: 1
-    volumeVariance: 0
+    volumeVariance: 0.2
     pitch: 1
-    pitchVariance: 0
+    pitchVariance: 0.2
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 243149887290738288, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
     source: {fileID: 0}
   - name: FastReloadingFail
     clip: {fileID: 8300000, guid: 6bed909cf539bef44801116390f31983, type: 3}
@@ -200,5 +201,15 @@ MonoBehaviour:
     pitchVariance: 0.2
     loop: 0
     mixerGroup: {fileID: 243634132047263108, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 247f274d2be53a24a96e4b0e27698ef1, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: 243359086983050700, guid: c68a46b0552570b4ea474206322656a0,
       type: 2}
     source: {fileID: 0}

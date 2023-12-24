@@ -5451,6 +5451,7 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.13
   maxAmmo: 7
+  currentAmmo: 0
   reloadTime: 2.25
   isReloading: 0
   recoilX: -10
@@ -5481,6 +5482,7 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.13
   maxAmmo: 10
+  currentAmmo: 0
   reloadTime: 1
   isReloading: 0
   recoilX: -5
@@ -5489,9 +5491,9 @@ MonoBehaviour:
   snappiness: 3
   returnSpeed: 10
   recoilHapticIntensity: 3
-  spreadFactor: 0.003
+  spreadFactor: 0.01
   spreadShoot: 0.0005
-  maxSpreadAfterShoot: 0.004
+  maxSpreadAfterShoot: 0.015
 --- !u!114 &114548880981308576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6010,13 +6012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e094bac6d3cd77d4bba1b92148a04f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSimpleForce: 0
-  simpleForce: {x: 0, y: 0, z: 0}
-  useViscosity: 0
-  useSurface: 0
-  useSpring: 0
-  useIntermolecularForce: 0
-  useRandomForce: 0
 --- !u!114 &114902388056266374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6075,6 +6070,7 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.12
   maxAmmo: 25
+  currentAmmo: 0
   reloadTime: 1.75
   isReloading: 0
   recoilX: -7
@@ -6083,9 +6079,9 @@ MonoBehaviour:
   snappiness: 3
   returnSpeed: 10
   recoilHapticIntensity: 5
-  spreadFactor: 0.003
-  spreadShoot: 0.0005
-  maxSpreadAfterShoot: 0.001
+  spreadFactor: 0.005
+  spreadShoot: 0.0004
+  maxSpreadAfterShoot: 0.0012
 --- !u!114 &114954140411547712
 MonoBehaviour:
   m_ObjectHideFlags: 1

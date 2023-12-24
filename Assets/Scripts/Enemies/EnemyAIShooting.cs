@@ -145,7 +145,7 @@ public class EnemyAIShooting : MonoBehaviour
                 yield return new WaitForSeconds(.05f);
                 //se il player sta mirando a questo nemico
                 GameObject enemyIsViewedByPlayer = null;
-                if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
+                if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
                 {
                     enemyIsViewedByPlayer = hit.collider.gameObject.GetComponentInParent<EnemyHealth>().gameObject;
                 }
