@@ -69,10 +69,14 @@ public class WeaponSwitching : MonoBehaviour
             isSwitching = true;
             Animator weaponAnimator = GameObject.FindWithTag("Weapon").GetComponent<Animator>();
             weaponAnimator.Play("PutWeapon");
+            Weapon currentWeapon = weaponManager.currentWeapon();
             yield return new WaitForSeconds(.4f);      
             selectWeapon();
-            setHandsPosition();
+            setHandsPosition();    
             weaponManager.updateWeapon();
+            //se non è avvenuto cambio arma effettivo riporto arma corrente in posizione iniziale
+            if (currentWeapon == weaponManager.currentWeapon())
+                weaponAnimator.Play("WeaponSwitched");
             isSwitching = false;
         }
         
