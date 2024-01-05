@@ -1,12 +1,10 @@
-using UnityEngine.Audio;
-using System;
-using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
-{
-
-    public static AudioManager instance;
+public class AudioController : MonoBehaviour {
 
     public AudioMixerGroup mixerGroup;
 
@@ -14,15 +12,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
 
         foreach (Sound s in sounds)
         {
@@ -52,25 +41,29 @@ public class AudioManager : MonoBehaviour
         {
             StartCoroutine(shootSound(s));
         }
-        else {
+        else
+        {
             s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
             s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-            //s.source.spatialBlend = s.spatialBlend;
+            s.source.spatialBlend = s.spatialBlend;
             s.source.Play();
         }
-        
+
     }
 
-    IEnumerator shootSound(Sound s) {
+    IEnumerator shootSound(Sound s)
+    {
         AudioSource audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
         audioSource.clip = s.clip;
         audioSource.outputAudioMixerGroup = s.mixerGroup;
+        audioSource.spatialBlend = s.spatialBlend;
         audioSource.Play();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         Destroy(audioSource);
     }
 
-    public bool IsPlaying(string sound) {
+    public bool IsPlaying(string sound)
+    {
         Sound s = Array.Find(sounds, item => item.name == sound);
         return s.source.isPlaying;
     }
@@ -92,8 +85,10 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void StopPlayingAll() {
-        foreach (Sound s in sounds) {
+    public void StopPlayingAll()
+    {
+        foreach (Sound s in sounds)
+        {
             s.source.Stop();
         }
     }

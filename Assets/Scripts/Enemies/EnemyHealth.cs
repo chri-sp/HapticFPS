@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,6 +15,8 @@ public class EnemyHealth : MonoBehaviour
     private List<Color> changeColorHit=new List<Color>();
     private Renderer[] meshes;
     private bool isDead =false;
+    private AudioController enemySound;
+    private bool isHit = false;
 
     [Header("Effects")]
     [SerializeField] GameObject deathExplosion;
@@ -37,6 +40,8 @@ public class EnemyHealth : MonoBehaviour
         foreach (Renderer mesh in meshes)
             foreach (Material mat in mesh.materials)
                 changeColorHit.Add(mat.color);
+
+        enemySound = GetComponent<AudioController>();
     }
 
     public float fractionRemaining() {
@@ -81,15 +86,28 @@ public class EnemyHealth : MonoBehaviour
     public bool getHit() {
         if (hitPoints< previousHitPoints) {
             previousHitPoints = hitPoints;
+            StartCoroutine(randomSoundHit());
+            
             return true;
         }
         return false;
+    }
+
+    private IEnumerator randomSoundHit() {
+        if (isHit) yield break;
+        isHit = true;
+        int random = UnityEngine.Random.Range(1, 4);
+        yield return new WaitForSeconds(.2f);
+        enemySound.Play("enemyHit" + random);
+        yield return new WaitForSeconds(.2f);
+        isHit = false;
     }
 
     IEnumerator Death() {
         float explosionDuration = 3f;
         if (!isDead) {
             isDead = true;
+            enemySound.Play("enemyDeath");
 
             //Disabilito torretta se presente
             if (turretShoot!=null)

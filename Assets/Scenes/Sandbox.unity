@@ -588,6 +588,79 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 40384240c1c82b94db82531689571ab0, type: 3}
+--- !u!1 &237130271 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1117637857080522, guid: 87c46aa247ae03f49b02dbc584c43604,
+    type: 2}
+  m_PrefabInternal: {fileID: 653885472}
+--- !u!114 &237130272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 237130271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1 &261054634 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: f45b6695d6226cd48abfc605723cc3ae, type: 3}
@@ -856,11 +929,201 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &506042119 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1532738867654182, guid: 4a1acd0fe564fd64984702cccacec968,
+    type: 2}
+  m_PrefabInternal: {fileID: 1273371332}
+--- !u!114 &506042120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506042119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1 &508188643 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1592512770440350, guid: f6d0acdd770ead046a138862f6e65b00,
     type: 2}
   m_PrefabInternal: {fileID: 598972918}
+--- !u!1 &528501553 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1139373641276984, guid: b1ef44161820e434297cb7d1da12c6ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 900056070}
+--- !u!114 &528501554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528501553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1001 &552249844
 Prefab:
   m_ObjectHideFlags: 0
@@ -1201,6 +1464,39 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82002185440048522, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+        type: 2}
+    - target: {fileID: 82418535547676146, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+        type: 2}
+    - target: {fileID: 82923495676968384, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+        type: 2}
+    - target: {fileID: 82002185440048522, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
+    - target: {fileID: 82418535547676146, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
+    - target: {fileID: 82923495676968384, guid: f6d0acdd770ead046a138862f6e65b00,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6d0acdd770ead046a138862f6e65b00, type: 2}
   m_IsPrefabParent: 0
@@ -1374,6 +1670,97 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: b9d7ac1a0f551404f8d32e1e02b64325, type: 3}
+--- !u!1 &761945075 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1602250538430362, guid: f6d0acdd770ead046a138862f6e65b00,
+    type: 2}
+  m_PrefabInternal: {fileID: 598972918}
+--- !u!114 &761945082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761945075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds: []
+--- !u!1 &777218717 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1711719104209206, guid: 50e8d0d937a508e43be7dc8b4eca77e1,
+    type: 2}
+  m_PrefabInternal: {fileID: 84682215}
+--- !u!114 &777218718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 777218717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1 &796292404 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1995103626792070, guid: da7be7a9c4632ed419350f098576bbd8,
@@ -1437,6 +1824,10 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139373641276984, guid: b1ef44161820e434297cb7d1da12c6ef, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1ef44161820e434297cb7d1da12c6ef, type: 2}
@@ -1771,6 +2162,42 @@ Prefab:
       value: 
       objectReference: {fileID: 243936069242406582, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
         type: 2}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].name
+      value: EnemyExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ea3a01849faeb94b8de5f1bf3feae86, type: 3}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].volumeVariance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].pitchVariance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
+        type: 2}
+      propertyPath: sounds.Array.data[22].mixerGroup
+      value: 
+      objectReference: {fileID: 243936069242406582, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afc00a825c1bad84da7c92efd55381f6, type: 2}
   m_IsPrefabParent: 0
@@ -2062,6 +2489,123 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: f45b6695d6226cd48abfc605723cc3ae, type: 3}
+--- !u!1 &1222040891 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1428632654277274, guid: f4efca08679fcb8449fabc0d1fd6f294,
+    type: 2}
+  m_PrefabInternal: {fileID: 1361084899}
+--- !u!114 &1222040892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1222040891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1 &1259114741 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
@@ -2084,6 +2628,79 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
+--- !u!1 &1272314947 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1257328779621852, guid: 8fd0ebcba67e51041929eff40706085f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1370534372}
+--- !u!114 &1272314948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272314947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1001 &1273371332
 Prefab:
   m_ObjectHideFlags: 0
@@ -2529,7 +3146,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114362482790923338, guid: 8fd0ebcba67e51041929eff40706085f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8fd0ebcba67e51041929eff40706085f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1440217528
@@ -2837,6 +3455,123 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14368fc738e2a124292d29ec970519fb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1591159239 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1545621192436906, guid: 14368fc738e2a124292d29ec970519fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1575162006}
+--- !u!114 &1591159240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591159239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1001 &1595931598
 Prefab:
   m_ObjectHideFlags: 0
@@ -2957,6 +3692,79 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f45b6695d6226cd48abfc605723cc3ae, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1640720131 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1646992271533730, guid: 36c88f84ae55fc543b6c4b4caf082820,
+    type: 2}
+  m_PrefabInternal: {fileID: 1928731288}
+--- !u!114 &1640720132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640720131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1001 &1658570062
 Prefab:
   m_ObjectHideFlags: 0
@@ -3025,6 +3833,74 @@ GameObject:
   m_PrefabParentObject: {fileID: 1277069256153596, guid: 83ebf2b901ffa8c4484690641d630954,
     type: 2}
   m_PrefabInternal: {fileID: 333835451}
+--- !u!114 &1712850699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1712850698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!54 &1712850706
 Rigidbody:
   m_ObjectHideFlags: 0
