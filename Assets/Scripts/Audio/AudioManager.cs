@@ -91,6 +91,31 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+    public void PlayOverlappingSound(string sound)
+    {
+        StartCoroutine(playOverlappingSound(sound));
+    }
+
+    IEnumerator playOverlappingSound(string sound)
+    {
+        Sound s = Array.Find(sounds, item => item.name == sound);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            yield break;
+        }
+
+        AudioSource audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        audioSource.clip = s.clip;
+        audioSource.outputAudioMixerGroup = s.mixerGroup;
+        audioSource.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        audioSource.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        audioSource.spatialBlend = s.spatialBlend;
+        audioSource.Play();
+        yield return new WaitForSeconds(1f);
+        Destroy(audioSource);
+    }
+
 
     public void StopPlayingAll() {
         foreach (Sound s in sounds) {

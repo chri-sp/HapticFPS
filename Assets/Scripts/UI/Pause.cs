@@ -44,7 +44,7 @@ public class Pause : MonoBehaviour
 
         if (health.currentHealth() <= 0) return;
 
-        audioManager.PauseAll();
+        pauseAudio();
         pauseMenu.SetActive(true);
         isPaused = true;
         Time.timeScale = 0f;
@@ -54,10 +54,34 @@ public class Pause : MonoBehaviour
 
     public void ResumeGame()
     {
-        audioManager.ResumeAll();
         pauseMenu.SetActive(false);
+        resumeAudio();
         isPaused = false;
         player.lockMouse();
         Time.timeScale = 1f;
+    }
+
+    private void pauseAudio()
+    {
+        AudioController[] audioControllers = (AudioController[])FindObjectsOfType(typeof(AudioController));
+
+        foreach (AudioController sounds in audioControllers)
+        {
+            sounds.PauseAll();
+        }
+
+        audioManager.PauseAll();
+    }
+
+    private void resumeAudio()
+    {
+        AudioController[] audioControllers = (AudioController[])FindObjectsOfType(typeof(AudioController));
+
+        foreach (AudioController sounds in audioControllers)
+        {
+            sounds.ResumeAll();
+        }
+
+        audioManager.ResumeAll();
     }
 }

@@ -397,12 +397,12 @@ Prefab:
     - target: {fileID: 224911413596458182, guid: 50e8d0d937a508e43be7dc8b4eca77e1,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224911413596458182, guid: 50e8d0d937a508e43be7dc8b4eca77e1,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224988606817604980, guid: 50e8d0d937a508e43be7dc8b4eca77e1,
         type: 2}
@@ -411,7 +411,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1711719104209206, guid: 50e8d0d937a508e43be7dc8b4eca77e1, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50e8d0d937a508e43be7dc8b4eca77e1, type: 2}
@@ -618,11 +618,11 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: enemyDash
-    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
-    pitchVariance: 0.1
+    pitchVariance: 0.5
     spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
@@ -661,6 +661,50 @@ MonoBehaviour:
     mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: ca8ff2dad219a274a87edd4213ba13b7, type: 3}
+    volume: 0.7
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyJump
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243929352617248724, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyAttack
+    clip: {fileID: 8300000, guid: f91dd862d5ff97a43b2be4a9be1507ef, type: 3}
+    volume: 0.7
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243418158795177720, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+--- !u!114 &237130280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 237130271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ab073e9c1adb449b82d76039bf2e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &261054634 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: f45b6695d6226cd48abfc605723cc3ae, type: 3}
@@ -959,7 +1003,7 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: enemyDash
-    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
@@ -1046,6 +1090,17 @@ MonoBehaviour:
     mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: e79cfdc58ed9c0b409ac6e5f3cf600c5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!1 &508188643 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1592512770440350, guid: f6d0acdd770ead046a138862f6e65b00,
@@ -1124,6 +1179,39 @@ MonoBehaviour:
     mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: a9c6833d66f887746bdef97fd1413965, type: 3}
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 1
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+--- !u!114 &528501562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528501553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ab073e9c1adb449b82d76039bf2e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &528501563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528501553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9599ff07aeff14fa53c1c604fc0db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &552249844
 Prefab:
   m_ObjectHideFlags: 0
@@ -1568,16 +1656,16 @@ Prefab:
     - target: {fileID: 224528337166708560, guid: 87c46aa247ae03f49b02dbc584c43604,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224528337166708560, guid: 87c46aa247ae03f49b02dbc584c43604,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1117637857080522, guid: 87c46aa247ae03f49b02dbc584c43604, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87c46aa247ae03f49b02dbc584c43604, type: 2}
@@ -1912,7 +2000,7 @@ Prefab:
     - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
         type: 2}
       propertyPath: sounds.Array.size
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4642959546890212, guid: afc00a825c1bad84da7c92efd55381f6, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2165,13 +2253,13 @@ Prefab:
     - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
         type: 2}
       propertyPath: sounds.Array.data[22].name
-      value: EnemyExplosion
+      value: TakeDamage
       objectReference: {fileID: 0}
     - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
         type: 2}
       propertyPath: sounds.Array.data[22].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 0ea3a01849faeb94b8de5f1bf3feae86, type: 3}
+      objectReference: {fileID: 8300000, guid: c23ef62e23f336a4c9c1c002ff980365, type: 3}
     - target: {fileID: 114464186289213852, guid: afc00a825c1bad84da7c92efd55381f6,
         type: 2}
       propertyPath: sounds.Array.data[22].volume
@@ -2196,7 +2284,7 @@ Prefab:
         type: 2}
       propertyPath: sounds.Array.data[22].mixerGroup
       value: 
-      objectReference: {fileID: 243936069242406582, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      objectReference: {fileID: 243337656489618432, guid: 86595304148b1b44388059dc5f0cf7de,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afc00a825c1bad84da7c92efd55381f6, type: 2}
@@ -2519,7 +2607,7 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: enemyDash
-    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
@@ -2604,6 +2692,17 @@ MonoBehaviour:
     spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: e79cfdc58ed9c0b409ac6e5f3cf600c5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
 --- !u!1 &1259114741 stripped
@@ -2753,16 +2852,16 @@ Prefab:
     - target: {fileID: 224206150613800654, guid: 4a1acd0fe564fd64984702cccacec968,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224206150613800654, guid: 4a1acd0fe564fd64984702cccacec968,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532738867654182, guid: 4a1acd0fe564fd64984702cccacec968, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a1acd0fe564fd64984702cccacec968, type: 2}
@@ -2991,16 +3090,16 @@ Prefab:
     - target: {fileID: 224156913134953496, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224156913134953496, guid: f4efca08679fcb8449fabc0d1fd6f294,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1428632654277274, guid: f4efca08679fcb8449fabc0d1fd6f294, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4efca08679fcb8449fabc0d1fd6f294, type: 2}
@@ -3135,16 +3234,16 @@ Prefab:
     - target: {fileID: 224007177942113180, guid: 8fd0ebcba67e51041929eff40706085f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224007177942113180, guid: 8fd0ebcba67e51041929eff40706085f,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1257328779621852, guid: 8fd0ebcba67e51041929eff40706085f, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114362482790923338, guid: 8fd0ebcba67e51041929eff40706085f, type: 2}
@@ -3441,16 +3540,16 @@ Prefab:
     - target: {fileID: 224895024615024160, guid: 14368fc738e2a124292d29ec970519fb,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224895024615024160, guid: 14368fc738e2a124292d29ec970519fb,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1545621192436906, guid: 14368fc738e2a124292d29ec970519fb, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14368fc738e2a124292d29ec970519fb, type: 2}
@@ -3485,7 +3584,7 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: enemyDash
-    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
@@ -3570,6 +3669,17 @@ MonoBehaviour:
     spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: e79cfdc58ed9c0b409ac6e5f3cf600c5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
 --- !u!1001 &1595931598
@@ -3858,11 +3968,11 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: enemyDash
-    clip: {fileID: 8300000, guid: ab12698a37b6e2c48b3c9a8481866459, type: 3}
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
     volume: 1
     volumeVariance: 0.1
     pitch: 1
-    pitchVariance: 0.1
+    pitchVariance: 0.5
     spatialBlend: 1
     loop: 0
     mixerGroup: {fileID: 243029483340867884, guid: 850d3508161ceff468c7bd1a647ffe14,
@@ -3901,6 +4011,39 @@ MonoBehaviour:
     mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
       type: 2}
     source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: ca8ff2dad219a274a87edd4213ba13b7, type: 3}
+    volume: 0.5
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243362618653559886, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyJump
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243929352617248724, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyAttack
+    clip: {fileID: 8300000, guid: f81caf9ca5c60a744a3ab4ea271822f0, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243418158795177720, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!54 &1712850706
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3916,6 +4059,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1712850708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1712850698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ab073e9c1adb449b82d76039bf2e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1792578646
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,16 +4227,16 @@ Prefab:
     - target: {fileID: 224415757763190344, guid: 36c88f84ae55fc543b6c4b4caf082820,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224415757763190344, guid: 36c88f84ae55fc543b6c4b4caf082820,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1646992271533730, guid: 36c88f84ae55fc543b6c4b4caf082820, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114559616328532414, guid: 36c88f84ae55fc543b6c4b4caf082820,
         type: 2}

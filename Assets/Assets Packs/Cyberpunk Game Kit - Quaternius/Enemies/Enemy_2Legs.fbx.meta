@@ -116,7 +116,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.19974715
+      - time: 0.09308511
+        functionName: PlayOverlappingSound
+        data: enemyAttack
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.19414893
         functionName: hitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -368,7 +376,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.052358627
+        functionName: PlayOverlappingSound
+        data: enemyJump
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -450,7 +466,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.44532412
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.97606385
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -614,7 +646,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.48787725
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9767442
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
