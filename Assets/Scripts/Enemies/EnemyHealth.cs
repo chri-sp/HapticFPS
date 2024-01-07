@@ -108,7 +108,10 @@ public class EnemyHealth : MonoBehaviour
         if (!isDead) {
             isDead = true;
             enemySound.Play("enemyDeath");
-            GetComponent<RandomSoundEnemy>().enabled = false;
+
+            //Disabilito suoni randomici nemici
+            if (GetComponent<RandomSoundEnemy>() != null)
+                GetComponent<RandomSoundEnemy>().enabled = false;
 
             //Disabilito torretta se presente
             if (turretShoot!=null)

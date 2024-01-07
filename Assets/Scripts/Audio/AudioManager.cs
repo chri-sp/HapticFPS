@@ -52,16 +52,18 @@ public class AudioManager : MonoBehaviour
         {
             StartCoroutine(shootSound(s));
         }
-        else {
+        else
+        {
             s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
             s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
             //s.source.spatialBlend = s.spatialBlend;
             s.source.Play();
         }
-        
+
     }
 
-    IEnumerator shootSound(Sound s) {
+    IEnumerator shootSound(Sound s)
+    {
         AudioSource audioSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
         audioSource.clip = s.clip;
         audioSource.outputAudioMixerGroup = s.mixerGroup;
@@ -70,7 +72,8 @@ public class AudioManager : MonoBehaviour
         Destroy(audioSource);
     }
 
-    public bool IsPlaying(string sound) {
+    public bool IsPlaying(string sound)
+    {
         Sound s = Array.Find(sounds, item => item.name == sound);
         return s.source.isPlaying;
     }
@@ -117,9 +120,31 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void StopPlayingAll() {
-        foreach (Sound s in sounds) {
+    public void StopPlayingAll()
+    {
+        foreach (Sound s in sounds)
+        {
             s.source.Stop();
+        }
+    }
+
+    public void Resume(string soundName)
+    {
+
+        Sound s = Array.Find(sounds, item => item.name == soundName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        foreach (Sound sound in sounds)
+        {
+            if (sound.clip.name.Equals(s.clip.name))
+            {
+                sound.source.UnPause();
+                return;
+            }
         }
     }
 

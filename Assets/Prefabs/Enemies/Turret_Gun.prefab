@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 114685637761448566}
   - component: {fileID: 114687176038472972}
   - component: {fileID: 114130779667920558}
-  - component: {fileID: 114362482790923338}
+  - component: {fileID: 114278782619810372}
   m_Layer: 0
   m_Name: Turret_Gun
   m_TagString: Untagged
@@ -232,7 +232,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1257328779621852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.19, y: 0, z: -10.37}
+  m_LocalPosition: {x: 22, y: 0, z: -12.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4074111400119708}
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db419e162886324ab56d0562357ff4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114362482790923338
+--- !u!114 &114278782619810372
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -533,12 +533,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 1257328779621852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9bbb71fe4c7f2b4ba9a0254fab57b15, type: 3}
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathExplosion: {fileID: 1639882628538994, guid: c09e114b5fd23c1478970752e4fd93f8,
-    type: 2}
-  hitPoints: 200
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!114 &114564752263233586
 MonoBehaviour:
   m_ObjectHideFlags: 1

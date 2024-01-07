@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 114833143583679474}
   - component: {fileID: 114319963130337882}
   - component: {fileID: 114559616328532414}
+  - component: {fileID: 114639760936553654}
   m_Layer: 0
   m_Name: Turret_Cannon
   m_TagString: Untagged
@@ -244,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646992271533730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.09, y: -0.000021853855, z: 6.14}
+  m_LocalPosition: {x: 21.58, y: -0.000021853855, z: 9.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4023625497066088}
@@ -512,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWaitTime: 4
   timeToRotate: 2
-  viewRadius: 30
+  viewRadius: 20
   viewAngle: 180
   playerMask:
     serializedVersion: 2
@@ -539,6 +540,74 @@ MonoBehaviour:
   blendDistance: 0
   weight: 0
   priority: 1
+--- !u!114 &114639760936553654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646992271533730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot1
+    clip: {fileID: 8300000, guid: 78684c720efd5114ca5235c44bd4de98, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot2
+    clip: {fileID: 8300000, guid: ae436db833da55d45be4e25d91b966be, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot3
+    clip: {fileID: 8300000, guid: 0b1e140afd54fb742843b01fb5797ce5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyShoot4
+    clip: {fileID: 8300000, guid: 140dfe861d03c7d4dad93267eb5f0673, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243684765852615808, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
 --- !u!114 &114671184037238674
 MonoBehaviour:
   m_ObjectHideFlags: 1
