@@ -307,11 +307,11 @@ MonoBehaviour:
       type: 2}
     source: {fileID: 0}
   - name: BGMusic
-    clip: {fileID: 8300000, guid: 9fe230d7a7b8f1043b14bdc60483bac6, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 54de7ee217838404d9f7491fbf002e24, type: 3}
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
-    pitchVariance: 0.1
+    pitchVariance: 0
     spatialBlend: 0
     loop: 1
     mixerGroup: {fileID: 243418075494898698, guid: 26326eb15941b364694acd6a2d72c06a,

@@ -12,6 +12,8 @@ public class FluctuatingEffect : MonoBehaviour
 
     private Vector3 posizioneIniziale;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         posizioneIniziale = transform.position;
@@ -19,6 +21,9 @@ public class FluctuatingEffect : MonoBehaviour
         ampiezzaFluttuazioneOrizzontale = Random.Range(ampiezzaFluttuazioneOrizzontale - .5f, ampiezzaFluttuazioneOrizzontale + .5f);
         velocitaFluttuazioneVerticale = Random.Range(velocitaFluttuazioneVerticale - .5f, velocitaFluttuazioneVerticale + .5f);
         ampiezzaFluttuazioneOrizzontale = Random.Range(ampiezzaFluttuazioneOrizzontale - .5f, ampiezzaFluttuazioneOrizzontale + .5f);
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     void Update()
