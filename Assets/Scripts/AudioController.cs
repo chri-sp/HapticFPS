@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioController : MonoBehaviour {
+public class AudioController : MonoBehaviour
+{
 
     public AudioMixerGroup mixerGroup;
 
@@ -35,22 +36,13 @@ public class AudioController : MonoBehaviour {
             return;
         }
 
-
-        //creo nuova istanza per traccia audio se effettuo sparo, per evitare interruzione suono
-        if (sound.Contains("Shoot"))
-        {
-            PlayOverlappingSound(sound);
-        }
-        else
-        {
-            s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-            s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-            s.source.spatialBlend = s.spatialBlend;
-            s.source.Play();
-        }
-
+        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        s.source.spatialBlend = s.spatialBlend;
+        s.source.Play();
     }
 
+    //creo nuova istanza per traccia audio per evitare interruzione suono
     public void PlayOverlappingSound(string sound)
     {
         StartCoroutine(playOverlappingSound(sound));

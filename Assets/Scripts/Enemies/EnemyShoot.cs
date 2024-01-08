@@ -71,21 +71,21 @@ public class EnemyShoot : MonoBehaviour
         {
             Debug.DrawLine(shootPoint.position, shootPoint.position + direction * 10f, Color.red, 1f);
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, hit));
-            randomSoundShoot();
+            StartCoroutine(SpawnTrail(trail, hit));      
         }
         else {
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
             hit.point = shootPoint.position + shootPoint.forward + direction * bulletDistance;
             StartCoroutine(SpawnTrail(trail, hit));
         }
+        randomSoundShoot();
         timeBetweenShoot = initialTimeBetweenShoot;
     }
 
     private void randomSoundShoot()
     {
         int random = UnityEngine.Random.Range(1, 5);
-        enemySound.Play("enemyShoot" + random);
+        enemySound.PlayOverlappingSound("enemyShoot" + random);
     }
     private Vector3 GetDirection()
     {
