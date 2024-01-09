@@ -5486,7 +5486,7 @@ MonoBehaviour:
   hasShooted: 0
   reloadingWaitTimeCircle: {fileID: 0}
   range: 50
-  damage: 50
+  damage: 60
   bulletTrail: {fileID: 120648884187509030, guid: 15ed57ca530b2974baa7158aa47ba7e6,
     type: 2}
   fireRate: 0.13
@@ -5530,7 +5530,7 @@ MonoBehaviour:
   recoilZ: 0.35
   snappiness: 3
   returnSpeed: 10
-  recoilHapticIntensity: 3
+  recoilHapticIntensity: 4
   spreadFactor: 0.01
   spreadShoot: 0.0005
   maxSpreadAfterShoot: 0.015
