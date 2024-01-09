@@ -138,7 +138,2383 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CharacterArmature|Death
+      takeName: CharacterArmature|Death
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Gun_Shoot
+      takeName: CharacterArmature|Gun_Shoot
+      firstFrame: 0
+      lastFrame: 18
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|HitRecieve
+      takeName: CharacterArmature|HitRecieve
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|HitRecieve_2
+      takeName: CharacterArmature|HitRecieve_2
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle_Gun_Pointing
+      takeName: CharacterArmature|Idle_Gun_Pointing
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle_Gun_Shoot
+      takeName: CharacterArmature|Idle_Gun_Shoot
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle_Neutral
+      takeName: CharacterArmature|Idle_Neutral
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle_Sword
+      takeName: CharacterArmature|Idle_Sword
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Interact
+      takeName: CharacterArmature|Interact
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Kick_Left
+      takeName: CharacterArmature|Kick_Left
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Kick_Right
+      takeName: CharacterArmature|Kick_Right
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Punch_Left
+      takeName: CharacterArmature|Punch_Left
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Punch_Right
+      takeName: CharacterArmature|Punch_Right
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Roll
+      takeName: CharacterArmature|Roll
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run
+      takeName: CharacterArmature|Run
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run_Back
+      takeName: CharacterArmature|Run_Back
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run_Left
+      takeName: CharacterArmature|Run_Left
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run_Right
+      takeName: CharacterArmature|Run_Right
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run_Shoot
+      takeName: CharacterArmature|Run_Shoot
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Sword_Slash
+      takeName: CharacterArmature|Sword_Slash
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Walk
+      takeName: CharacterArmature|Walk
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Wave
+      takeName: CharacterArmature|Wave
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Body
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Neck/Head/Head_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon
+        weight: 1
+      - path: CharacterArmature/Root/Body/Hips/Abdomen/Torso/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Weapon/Weapon_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.L/LowerLeg.L/LowerLeg.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R
+        weight: 1
+      - path: CharacterArmature/Root/Body/UpperLeg.R/LowerLeg.R/LowerLeg.R_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L
+        weight: 1
+      - path: CharacterArmature/Root/Foot.L/Foot.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R
+        weight: 1
+      - path: CharacterArmature/Root/Foot.R/Foot.R_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.L
+        weight: 1
+      - path: CharacterArmature/Root/PT.L/PT.L_end
+        weight: 1
+      - path: CharacterArmature/Root/PT.R
+        weight: 1
+      - path: CharacterArmature/Root/PT.R/PT.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Cube.007
+        weight: 1
+      - path: Cube.009
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
