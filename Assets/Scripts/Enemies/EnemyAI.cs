@@ -55,6 +55,8 @@ public class EnemyAI : MonoBehaviour
     private bool isDodging = false;
 
     Transform enemyViewPoint;
+
+    AudioController enemySound;
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -80,6 +82,7 @@ public class EnemyAI : MonoBehaviour
         enemyViewPoint = transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform;
         weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += weaponChanged;
+        enemySound = GetComponent<AudioController>();
     }
 
     void weaponChanged(Weapon newWeapon)
@@ -219,8 +222,11 @@ public class EnemyAI : MonoBehaviour
 
     bool canDodge(Vector3 direction, float distance)
     {
-        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance))
+        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance)) {
+            enemySound.Play("enemyDash");
             return true;
+        }
+            
         else
             return false;
     }

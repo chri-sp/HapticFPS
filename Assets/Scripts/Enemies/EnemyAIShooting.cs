@@ -56,6 +56,7 @@ public class EnemyAIShooting : MonoBehaviour
     private float resetDodgeTimer;
     private bool isDodging = false;
 
+    AudioController enemySound;
     void Start()
     {
         m_PlayerPosition = Vector3.zero;
@@ -82,6 +83,7 @@ public class EnemyAIShooting : MonoBehaviour
         resetDodgeTimer = resetDodgeDelay;
         weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += weaponChanged;
+        enemySound = GetComponent<AudioController>();
     }
     void weaponChanged(Weapon newWeapon)
     {
@@ -145,7 +147,7 @@ public class EnemyAIShooting : MonoBehaviour
                 yield return new WaitForSeconds(.05f);
                 //se il player sta mirando a questo nemico
                 GameObject enemyIsViewedByPlayer = null;
-                if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
+                if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
                 {
                     enemyIsViewedByPlayer = hit.collider.gameObject.GetComponentInParent<EnemyHealth>().gameObject;
                 }
@@ -202,8 +204,11 @@ public class EnemyAIShooting : MonoBehaviour
 
     bool canDodge(Vector3 direction, float distance)
     {
-        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance))
+        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance)) {
+            enemySound.Play("enemyDash");
             return true;
+        }
+           
         else
             return false;
     }

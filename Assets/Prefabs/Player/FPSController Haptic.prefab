@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 23196184236332640}
   - component: {fileID: 95837790191389716}
   - component: {fileID: 114936431032159846}
+  - component: {fileID: 114343725801258018}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Weapon
@@ -538,6 +539,7 @@ GameObject:
   - component: {fileID: 23049897593526100}
   - component: {fileID: 95313530644885030}
   - component: {fileID: 114546785197244532}
+  - component: {fileID: 114184632105525812}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Weapon
@@ -790,6 +792,7 @@ GameObject:
   - component: {fileID: 4560388863039666}
   - component: {fileID: 95415046167160766}
   - component: {fileID: 114539750751782224}
+  - component: {fileID: 114153715768638044}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Weapon
@@ -1504,6 +1507,7 @@ GameObject:
   - component: {fileID: 95851941136777290}
   - component: {fileID: 114148326473835422}
   - component: {fileID: 114724364161243370}
+  - component: {fileID: 114857240449443268}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: WeaponHolder
@@ -2719,7 +2723,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1547507442162256}
-  m_LocalRotation: {x: -0.011674386, y: -0.0055501736, z: 0.058489658, w: 0.99820435}
+  m_LocalRotation: {x: -0.011674387, y: -0.005550174, z: 0.058489658, w: 0.99820435}
   m_LocalPosition: {x: 0.013184358, y: 0.11095916, z: -0.0017881128}
   m_LocalScale: {x: 0.9999997, y: 0.99999976, z: 1}
   m_Children:
@@ -3712,7 +3716,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066960863566252}
-  m_LocalRotation: {x: 0.000017497261, y: -0.00113696, z: -0.006653487, w: 0.99997723}
+  m_LocalRotation: {x: 0.000017497261, y: -0.0011369601, z: -0.0066534877, w: 0.99997723}
   m_LocalPosition: {x: -0.00027769446, y: 0.030019777, z: 0.00000006693473}
   m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.9999997}
   m_Children:
@@ -4363,8 +4367,9 @@ AudioSource:
   m_GameObject: {fileID: 1689100422392850}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d292bfe9dbf122489eac795f8267c90, type: 3}
+  OutputAudioMixerGroup: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 2
@@ -4524,8 +4529,9 @@ AudioSource:
   m_GameObject: {fileID: 1869681696335864}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d292bfe9dbf122489eac795f8267c90, type: 3}
+  OutputAudioMixerGroup: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 3
@@ -4604,8 +4610,9 @@ AudioSource:
   m_GameObject: {fileID: 1649173535190440}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4d292bfe9dbf122489eac795f8267c90, type: 3}
+  OutputAudioMixerGroup: {fileID: 243614585496112152, guid: 47a76869c4b41bc46b0f754b1f44ea93,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 5a1da09c8cc54404cabf73a079aa9813, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 2
@@ -5094,6 +5101,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 114103023658089480}
+--- !u!114 &114153715768638044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336513761597376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a5e0b67313e7843aaf89415427a77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114184632105525812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222897139717918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a5e0b67313e7843aaf89415427a77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114189601570853368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5285,6 +5314,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114343725801258018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019728778300256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a5e0b67313e7843aaf89415427a77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114348514505178986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5446,11 +5486,12 @@ MonoBehaviour:
   hasShooted: 0
   reloadingWaitTimeCircle: {fileID: 0}
   range: 50
-  damage: 50
+  damage: 60
   bulletTrail: {fileID: 120648884187509030, guid: 15ed57ca530b2974baa7158aa47ba7e6,
     type: 2}
   fireRate: 0.13
   maxAmmo: 7
+  currentAmmo: 0
   reloadTime: 2.25
   isReloading: 0
   recoilX: -10
@@ -5481,6 +5522,7 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.13
   maxAmmo: 10
+  currentAmmo: 0
   reloadTime: 1
   isReloading: 0
   recoilX: -5
@@ -5488,10 +5530,10 @@ MonoBehaviour:
   recoilZ: 0.35
   snappiness: 3
   returnSpeed: 10
-  recoilHapticIntensity: 3
-  spreadFactor: 0.003
+  recoilHapticIntensity: 4
+  spreadFactor: 0.01
   spreadShoot: 0.0005
-  maxSpreadAfterShoot: 0.004
+  maxSpreadAfterShoot: 0.015
 --- !u!114 &114548880981308576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5983,6 +6025,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114857240449443268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602250538430362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds: []
 --- !u!114 &114863479630117520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6010,13 +6065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e094bac6d3cd77d4bba1b92148a04f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSimpleForce: 0
-  simpleForce: {x: 0, y: 0, z: 0}
-  useViscosity: 0
-  useSurface: 0
-  useSpring: 0
-  useIntermolecularForce: 0
-  useRandomForce: 0
 --- !u!114 &114902388056266374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6075,6 +6123,7 @@ MonoBehaviour:
     type: 2}
   fireRate: 0.12
   maxAmmo: 25
+  currentAmmo: 0
   reloadTime: 1.75
   isReloading: 0
   recoilX: -7
@@ -6083,9 +6132,9 @@ MonoBehaviour:
   snappiness: 3
   returnSpeed: 10
   recoilHapticIntensity: 5
-  spreadFactor: 0.003
-  spreadShoot: 0.0005
-  maxSpreadAfterShoot: 0.001
+  spreadFactor: 0.005
+  spreadShoot: 0.0004
+  maxSpreadAfterShoot: 0.0012
 --- !u!114 &114954140411547712
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -161,7 +161,7 @@ public class HapticProbeFPS : MonoBehaviour
 
         if (!isActive()) yield break;
         //timer che evita feedback salto iniziale in gioco
-        if (timer > 1) yield break;
+        if (timer < 1) yield break;
         if (isJumping) yield break;
         isJumping = true;
 
@@ -257,42 +257,12 @@ public class HapticProbeFPS : MonoBehaviour
         if (isReloading) yield break;
         isReloading = true;
 
-
         yield return new WaitForSeconds(0.1f);
         addForce(new Vector3(0f, -3f, 0f));
         yield return new WaitForSeconds(0.2f);
         removeForce();
-        //attesa prima di avere arma ricaricata
-        yield return new WaitForSeconds(weapon.reloadTime - .3f - .2f);
-
-        if (canReload(weapon)) {
-            StartCoroutine(reloadHapticFeedbackFinished());
-        }
            
         isReloading = false;
-    }
-
-
-    //verifico se non ho cambiato arma e non ho effettuato la ricarica veloce
-    bool canReload(Weapon weapon) {
-        return (weapon == weaponManager.currentWeapon() && weapon.currentAmmo!= weapon.maxAmmo);
-    }
-
-
-    //feedback ricarica completata
-    public IEnumerator reloadHapticFeedbackFinished()
-    {
-        if (!isActive()) yield break;
-        if (isReloadingFast) yield break;
-        isReloadingFast = true;
-
-
-        addForce(new Vector3(0f, 3f, 0f));
-        yield return new WaitForSeconds(0.2f);
-        removeForce();
-
-
-        isReloadingFast = false;
     }
 
     //verifica e corregge la presenza di forze semplici non corrette

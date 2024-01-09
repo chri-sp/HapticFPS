@@ -106,6 +106,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.13031915
+        functionName: playOverlappingSound
+        data: Attack
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

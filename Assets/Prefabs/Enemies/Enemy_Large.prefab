@@ -55,6 +55,8 @@ GameObject:
   - component: {fileID: 114607689034984938}
   - component: {fileID: 195423061798061386}
   - component: {fileID: 114274009708706764}
+  - component: {fileID: 114040788810686972}
+  - component: {fileID: 114676028414564570}
   m_Layer: 0
   m_Name: Enemy_Large
   m_TagString: Untagged
@@ -691,7 +693,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1117637857080522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.83, y: -0.000023786128, z: 2.87}
+  m_LocalPosition: {x: 34.82, y: -0.000023786128, z: 2.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4401205023360558}
@@ -1012,6 +1014,107 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   durationHitEffect: 0.2
+--- !u!114 &114040788810686972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117637857080522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 850d3508161ceff468c7bd1a647ffe14, type: 2}
+  sounds:
+  - name: enemyDeath
+    clip: {fileID: 8300000, guid: 5b70b34bebab1c24b9d5b2c376b61a00, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243831762633199668, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyDash
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.5
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243393099266093298, guid: c5dd180921bb4f747a78d2237058d089,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit1
+    clip: {fileID: 8300000, guid: b03d8d82c81f8a646ab2625448cfa19f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit2
+    clip: {fileID: 8300000, guid: 418c2da13c403d341be56afda8c35c1a, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyHit3
+    clip: {fileID: 8300000, guid: 8d19a900e2aef2f478209853a71bc6b7, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243203203665546662, guid: 850d3508161ceff468c7bd1a647ffe14,
+      type: 2}
+    source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: e79cfdc58ed9c0b409ac6e5f3cf600c5, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243625889533124660, guid: c5dd180921bb4f747a78d2237058d089,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyJump
+    clip: {fileID: 8300000, guid: 6859efc19a81d184cb7f310d4776f09b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243393099266093298, guid: c5dd180921bb4f747a78d2237058d089,
+      type: 2}
+    source: {fileID: 0}
+  - name: enemyAttack
+    clip: {fileID: 8300000, guid: f91dd862d5ff97a43b2be4a9be1507ef, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 243745647086902748, guid: c5dd180921bb4f747a78d2237058d089,
+      type: 2}
+    source: {fileID: 0}
 --- !u!114 &114144380856117062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,6 +1318,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114676028414564570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117637857080522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ab073e9c1adb449b82d76039bf2e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114770745314647918
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -179,7 +179,6 @@ public class Weapon : MonoBehaviour
 
         //audioManager.StopPlaying(this.name + "Reloading");
         audioManager.Play(this.name + "FastReloading");
-        controller.reloadHapticFeedbackFinished();
 
         currentAmmo = maxAmmo;
         reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);

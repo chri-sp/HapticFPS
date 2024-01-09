@@ -35,11 +35,23 @@ public class DeathHandler : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0;
-        audioManager.StopPlayingAll();
+        stopAudio();
         audioManager.Play("HealthFinished");
         disableObjectsOnGameOver();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private void stopAudio()
+    {
+        AudioController[] audioControllers = (AudioController[])FindObjectsOfType(typeof(AudioController));
+
+        foreach (AudioController sounds in audioControllers)
+        {
+            sounds.StopPlayingAll();
+        }
+
+        audioManager.StopPlayingAll();
     }
 
     void disableObjectsOnGameOver() {

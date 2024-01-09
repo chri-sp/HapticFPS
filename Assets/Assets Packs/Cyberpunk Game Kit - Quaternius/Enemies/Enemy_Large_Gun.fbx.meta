@@ -452,7 +452,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.04127604
+        functionName: playOverlappingSound
+        data: enemyJump
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -534,7 +542,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.97265625
+        functionName: playOverlappingSound
+        data: footstep
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3964844
+        functionName: playOverlappingSound
+        data: footstep
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -698,7 +722,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9609375
+        functionName: playOverlappingSound
+        data: footstep
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.45117188
+        functionName: playOverlappingSound
+        data: footstep
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

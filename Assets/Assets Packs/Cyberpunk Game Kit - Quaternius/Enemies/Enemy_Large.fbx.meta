@@ -122,6 +122,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.028636817
+        functionName: PlayOverlappingSound
+        data: enemyAttack
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.23289396
         functionName: hitEvent
         data: 
@@ -380,7 +388,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.046387926
+        functionName: PlayOverlappingSound
+        data: enemyJump
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -464,7 +480,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4022761
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9760638
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -632,7 +664,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.50408214
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9760638
+        functionName: footStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c6727fe3362dab1409ced33f78f4a5e6,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

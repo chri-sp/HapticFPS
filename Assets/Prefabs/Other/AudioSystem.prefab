@@ -59,18 +59,20 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243725641028098562, guid: c9e6e7fefa7c8c34495b828127923cc0,
       type: 2}
     source: {fileID: 0}
   - name: RifleReloading
-    clip: {fileID: 8300000, guid: 202d2084920313247a22f7043cf1d4ac, type: 3}
+    clip: {fileID: 8300000, guid: 8e3e0f562d1b0ea42976821077718616, type: 3}
     volume: 1
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
-    mixerGroup: {fileID: 243149887290738288, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+    mixerGroup: {fileID: 243830095105596468, guid: f9a81307cf8647f4abdac60011415804,
       type: 2}
     source: {fileID: 0}
   - name: StaminaFinished
@@ -79,6 +81,7 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243257674825758532, guid: 2542e9c8235101741b2bf6be8edfa78a,
       type: 2}
@@ -89,6 +92,7 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243232103884183366, guid: 2542e9c8235101741b2bf6be8edfa78a,
       type: 2}
@@ -99,6 +103,7 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243969047327172530, guid: 3658b9f7a3984f940b9b73401fd73bc3,
       type: 2}
@@ -109,6 +114,7 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243471581166843456, guid: 3658b9f7a3984f940b9b73401fd73bc3,
       type: 2}
@@ -119,18 +125,21 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243525648861127578, guid: b457438bc42245c4db960c736c09b63b,
       type: 2}
     source: {fileID: 0}
   - name: ShotgunReloading
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: adeaa675ccf88ce469c4895ad4bae053, type: 3}
     volume: 1
-    volumeVariance: 0
+    volumeVariance: 0.2
     pitch: 1
-    pitchVariance: 0
+    pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 243149887290738288, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
     source: {fileID: 0}
   - name: FastReloadingFail
     clip: {fileID: 8300000, guid: 6bed909cf539bef44801116390f31983, type: 3}
@@ -138,6 +147,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243087195639509850, guid: 47a76869c4b41bc46b0f754b1f44ea93,
       type: 2}
@@ -148,6 +158,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243022432551287916, guid: c9e6e7fefa7c8c34495b828127923cc0,
       type: 2}
@@ -158,6 +169,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243993000286717374, guid: f9a81307cf8647f4abdac60011415804,
       type: 2}
@@ -168,6 +180,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243999219266007944, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
       type: 2}
@@ -178,6 +191,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243877805049194764, guid: c9e6e7fefa7c8c34495b828127923cc0,
       type: 2}
@@ -188,6 +202,7 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243808628216085474, guid: f9a81307cf8647f4abdac60011415804,
       type: 2}
@@ -198,7 +213,107 @@ MonoBehaviour:
     volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.2
+    spatialBlend: 0
     loop: 0
     mixerGroup: {fileID: 243634132047263108, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 247f274d2be53a24a96e4b0e27698ef1, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.2
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243359086983050700, guid: c68a46b0552570b4ea474206322656a0,
+      type: 2}
+    source: {fileID: 0}
+  - name: TakePistol
+    clip: {fileID: 8300000, guid: 473f5f3613629854eb25f864bb02883b, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243883455905635414, guid: c9e6e7fefa7c8c34495b828127923cc0,
+      type: 2}
+    source: {fileID: 0}
+  - name: PutPistol
+    clip: {fileID: 8300000, guid: d281c3c929c73c743aa023a0371d3575, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243722417986470344, guid: c9e6e7fefa7c8c34495b828127923cc0,
+      type: 2}
+    source: {fileID: 0}
+  - name: TakeRifle
+    clip: {fileID: 8300000, guid: 336b3108e0e295d429033fb2bd762972, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243943434504945760, guid: f9a81307cf8647f4abdac60011415804,
+      type: 2}
+    source: {fileID: 0}
+  - name: PutRifle
+    clip: {fileID: 8300000, guid: 6a72589faa914d64da4ee79649763413, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243505679671411118, guid: f9a81307cf8647f4abdac60011415804,
+      type: 2}
+    source: {fileID: 0}
+  - name: TakeShotgun
+    clip: {fileID: 8300000, guid: c79f72e17fa616e498f1e233e2278502, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243021621183895422, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: PutShotgun
+    clip: {fileID: 8300000, guid: 171af2d46bc18bb4c9419a0b41d40850, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243936069242406582, guid: be7e7f0d089ed4d4ba277b1cbadb87e3,
+      type: 2}
+    source: {fileID: 0}
+  - name: TakeDamage
+    clip: {fileID: 8300000, guid: c23ef62e23f336a4c9c1c002ff980365, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    spatialBlend: 0
+    loop: 0
+    mixerGroup: {fileID: 243337656489618432, guid: 86595304148b1b44388059dc5f0cf7de,
+      type: 2}
+    source: {fileID: 0}
+  - name: BGMusic
+    clip: {fileID: 8300000, guid: 54de7ee217838404d9f7491fbf002e24, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 1
+    mixerGroup: {fileID: 243418075494898698, guid: 26326eb15941b364694acd6a2d72c06a,
       type: 2}
     source: {fileID: 0}

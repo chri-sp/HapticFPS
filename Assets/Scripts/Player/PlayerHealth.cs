@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         healthController.healthDecrease();
         resetHealthTimer = resetHealthDelay;
+        audioManager.PlayOverlappingSound("TakeDamage");
         if (health <= 0)
         {
             healthController.death();

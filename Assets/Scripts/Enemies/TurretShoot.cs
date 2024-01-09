@@ -27,6 +27,8 @@ public class TurretShoot : MonoBehaviour
     public float timeBetweenShoot = .5f;
     private float initialTimeBetweenShoot;
 
+    private AudioController enemySound;
+
     void Start()
     {
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
@@ -37,6 +39,7 @@ public class TurretShoot : MonoBehaviour
         attackPostprocessing = GetComponentInChildren<PostProcessVolume>();
         attackPostprocessing.weight = 0;
         initialTimeBetweenShoot = timeBetweenShoot;
+        enemySound = GetComponent<AudioController>();
     }
 
     void Update()
@@ -65,6 +68,7 @@ public class TurretShoot : MonoBehaviour
             UnityEngine.Debug.DrawLine(shootPoint.position, shootPoint.position + direction * 10f, Color.red, 1f);
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
             StartCoroutine(SpawnTrail(trail, hit));
+            randomSoundShoot();
         }
         else {
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
@@ -72,6 +76,12 @@ public class TurretShoot : MonoBehaviour
             StartCoroutine(SpawnTrail(trail, hit));
         }
         timeBetweenShoot = initialTimeBetweenShoot;
+    }
+
+    private void randomSoundShoot()
+    {
+        int random = UnityEngine.Random.Range(1, 5);
+        enemySound.Play("enemyShoot" + random);
     }
     private Vector3 GetDirection()
     {
