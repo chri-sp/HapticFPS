@@ -24,6 +24,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float hitPoints = 100f;
     private float initialHitPoints;
 
+    private float timerGetHit;
+
     void Awake() {
         healtBar = gameObject.GetComponentInChildren<FloatingHealtBar>();
     }
@@ -42,6 +44,10 @@ public class EnemyHealth : MonoBehaviour
                 changeColorHit.Add(mat.color);
 
         enemySound = GetComponent<AudioController>();
+    }
+
+    void Update() {
+        timerGetHit += Time.deltaTime;
     }
 
     public float fractionRemaining() {
@@ -64,8 +70,11 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator hitEffects()
     {
-        animator.SetTrigger("shot");
-
+        if (timerGetHit > 1) {
+            animator.SetTrigger("shot");
+            timerGetHit = 0;
+        }
+        
         //effetto cambio colore
         if (!isDead) {
             Color HitColor = new Color(1f, 0f, 0.1f, 1f);
