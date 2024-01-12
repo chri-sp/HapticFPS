@@ -15,6 +15,10 @@ public class WeaponSwitching : MonoBehaviour
 
     private bool isSwitching = false;
 
+    [SerializeField] private bool rifle = false;
+
+    [SerializeField] private bool shotgun = false;
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +54,14 @@ public class WeaponSwitching : MonoBehaviour
         if (previousSelectedWeapon != selectedWeapon) {
             StartCoroutine(switchWeapon());
         }
+    }
+
+    public void enableRifle() { 
+        rifle = true;
+    }
+
+    public void enableShotgun() {
+        shotgun = true;
     }
 
     private void weaponSwitchingFalcon()
@@ -88,17 +100,19 @@ public class WeaponSwitching : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             selectedWeapon = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && rifle)
         {
             selectedWeapon = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && shotgun)
         {
             selectedWeapon = 2;
         }
     }
 
     private void weaponSwitchingScrollWheel() {
+
+        int initialSelectedWeapon = selectedWeapon;
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             selectedWeapon++;
@@ -112,6 +126,16 @@ public class WeaponSwitching : MonoBehaviour
             else
                 selectedWeapon--;
         }
+
+        disableSwitchOnWeapon(initialSelectedWeapon);
+    }
+
+    //evita cambio arma se non ancora sbloccata
+    private void disableSwitchOnWeapon(int initialSelectedWeapon) {
+        if (selectedWeapon == 1 && !rifle)
+            selectedWeapon = initialSelectedWeapon;
+        if (selectedWeapon == 2 && !shotgun)
+            selectedWeapon = initialSelectedWeapon;
     }
 
     private void selectWeapon()

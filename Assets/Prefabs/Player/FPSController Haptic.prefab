@@ -5089,6 +5089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  rifle: 1
+  shotgun: 1
 --- !u!114 &114151871504631770
 MonoBehaviour:
   m_ObjectHideFlags: 1
