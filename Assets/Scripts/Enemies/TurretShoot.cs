@@ -67,14 +67,14 @@ public class TurretShoot : MonoBehaviour
         {
             UnityEngine.Debug.DrawLine(shootPoint.position, shootPoint.position + direction * 10f, Color.red, 1f);
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, hit));
-            randomSoundShoot();
+            StartCoroutine(SpawnTrail(trail, hit));    
         }
         else {
             TrailRenderer trail = Instantiate(bulletTrail, gunPoint.position, Quaternion.identity);
             hit.point = shootPoint.position + shootPoint.forward + direction * bulletDistance;
             StartCoroutine(SpawnTrail(trail, hit));
         }
+        randomSoundShoot();
         timeBetweenShoot = initialTimeBetweenShoot;
     }
 
