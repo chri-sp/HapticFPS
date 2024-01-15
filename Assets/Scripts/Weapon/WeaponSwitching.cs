@@ -15,9 +15,9 @@ public class WeaponSwitching : MonoBehaviour
 
     private bool isSwitching = false;
 
-    [SerializeField] private bool rifle = false;
+    [SerializeField] private static bool rifle = false;
 
-    [SerializeField] private bool shotgun = false;
+    [SerializeField] private static bool shotgun = false;
 
     // Use this for initialization
     void Start()
@@ -26,6 +26,11 @@ public class WeaponSwitching : MonoBehaviour
         handsPosition = GameObject.FindWithTag("CharacterArms").GetComponents<InverseKinematics>();
         weaponManager = GetComponent<WeaponManager>();
         setHandsPosition();
+
+        if (rifle)
+            GameObject.FindWithTag("RifleCollectible").SetActive(false);
+        if (shotgun)
+            GameObject.FindWithTag("ShotgunCollectible").SetActive(false);
     }
 
     private void setHandsPosition()

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114044103585418938}
   m_Layer: 2
   m_Name: ShotgunCollectible
-  m_TagString: Untagged
+  m_TagString: ShotgunCollectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,6 +13,8 @@ TagManager:
   - CharacterArms
   - WeaponHolder
   - AudioSystem
+  - RifleCollectible
+  - ShotgunCollectible
   layers:
   - Default
   - TransparentFX

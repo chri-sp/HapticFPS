@@ -31,7 +31,7 @@ public class SceneLoader : MonoBehaviour
 
     public void ReloadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);    
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
         Time.timeScale = 1.0f;
     }
 
