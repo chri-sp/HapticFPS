@@ -69,9 +69,15 @@ public class WeaponSwitching : MonoBehaviour
         //Uso come input il falcon
         if (controller.isActive() && controller.buttonWasPressed(1))
         {
+            int initialSelectedWeapon = selectedWeapon;
+
             selectedWeapon++;
             selectedWeapon %= transform.childCount;
-            StartCoroutine(controller.changeWeaponHapticFeedback());
+
+            disableSwitchOnWeapon(initialSelectedWeapon);
+
+            if (initialSelectedWeapon != selectedWeapon)
+                StartCoroutine(controller.changeWeaponHapticFeedback());
         }
     }
 
