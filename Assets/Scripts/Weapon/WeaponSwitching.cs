@@ -19,6 +19,10 @@ public class WeaponSwitching : MonoBehaviour
 
     [SerializeField] private static bool shotgun = false;
 
+    public bool debugRifle = false;
+    public bool debugShotgun = false;
+
+
     // Use this for initialization
     void Start()
     {
@@ -59,6 +63,15 @@ public class WeaponSwitching : MonoBehaviour
         if (previousSelectedWeapon != selectedWeapon) {
             StartCoroutine(switchWeapon());
         }
+
+        debugWeapon();
+    }
+
+    private void debugWeapon() { 
+        if (debugRifle)
+            rifle = true;
+        if (debugShotgun)
+            shotgun = true;
     }
 
     public void enableRifle() { 
