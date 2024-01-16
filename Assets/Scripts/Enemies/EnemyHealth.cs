@@ -117,7 +117,7 @@ public class EnemyHealth : MonoBehaviour
         if (!isDead) {
             isDead = true;
             enemySound.Play("enemyDeath");
-
+            checkBossIsDead();
             //Disabilito suoni randomici nemici
             if (GetComponent<RandomSoundEnemy>() != null)
                 GetComponent<RandomSoundEnemy>().enabled = false;
@@ -135,6 +135,12 @@ public class EnemyHealth : MonoBehaviour
                 mesh.enabled = false;
             yield return new WaitForSeconds(explosionDuration);
             Destroy(gameObject);
+        }
+    }
+
+    private void checkBossIsDead() {
+        if (this.name.Equals("Boss")) {
+           GameObject.FindWithTag("FinalPlatform").GetComponent<PlatformBossDefeated>().bossDefeated();
         }
     }
 
