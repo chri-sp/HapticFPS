@@ -17,6 +17,7 @@ TagManager:
   - ShotgunCollectible
   - Boss
   - FinalPlatform
+  - Timer
   layers:
   - Default
   - TransparentFX

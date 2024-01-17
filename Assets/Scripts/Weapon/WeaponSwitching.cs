@@ -82,6 +82,16 @@ public class WeaponSwitching : MonoBehaviour
         shotgun = true;
     }
 
+    public void disableRifle()
+    {
+        rifle = false;
+    }
+
+    public void disableShotgun()
+    {
+        shotgun = false;
+    }
+
     private void weaponSwitchingFalcon()
     {
         //Uso come input il falcon

@@ -14,6 +14,7 @@ public class Pause : MonoBehaviour
     private HapticProbeFPS controller;
 
     private AudioManager audioManager;
+    private VictoryMenu victory;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,7 @@ public class Pause : MonoBehaviour
         controller = GameObject.FindWithTag("Player").GetComponent<HapticProbeFPS>();
         health = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         audioManager = GameObject.FindWithTag("AudioSystem").GetComponent<AudioManager>();
+        victory = GetComponent<VictoryMenu>();  
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class Pause : MonoBehaviour
     {
 
         if (health.currentHealth() <= 0) return;
+        if (victory.hasWin) return;
 
         pauseAudio();
         pauseMenu.SetActive(true);
@@ -54,6 +57,8 @@ public class Pause : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (victory.hasWin) return;
+
         pauseMenu.SetActive(false);
         resumeAudio();
         isPaused = false;

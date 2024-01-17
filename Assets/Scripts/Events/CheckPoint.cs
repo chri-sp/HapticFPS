@@ -11,7 +11,9 @@ public class CheckPoint : MonoBehaviour {
 
 	private AudioSource audioSource;
 
-	private float avoidSoundTimer;
+	private float avoidSoundTimer = 0;
+
+	private bool isTakingCheckpoint = false;
     // Use this for initialization
     void Start () {
         rotationSpeed=Random.Range(rotationSpeed, rotationSpeed * 1.5f);
@@ -26,7 +28,11 @@ public class CheckPoint : MonoBehaviour {
     }
 
 	void OnTriggerEnter() {
-		StartCoroutine(OnTrigger());
+		if (!isTakingCheckpoint)
+		{
+			isTakingCheckpoint=true;
+            StartCoroutine(OnTrigger());
+        }
 	}
 
 	private IEnumerator OnTrigger(){
@@ -34,7 +40,7 @@ public class CheckPoint : MonoBehaviour {
 		GetComponent<MeshRenderer>().enabled = false;	
 		if (avoidSoundTimer >= 1)
 			audioSource.Play();
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }
