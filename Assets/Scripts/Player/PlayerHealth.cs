@@ -34,7 +34,6 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             healthController.death();
-            //Debug.Log("Game Over");
         }
     }
 

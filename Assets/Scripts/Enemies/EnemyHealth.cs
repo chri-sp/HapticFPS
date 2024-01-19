@@ -92,6 +92,7 @@ public class EnemyHealth : MonoBehaviour
                     
         }     
     }
+
     public bool getHit() {
         if (hitPoints< previousHitPoints) {
             previousHitPoints = hitPoints;

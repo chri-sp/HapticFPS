@@ -1,10 +1,6 @@
 ﻿using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.SocialPlatforms;
 using Debug = UnityEngine.Debug;
 
 public class EnemyShoot : MonoBehaviour
@@ -84,7 +80,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void randomSoundShoot()
     {
-        int random = UnityEngine.Random.Range(1, 5);
+        int random = Random.Range(1, 5);
         enemySound.PlayOverlappingSound("enemyShoot" + random);
     }
     private Vector3 GetDirection()

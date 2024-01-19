@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyHealth healt;
     private Weapon weapon;
     private WeaponManager weaponManager;
-    private NavMeshPath path;
+
     [Header("Settings")]
     public float startWaitTime = 4;                 //  Wait time of every action
     public float timeToRotate = 2;                  //  Wait time when the enemy detect near the player without seeing
@@ -143,12 +143,11 @@ public class EnemyAI : MonoBehaviour
     }
     private IEnumerator Dodge()
     {
-        //aumento probabilità dodge se nemico ha meno vita
+        //aumenta probabilità dodge se nemico ha meno vita
         if (healt.getHit())
         {
             incrementDodgeProbability((1 - healt.fractionRemaining()) / 4);
         }
-
 
         float noDodegRadius = 5f;
 
@@ -163,6 +162,7 @@ public class EnemyAI : MonoBehaviour
             {
                 isDodging = true;
                 yield return new WaitForSeconds(.05f);
+
                 //se il player sta mirando a questo nemico
                 GameObject enemyIsViewedByPlayer = null;
                 if (hit.collider.gameObject.GetComponentInParent<EnemyHealth>() != null)
@@ -231,6 +231,7 @@ public class EnemyAI : MonoBehaviour
             return false;
     }
 
+    //verifica se il nemico colliderà con altri elementi dopo il dodge
     bool passDodgeCollision(Vector3 direction, float distance)
     {
         RaycastHit hit;
@@ -240,6 +241,8 @@ public class EnemyAI : MonoBehaviour
         return !Physics.Raycast(position, direction, out hit, distance);
     }
 
+
+    //verifica se il nemico rimarra a contatto con il piano dopo il dodge
     bool passGroundDodge(Vector3 direction, float distance)
     {
         RaycastHit hit;

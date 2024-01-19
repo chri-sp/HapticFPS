@@ -71,7 +71,6 @@ public class CharacterDash : MonoBehaviour {
 
     public bool hasDashed()
     {
-
         return inputDash() && WaitTime <= 0 && CharacterController.velocity.sqrMagnitude > 0 && playerStamina.currentStamina() > 0;
     }
 

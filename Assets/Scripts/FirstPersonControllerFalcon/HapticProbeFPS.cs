@@ -22,30 +22,27 @@ public class HapticProbeFPS : MonoBehaviour
     private Queue<int> randomForceIndexes = new Queue<int>();
     private Queue<int> intermolecularIndexes = new Queue<int>();
 
-    WeaponManager weaponManager;
 
     // The Falcon device
     private FalconFPS falcon;
 
     private Vector3 startPlayerPosition;
 
-    //NOTA: xxxIndex e l'indice della forza di una certa tipologia (semplice, viscosità, ecc..), quindi potrò avere piu forze dello stesso tipo con indici diversi
-
-    // Simula lo spostamento virtuale del controller
+    //simula lo spostamento virtuale del controller
     private float virtualPositionX;
     private float virtualPositionY;
 
-    // Memorizza la posizione x e y iniziale del falcon nell'ambiente, usata per verificare che abbia raggiunto un estremo del controller
+    //memorizza la posizione x e y iniziale del falcon nell'ambiente, usati per verificare se raggiunto un estremo del controller
     private float startPositionX;
     private float startPositionY;
 
-    //Variabile usata per rilevare quando un bottone del falcon è stato premuto
+    //rileva quando un bottone del falcon è stato premuto
     private bool[] buttonPressed = new bool[] { false, false, false, false };
 
     //timer utilizzato per evitare feedback aptico ad inizio scena
     private float timer;
     
-    //questo valore deve essere maggiore del tempo in cui è applicata una certa forza
+    //massimo tempo di applicazione di una forza, deve essere maggiore del tempo in cui è applicata una certa forza
     private float initialTimerLastElementQueue = .6f;
     //timer alla cui scadenza verica se è necessario rimuovere un elemento dalla coda
     private float expireDurationLastElementOnQueue_Force;
@@ -60,13 +57,11 @@ public class HapticProbeFPS : MonoBehaviour
     private bool isReceivingAttack = false;
     private bool isChangingWeapon = false;
     private bool isReloading = false;
-    private bool isReloadingFast = false;
 
 
     // Use this for initialization
     void Start()
     {
-        weaponManager = GameObject.FindWithTag("WeaponHolder").GetComponent<WeaponManager>();
         reinitializeValuesCoroutine();
         // Set Falcon
         falcon = FindObjectOfType<FalconFPS>();
@@ -89,10 +84,9 @@ public class HapticProbeFPS : MonoBehaviour
     {
         updateTimers();
         checkLastElementsOnQueueExpired();
-        //Debug.Log(forceIndexes.Count);
     }
 
-    //aggiorna i timer presenti nello script
+    //aggiorna i timer
     void updateTimers() {
         timer += Time.deltaTime;
         expireDurationLastElementOnQueue_Force -= Time.deltaTime;
@@ -135,7 +129,6 @@ public class HapticProbeFPS : MonoBehaviour
         isReceivingAttack = false;
         isChangingWeapon = false;
         isReloading = false;
-        isReloadingFast = false;
         isDequeingForce = false;
         isDequeingSpring = false;
     }
@@ -160,7 +153,7 @@ public class HapticProbeFPS : MonoBehaviour
     {
 
         if (!isActive()) yield break;
-        //timer che evita feedback salto iniziale in gioco
+        //evita feedback salto iniziale in gioco
         if (timer < 1) yield break;
         if (isJumping) yield break;
         isJumping = true;
@@ -310,7 +303,7 @@ public class HapticProbeFPS : MonoBehaviour
         StartCoroutine(dequeConcurrentSpring());
     }
 
-    // Springs
+
     // p: Position
     // k: Spring constant
     // c: Damping coefficient
@@ -356,13 +349,13 @@ public class HapticProbeFPS : MonoBehaviour
         isDequeingSpring = false;
     }
 
-    //Metodo usato per verificare se il falcon è attivo
+    //verifica se il falcon è attivo
     public bool isActive()
     {
         return falcon.isActive;
     }
 
-    //Ritorna se uno specifico bottone è premuto
+    //ritorna se uno specifico bottone è premuto
     public bool getButtonState(int button)
     {
         return falcon.buttons[button];
@@ -397,10 +390,9 @@ public class HapticProbeFPS : MonoBehaviour
         return buttonPressed[button];
     }
 
-    //Ritorna il vettore di coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
+    //ritorna le coordinate della posizione del controller nell'ambiente, usato per permettere il movimento della camera
     public Vector2 getFalconPosition()
     {
-        //Debug.Log("Falcon position x: " + falcon.position.x+ "\n Falcon position y: "+ falcon.position.y);
 
         //Arrivo al bordo inferiore-destro
         if (falcon.position.x > startPositionX + 2 && falcon.position.y < startPositionY - 1.5)
@@ -446,7 +438,7 @@ public class HapticProbeFPS : MonoBehaviour
         {
             virtualPositionY = virtualPositionY - 0.1f;
         }
-        Vector2 currentPosition = new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
-        return currentPosition;
+
+        return new Vector2(falcon.position.x + virtualPositionX, falcon.position.y + virtualPositionY);
     }
 }

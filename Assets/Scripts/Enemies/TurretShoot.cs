@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -80,7 +79,7 @@ public class TurretShoot : MonoBehaviour
 
     private void randomSoundShoot()
     {
-        int random = UnityEngine.Random.Range(1, 5);
+        int random = Random.Range(1, 5);
         enemySound.Play("enemyShoot" + random);
     }
     private Vector3 GetDirection()

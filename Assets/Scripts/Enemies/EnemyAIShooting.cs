@@ -204,15 +204,17 @@ public class EnemyAIShooting : MonoBehaviour
 
     bool canDodge(Vector3 direction, float distance)
     {
-        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance)) {
+        if (passDodgeCollision(direction, distance) && passGroundDodge(direction, distance))
+        {
             enemySound.Play("enemyDash");
             return true;
         }
-           
+
         else
             return false;
     }
 
+    //verifica se il nemico colliderà con altri elementi dopo il dodge
     bool passDodgeCollision(Vector3 direction, float distance)
     {
         RaycastHit hit;
@@ -222,10 +224,9 @@ public class EnemyAIShooting : MonoBehaviour
         return !Physics.Raycast(position, direction, out hit, distance);
     }
 
+    //verifica se il nemico rimarra a contatto con il piano dopo il dodge
     bool passGroundDodge(Vector3 direction, float distance)
     {
-        RaycastHit hit;
-
         //ottengo posizione attuale oggetto
         Vector3 position = transform.position;
         position.y = position.y + .5f;
@@ -357,12 +358,10 @@ public class EnemyAIShooting : MonoBehaviour
             return true;
         }
         else
-        {
-            //randomDistanceShooting();
             return false;
-        }
     }
 
+    //Rendo la distanza di sparo randomica entro un range, per ogni nemico
     private void randomDistanceShooting()
     {
         Random.seed = System.DateTime.Now.Millisecond;

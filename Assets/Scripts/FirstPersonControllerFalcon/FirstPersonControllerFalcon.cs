@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -42,7 +40,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Camera m_Camera;
         public bool m_Jump;
-        private float m_YRotation;
+
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         public CharacterController m_CharacterController;

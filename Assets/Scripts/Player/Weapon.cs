@@ -117,18 +117,12 @@ public class Weapon : MonoBehaviour
             //Uso come input il falcon
             if (controller.isActive() && controller.getButtonState(0) && Time.time >= nextTimeToFire)
             {
-                nextTimeToFire = Time.time + fireRate;
-                Shoot();
-                IncreaseSpreadAfterShoot();
-                resetSpreadTimer = resetSpreadDelay;
+                rifleShoot();
             }
             //Uso come input il mouse
             else if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
-                nextTimeToFire = Time.time + fireRate;
-                Shoot();
-                IncreaseSpreadAfterShoot();
-                resetSpreadTimer = resetSpreadDelay;
+                rifleShoot();
             }
         }
         else
@@ -136,18 +130,29 @@ public class Weapon : MonoBehaviour
             //Uso come input il falcon
             if (controller.isActive() && controller.buttonWasPressed(0))
             {
-                Shoot();
-                IncreaseSpreadAfterShoot();
-                resetSpreadTimer = resetSpreadDelay;
+                simpeShoot();
             }
             //Uso come input il mouse
             else if (Input.GetButtonDown("Fire1"))
             {
-                Shoot();
-                IncreaseSpreadAfterShoot();
-                resetSpreadTimer = resetSpreadDelay;
+                simpeShoot();
             }
         }
+    }
+
+    private void simpeShoot()
+    {
+        Shoot();
+        IncreaseSpreadAfterShoot();
+        resetSpreadTimer = resetSpreadDelay;
+    }
+
+    private void rifleShoot()
+    {
+        nextTimeToFire = Time.time + fireRate;
+        Shoot();
+        IncreaseSpreadAfterShoot();
+        resetSpreadTimer = resetSpreadDelay;
     }
 
     IEnumerator Reload()
@@ -177,7 +182,6 @@ public class Weapon : MonoBehaviour
         if (reloadingCoroutine!=null)
             StopCoroutine(reloadingCoroutine);
 
-        //audioManager.StopPlaying(this.name + "Reloading");
         audioManager.Play(this.name + "FastReloading");
 
         currentAmmo = maxAmmo;
@@ -230,7 +234,7 @@ public class Weapon : MonoBehaviour
     {
         StartCoroutine(HasShooted());
 
-        audioManager.Play(this.name+"Shoot");
+        audioManager.PlayOverlappingSound(this.name+"Shoot");
         currentAmmo--;
         reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
         PlayMuzzleFlash();

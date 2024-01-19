@@ -41,7 +41,7 @@ public class VictoryMenu : MonoBehaviour {
         string timer = string.Format("{0:D2}:{1:D2}",
                 t.Minutes,
                 t.Seconds);
-        timerText.text = "Tempo\n"+ timer;
+        timerText.text = "Time\n"+ timer;
         timerLevel = 0;
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

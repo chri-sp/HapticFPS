@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class RandomSoundEnemy : MonoBehaviour {
@@ -34,7 +32,7 @@ public class RandomSoundEnemy : MonoBehaviour {
     {
         if (playingSound) yield break;
         playingSound = true;
-        int random = UnityEngine.Random.Range(1, 4);
+        int random = Random.Range(1, 4);
         yield return new WaitForSeconds(.2f);
         audioController.PlayOverlappingSound("enemyHit"+random);
         yield return new WaitForSeconds(.2f);

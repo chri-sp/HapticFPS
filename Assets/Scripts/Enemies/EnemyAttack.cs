@@ -31,8 +31,6 @@ public class EnemyAttack : MonoBehaviour
         Attack();
     }
 
-
-
     public void Attack()
     {
 

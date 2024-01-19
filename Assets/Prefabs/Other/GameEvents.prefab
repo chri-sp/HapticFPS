@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryMenu: {fileID: 0}
+  timerText: {fileID: 0}
   hasWin: 0
 --- !u!114 &114699930388736572
 MonoBehaviour:

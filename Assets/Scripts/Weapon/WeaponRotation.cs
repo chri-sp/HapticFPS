@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//gestione rotazione arma e abilitazione dopo raccolta
 public class WeaponRotation : MonoBehaviour {
 
     [SerializeField] private float rotationSpeed = 10.0f;
