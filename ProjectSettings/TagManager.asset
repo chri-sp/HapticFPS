@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
+  - Weapon
+  - ShootPoint
+  - Canvas
+  - GameEvents
+  - InGameMessage
+  - CharacterArms
+  - WeaponHolder
+  - AudioSystem
+  - RifleCollectible
+  - ShotgunCollectible
+  - Boss
+  - FinalPlatform
+  - Timer
   layers:
   - Default
   - TransparentFX
@@ -13,11 +27,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcess
+  - Player
+  - Obstacles
+  - Enemy
+  - IgnoreNavMeshAgent
   - 
   - 
   - 

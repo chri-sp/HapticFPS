@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: 6bdb1fb5e066c214ea35c99637434c28
+timeCreated: 1696260547
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: CharacterArmature
+    100002: Cube.000
+    100004: //RootNode
+    100006: Eye
+    100008: Eye_end
+    100010: Gun
+    100012: Gun_end
+    100014: Hand.L
+    100016: Hand.L_end
+    100018: Hand.R
+    100020: Hand.R_end
+    100022: Head
+    100024: LowerArm.L
+    100026: LowerArm.R
+    100028: Root
+    100030: Shoulder.L
+    100032: Shoulder.R
+    100034: Sphere.001
+    100036: Sun
+    100038: Sun.001
+    100040: UpperArm.L
+    100042: UpperArm.R
+    400000: CharacterArmature
+    400002: Cube.000
+    400004: //RootNode
+    400006: Eye
+    400008: Eye_end
+    400010: Gun
+    400012: Gun_end
+    400014: Hand.L
+    400016: Hand.L_end
+    400018: Hand.R
+    400020: Hand.R_end
+    400022: Head
+    400024: LowerArm.L
+    400026: LowerArm.R
+    400028: Root
+    400030: Shoulder.L
+    400032: Shoulder.R
+    400034: Sphere.001
+    400036: Sun
+    400038: Sun.001
+    400040: UpperArm.L
+    400042: UpperArm.R
+    4300000: Sphere.001
+    4300002: Cube.000
+    7400000: CharacterArmature|Attack
+    7400002: CharacterArmature|Dead
+    7400004: CharacterArmature|Idle
+    7400006: CharacterArmature|Run
+    7400008: CharacterArmature|Shoot
+    7400010: CharacterArmature|Walk
+    7400012: Shooting
+    9500000: //RootNode
+    13700000: Cube.000
+    13700002: Sphere.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CharacterArmature|Attack
+      takeName: CharacterArmature|Attack
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Dead
+      takeName: CharacterArmature|Dead
+      firstFrame: 0
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Idle
+      takeName: CharacterArmature|Idle
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Run
+      takeName: CharacterArmature|Run
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Shoot
+      takeName: CharacterArmature|Shoot
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterArmature|Walk
+      takeName: CharacterArmature|Walk
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shooting
+      takeName: CharacterArmature|Shoot
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: Shoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterArmature
+        weight: 1
+      - path: CharacterArmature/Root
+        weight: 1
+      - path: CharacterArmature/Root/Head
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye
+        weight: 1
+      - path: CharacterArmature/Root/Head/Eye/Eye_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun
+        weight: 1
+      - path: CharacterArmature/Root/Head/Gun/Gun_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L/Hand.L_end
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
+        weight: 1
+      - path: CharacterArmature/Root/Head/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Hand.R_end
+        weight: 1
+      - path: Cube.000
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sun
+        weight: 1
+      - path: Sun.001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
