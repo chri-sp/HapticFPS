@@ -36,7 +36,8 @@ public class Pause : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            controller.resetAllForces();
+            if (controller.isActive())
+                controller.resetAllForces();
             PauseGame();
         }
     }

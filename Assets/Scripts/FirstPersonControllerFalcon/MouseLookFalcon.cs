@@ -90,7 +90,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
             }
 
-            aimHelper(ref yRot, ref xRot);
+            if (controller.isActive())
+                aimHelper(ref yRot, ref xRot);
 
             m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);

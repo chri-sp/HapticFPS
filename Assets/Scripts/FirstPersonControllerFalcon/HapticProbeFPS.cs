@@ -41,7 +41,7 @@ public class HapticProbeFPS : MonoBehaviour
 
     //timer utilizzato per evitare feedback aptico ad inizio scena
     private float timer;
-    
+
     //massimo tempo di applicazione di una forza, deve essere maggiore del tempo in cui è applicata una certa forza
     private float initialTimerLastElementQueue = .6f;
     //timer alla cui scadenza verica se è necessario rimuovere un elemento dalla coda
@@ -87,14 +87,16 @@ public class HapticProbeFPS : MonoBehaviour
     }
 
     //aggiorna i timer
-    void updateTimers() {
+    void updateTimers()
+    {
         timer += Time.deltaTime;
         expireDurationLastElementOnQueue_Force -= Time.deltaTime;
         expireDurationLastElementOnQueue_Spring -= Time.deltaTime;
     }
 
     //controlla se l'ultimo elemento in ogni coda deve essere rimosso, per garantire che non rimangano applicate forze sul controller
-    void checkLastElementsOnQueueExpired() {
+    void checkLastElementsOnQueueExpired()
+    {
         lastElementOnQueueExpiredForce();
         lastElementOnQueueExpiredSpring();
     }
@@ -254,7 +256,7 @@ public class HapticProbeFPS : MonoBehaviour
         addForce(new Vector3(0f, -3f, 0f));
         yield return new WaitForSeconds(0.2f);
         removeForce();
-           
+
         isReloading = false;
     }
 
