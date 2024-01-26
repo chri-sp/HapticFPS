@@ -40,7 +40,7 @@ public class CheckPoint : MonoBehaviour {
 		GetComponent<MeshRenderer>().enabled = false;	
 		if (avoidSoundTimer >= 1)
 			audioSource.Play();
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 }
