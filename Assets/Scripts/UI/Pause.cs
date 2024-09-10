@@ -30,6 +30,9 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (player.enabled==false) return;
+
         if (isPaused && Input.GetKeyDown(KeyCode.Escape))
         {
             ResumeGame();
