@@ -10,6 +10,12 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+# Ignore large LightingData.asset and its .meta file
+# These files are specific to local setups and should be regenerated locally
+/Assets/Scenes/Livello/LightingData.asset
+/Assets/Scenes/Livello/LightingData.asset.meta
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -70,4 +76,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-*.log

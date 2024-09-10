@@ -51,10 +51,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] public float spreadFactor;
     [SerializeField] public float spreadShoot;
     [SerializeField] public float maxSpreadAfterShoot = 0.05f;
+    [SerializeField] public float movementMultiplier = 1f;
     private float resetSpreadDelay = .2f;
     private float resetSpreadTimer;
     private float initialSpreadFactor;
-    private float surplusSpreadAfterShoot;
+    private float spreadIncreaseAfterShoot;
 
     Coroutine reloadingCoroutine;
 
@@ -89,7 +90,7 @@ public class Weapon : MonoBehaviour
 
         spreadAfterShoootTimer();
 
-        setSpreadFactor();
+        ChangeSpreadFactor();
         crosshair.setCrosshairSize(spreadFactor);
 
         if (isReloading)
@@ -107,7 +108,7 @@ public class Weapon : MonoBehaviour
         if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             weaponInput();
-        }   
+        }
     }
 
     private void weaponInput()
@@ -161,7 +162,7 @@ public class Weapon : MonoBehaviour
         if (!isReloading)
         {
             isReloading = true;
-            audioManager.Play(this.name+"Reloading");
+            audioManager.Play(this.name + "Reloading");
             WeaponsAnimator.enabled = true;
             WeaponsAnimator.SetBool("Reloading", true);
             reloadingWaitTimeCircle.gameObject.SetActive(true);
@@ -179,7 +180,7 @@ public class Weapon : MonoBehaviour
 
     public void fastReloading()
     {
-        if (reloadingCoroutine!=null)
+        if (reloadingCoroutine != null)
             StopCoroutine(reloadingCoroutine);
 
         audioManager.Play(this.name + "FastReloading");
@@ -200,27 +201,24 @@ public class Weapon : MonoBehaviour
         weaponAnimator.Play("WeaponSwitched");
     }
 
-    public void setSpreadFactor()
+    public void ChangeSpreadFactor()
     {
-        //il player è fermo
-        if (player.m_CharacterController.velocity.sqrMagnitude.Equals(0) && (Input.GetAxis("Horizontal") == 0 ||
-            Input.GetAxis("Vertical") == 0))
-        {
-            spreadFactor = initialSpreadFactor + surplusSpreadAfterShoot;
-        }
+        bool isMoving = player.m_CharacterController.velocity.sqrMagnitude > 0.001f;
+        float currentMovementMultiplier = movementMultiplier;
+
         //il player sta correndo
-        else if (Input.GetKey(KeyCode.LeftShift) && player.m_CharacterController.velocity.sqrMagnitude > 0 &&
-            (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        if (Input.GetKey(KeyCode.LeftShift) && isMoving)
         {
-            spreadFactor = initialSpreadFactor * 4f + surplusSpreadAfterShoot;
+            currentMovementMultiplier *= 4f;
         }
 
         //il player sta camminando
-        else
+        else if (isMoving)
         {
-            spreadFactor = initialSpreadFactor * 2.5f + surplusSpreadAfterShoot;
+            currentMovementMultiplier *= 2.5f;
         }
 
+        spreadFactor = initialSpreadFactor * currentMovementMultiplier + spreadIncreaseAfterShoot;
     }
 
     IEnumerator HasShooted()
@@ -234,7 +232,7 @@ public class Weapon : MonoBehaviour
     {
         StartCoroutine(HasShooted());
 
-        audioManager.PlayOverlappingSound(this.name+"Shoot");
+        audioManager.PlayOverlappingSound(this.name + "Shoot");
         currentAmmo--;
         reloadingCircle.UpdateReloadingCircle(currentAmmo, maxAmmo);
         PlayMuzzleFlash();
@@ -250,7 +248,8 @@ public class Weapon : MonoBehaviour
             ProcessRaycast();
     }
 
-    private void damageByDistance(Vector3 shootPoint, Vector3 hitPoint){
+    private void damageByDistance(Vector3 shootPoint, Vector3 hitPoint)
+    {
         float distance = Vector3.Distance(shootPoint, hitPoint);
         damage = damage - (distance * 6);
         if (damage <= 5)
@@ -374,7 +373,7 @@ public class Weapon : MonoBehaviour
     {
         if (resetSpreadTimer <= 0)
         {
-            surplusSpreadAfterShoot = 0;
+            spreadIncreaseAfterShoot = 0;
         }
 
         if (resetSpreadTimer > 0)
@@ -385,9 +384,9 @@ public class Weapon : MonoBehaviour
 
     private void IncreaseSpreadAfterShoot()
     {
-        if (surplusSpreadAfterShoot <= maxSpreadAfterShoot)
+        if (spreadIncreaseAfterShoot <= maxSpreadAfterShoot)
         {
-            surplusSpreadAfterShoot = spreadFactor + Random.Range(spreadShoot, spreadShoot * 2);
+            spreadIncreaseAfterShoot = spreadFactor + Random.Range(spreadShoot, spreadShoot * 2);
         }
     }
 
@@ -396,7 +395,7 @@ public class Weapon : MonoBehaviour
         Vector3 shootDirection = FirstPersonCamera.transform.forward;
         float randomSpreadX = Random.Range(-spreadFactor, spreadFactor);
         float randomSpreadY = Random.Range(-spreadFactor, spreadFactor * 2);
-        shootDirection = shootDirection + FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
+        shootDirection += FirstPersonCamera.transform.TransformDirection(new Vector3(randomSpreadX, randomSpreadY));
         return shootDirection;
     }
 
